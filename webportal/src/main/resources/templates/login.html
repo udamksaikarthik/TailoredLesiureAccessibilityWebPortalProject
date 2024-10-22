@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/loginStyles.css}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="login-container">
+            <h1 class="login-title">Login</h1>
+
+            <!-- Login Form - Update action to point to the correct Spring Security login processing URL -->
+            <form action="/login" method="post" class="login-form">
+            
+                <!-- CSRF Token -->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                <!-- Username (Gmail/Email) -->
+                <div class="input-group">
+                    <label for="email">Gmail</label>
+                    <!-- Name attribute should be "username" for Spring Security compatibility -->
+                    <input type="email" id="email" name="username" placeholder="Enter your Gmail" required>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <!-- Name attribute should be "password" for Spring Security compatibility -->
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <!-- Display error message if login fails -->
+	            <div th:if="${session.loginError}">
+	                <p style="color: red; text-align: center; margin: 1em 0;" th:text="${session.loginError}"></p>
+	            </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <!-- Signup Link -->
+            <div class="signup-link">
+                <p>Don't have an account? <a href="/signup">Create an account</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

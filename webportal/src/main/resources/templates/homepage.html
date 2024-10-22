@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
+</head>
+<body>
+	<h1>Welcome, <span th:text="${firstName}"></span></h1>
+	<h4>Your Role is: <span th:text="${role}"></span></h4>
+	<form action="/logout" method="post">
+	    <button type="submit" class="form_btn_logout">Logout</button>
+	</form>
+</body>
+</html>
