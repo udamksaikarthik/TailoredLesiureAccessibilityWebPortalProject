@@ -3,6 +3,32 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.header-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	gap: 10px;
+	margin: 1em 0;
+}
+
+.header-container img{
+	width: 100px;
+	height: 100px;
+}
+
+.header-inner-text-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	text-align: center;
+	flex-direction: column;
 }
 
 .signup-container {
@@ -89,4 +115,8 @@ body {
         font-size: 1rem;
         padding: 8px;
     }
+    .header-container img{
+		width: 75px;
+		height: 75px;
+	}
 }

@@ -16,7 +16,7 @@ public class SecurityConfig {
         http
         	.csrf().disable() 
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/signup", "/login", "/error").permitAll()  // Public paths
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/signup", "/login").permitAll()  // Public paths
                 .requestMatchers("/admin/**").hasRole("ADMIN")  // Only admins can access /admin/**
                 .requestMatchers("/business/**").hasRole("BUSINESS_MEMBER")  // Only business members can access /business/**
                 .requestMatchers("/user/**").hasRole("USER")  // Only users can access /user/**
