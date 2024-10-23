@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
+</head>
+<body>
+	<div class="header-container">
+		<div class="left-alignment-header-container common-header-container">
+			<h1>Welcome, <span th:text="${firstName}"></span></h1>
+		</div>
+		<div class="center-alignment-header-container common-header-container">
+			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
+			<div class="header-inner-text-container">
+				<h1>Tailored Leisure</h1>
+				<h4>Accessibility for Everyone</h4>
+			</div>
+		</div>
+		<div class="right-alignment-header-container common-header-container">
+			<form action="/logout" method="post">
+			    <button type="submit" class="form_btn_logout">Logout</button>
+			</form>
+		</div>
+	</div>
+	<div class="mobile-left-alignment-header-container common-header-container">
+			<h1>Welcome, <span th:text="${firstName}"></span></h1>
+	</div>
+	<h4>Your Role is: <span th:text="${role}"></span></h4>
+	
+</body>
+</html>
