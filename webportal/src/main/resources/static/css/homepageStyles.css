@@ -49,6 +49,75 @@ body{
     font-size: 1.1rem;
     transition: background-color 0.3s ease;
 }
+
+.cards_container{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 3vw;
+	padding: 2em 0;
+}
+
+.cards_common_container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	width: 30vw;
+	background-color: salmon;
+	border-radius: 10px;
+	padding: 4em 0.75em;
+}
+
+.card_title{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	}
+
+.card_title img{
+	width: 100px;
+	height: 100px;
+}
+
+
+.card_title h2,h5,p{
+	text-align: center;
+}
+
+.card_title h2{
+	font-size: 2.5em;
+}
+
+
+.cards_common_container:hover{
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+.tailored_venues_card_container{
+	background-color: #8BC34A;
+}
+.about_us_card_container{
+	background-color: #9E9E9E;
+}
+.advertise_card_common_container{
+	background-color: #FF9800;
+}
+.manage_user_card_common_container{
+	background-color: #03A9F4;
+}
+.verify_venue_card_common_container{
+	background-color: #FF7043 ;
+}
+.verify_rating_card_common_container{
+	background-color: #607D8B   ;
+}
+
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
     
@@ -74,5 +143,9 @@ body{
 	.common-header-container img{
 		width: 75px;
 		height: 75px;
+	}
+	.cards_common_container{
+		width: 90vw;
+		padding: 3em 0;
 	}
 }
