@@ -32,32 +32,50 @@
 	
 	<div class="cards_container">
 	
-		<div sec:authorize="isAuthenticated()" class="cards_common_container">
+		<div sec:authorize="isAuthenticated()" class="tailored_venues_card_container cards_common_container">
 			<div class="card_title">
 				<img alt="" th:src="@{/images/search_icon.png}">
 				<h2>Tailored Venues</h2>
-				<h5>Search Location & Ratings</h5>
 				<p>Search for accessible venues and view their ratings.</p>
 			</div>
 		</div>
 		
-		<div sec:authorize="hasRole('BUSINESS_MEMBER')" class="cards_common_container">
-		
+		<div sec:authorize="hasAnyRole('BUSINESS_MEMBER','ADMIN')" class="advertise_card_common_container cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/advertise_icon.png}">
+				<h2>Venue Advertisement</h2>
+				<p>Submit your venue for advertisement.</p>
+			</div>
 		</div>
 		
-		<div sec:authorize="hasRole('ADMIN')" class="cards_common_container">
-		
+		<div sec:authorize="hasRole('ADMIN')" class="manage_user_card_common_container cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/manage_icon.png}">
+				<h2>User Management</h2>
+				<p>View and manage app users.</p>
+			</div>
 		</div>
 		
-		<div sec:authorize="hasAnyRole('ADMIN')" class="cards_common_container">
-		
+		<div sec:authorize="hasAnyRole('ADMIN')" class="verify_venue_card_common_container cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/verify_icon.png}">
+				<h2>Verify Venues</h2>
+				<p>Review and approve venues submitted by business members.</p>
+			</div>
 		</div>
 		
-		<div sec:authorize="isAuthenticated()" class="cards_common_container">
+		<div sec:authorize="hasAnyRole('ADMIN')" class="verify_rating_card_common_container cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/verify_icon.png}">
+				<h2>Verify Ratings</h2>
+				<p>Review and moderate ratings left by users.</p>
+			</div>
+		</div>
+		
+		<div sec:authorize="isAuthenticated()" class="cards_common_container about_us_card_container">
 			<div class="card_title">
 				<img alt="" th:src="@{/images/info_icon.png}">
 				<h2>About Us</h2>
-				<h5>Tailored Leisure Services</h5>
 				<p>Check out the latest news and services of tailored leisure.</p>
 			</div>
 		</div>
