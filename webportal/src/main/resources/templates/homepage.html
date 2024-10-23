@@ -25,10 +25,44 @@
 			</form>
 		</div>
 	</div>
+	
 	<div class="mobile-left-alignment-header-container common-header-container">
 			<h1>Welcome, <span th:text="${firstName}"></span></h1>
 	</div>
-	<h4>Your Role is: <span th:text="${role}"></span></h4>
+	
+	<div class="cards_container">
+	
+		<div sec:authorize="isAuthenticated()" class="cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/search_icon.png}">
+				<h2>Tailored Venues</h2>
+				<h5>Search Location & Ratings</h5>
+				<p>Search for accessible venues and view their ratings.</p>
+			</div>
+		</div>
+		
+		<div sec:authorize="hasRole('BUSINESS_MEMBER')" class="cards_common_container">
+		
+		</div>
+		
+		<div sec:authorize="hasRole('ADMIN')" class="cards_common_container">
+		
+		</div>
+		
+		<div sec:authorize="hasAnyRole('ADMIN')" class="cards_common_container">
+		
+		</div>
+		
+		<div sec:authorize="isAuthenticated()" class="cards_common_container">
+			<div class="card_title">
+				<img alt="" th:src="@{/images/info_icon.png}">
+				<h2>About Us</h2>
+				<h5>Tailored Leisure Services</h5>
+				<p>Check out the latest news and services of tailored leisure.</p>
+			</div>
+		</div>
+		
+	</div>
 	
 </body>
 </html>
