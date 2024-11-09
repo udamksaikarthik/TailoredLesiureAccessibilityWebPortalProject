@@ -37,7 +37,7 @@ public class UserDao {
         userEntity.setPassword(passwordEncoder.encode(users.getPassword()));
 
         userEntity.setRole(users.getRole());
-        userEntity.setAddress(users.getAddress());
+        userEntity.setPhoneNumber(users.getPhoneNumber());
         userEntity.setCreatedAt(new Date());
 
         return userEntity;

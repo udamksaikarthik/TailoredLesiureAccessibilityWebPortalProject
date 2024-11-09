@@ -12,8 +12,7 @@ public class Users {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @NotBlank(message = "Address is required")
-    private String address;
+    private String phoneNumber;
 
     @NotBlank(message = "Gmail is required")
     @Email(message = "Please enter a valid Gmail")
@@ -35,7 +34,7 @@ public class Users {
 
     @Override
 	public String toString() {
-		return "Users [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", email=" + email
+		return "Users [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", role=" + role + "]";
 	}
 
@@ -58,12 +57,12 @@ public class Users {
 		this.lastName = lastName;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
