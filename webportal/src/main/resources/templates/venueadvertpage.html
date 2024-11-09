@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Venue Advertise Page</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/venueadvertpageStyles.css}">
+</head>
+<body>
+
+<div>
+    <h1>Advertise Your Venue</h1>
+    <form th:action="@{/submitVenue}" th:method="post" enctype="multipart/form-data">
+        <!-- Venue Information Section -->
+        <div class="form-section">
+            <button type="button" class="section-toggle" onclick="toggleSection('venueInfo')">Venue Information</button>
+            <div id="venueInfo" class="section-content slide-down">
+                <label for="venueName">Venue Name:</label>
+                <input type="text" id="venueName" name="venueName" required aria-required="true">
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required aria-required="true">
+            </div>
+        </div>
+
+        <!-- Media Section -->
+        <div class="form-section">
+            <button type="button" class="section-toggle" onclick="toggleSection('mediaSection')">Upload Images/Videos</button>
+            <div id="mediaSection" class="section-content slide-down">
+                <label for="media">Upload Media:</label>
+                <input type="file" id="media" name="media" multiple aria-describedby="mediaDesc">
+                <small id="mediaDesc">Accepts images and videos for visual representation</small>
+            </div>
+        </div>
+
+        <!-- Accessibility Checklist Section -->
+        <div class="form-section">
+            <button type="button" class="section-toggle" onclick="toggleSection('accessibilityChecklist')">Accessibility Checklist</button>
+            <div id="accessibilityChecklist" class="section-content slide-down">
+                <p>Answer these questions to help users understand the accessibility of your venue.</p>
+                
+                <label>Mobility Accessibility (1 to 5 rating):</label>
+                <select name="mobilityAccessibility" aria-label="Mobility Accessibility rating">
+                    <option value="1">1 - Needs Improvement</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Exceptional</option>
+                </select>
+
+                <label>Visual Accessibility (1 to 5 rating):</label>
+                <select name="visualAccessibility" aria-label="Visual Accessibility rating">
+                    <option value="1">1 - Needs Improvement</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Exceptional</option>
+                </select>
+
+                <label>Hearing Accessibility (1 to 5 rating):</label>
+                <select name="hearingAccessibility" aria-label="Hearing Accessibility rating">
+                    <option value="1">1 - Needs Improvement</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Exceptional</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Submit Advertisement</button>
+    </form>
+</div>
+
+<script>
+    // Function to toggle visibility of each section when button is clicked
+    function toggleSection(sectionId) {
+        const sectionContent = document.getElementById(sectionId);
+        sectionContent.style.display = sectionContent.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>

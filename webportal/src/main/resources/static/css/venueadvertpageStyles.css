@@ -1,0 +1,121 @@
+/* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Styling for form sections */
+        .form-section {
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        /* Toggle button style */
+        .section-toggle {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover and focus styling for accessibility */
+        .section-toggle:focus, .section-toggle:hover {
+            background-color: #005bb5;
+        }
+
+        /* Hidden content for collapsed sections */
+        .section-content {
+            display: none;
+            padding: 15px;
+        }
+
+        /* Slide-down animation for smooth expansion */
+        .slide-down {
+            animation: slide-down 0.3s ease;
+        }
+
+        @keyframes slide-down {
+            from { max-height: 0; opacity: 0; }
+            to { max-height: 100%; opacity: 1; }
+        }
+
+        /* Focus outline for keyboard navigation */
+        .section-toggle:focus-visible {
+            outline: 2px solid #000;
+            outline-offset: 2px;
+        }
+
+        /* Styling for labels and input fields */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        input[type="text"], input[type="file"], select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive adjustments for screens 768px and below */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            /* Adjusting button and font sizes for smaller screens */
+            .section-toggle {
+                font-size: 1rem;
+                padding: 8px;
+            }
+
+            input[type="text"], input[type="file"], select, button[type="submit"] {
+                font-size: 0.9rem;
+                padding: 0.4rem;
+            }
+        }

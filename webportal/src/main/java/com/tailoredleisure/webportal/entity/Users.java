@@ -42,8 +42,8 @@ public class Users {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -52,7 +52,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", role=" + role + ", address=" + address + ", createdAt=" + createdAt
+				+ ", password=" + password + ", role=" + role + ", phoneNumber=" + phoneNumber + ", createdAt=" + createdAt
 				+ "]";
 	}
 
@@ -104,12 +104,12 @@ public class Users {
 		this.role = role;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Date getCreatedAt() {
