@@ -37,4 +37,13 @@ public class HomeController {
 		mv.setViewName("homepage.html");
 		return mv;
 	}
+	
+	@GetMapping("/business/showVenueAdvertPage")
+	private ModelAndView showVenueAdvertPage() {
+        System.out.println("Inside showVenueAdvertPage method");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("venueadvertpage.html");
+		return mv;
+	}
+	
 }

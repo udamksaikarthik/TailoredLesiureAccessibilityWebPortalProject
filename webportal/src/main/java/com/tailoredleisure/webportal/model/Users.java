@@ -1,5 +1,9 @@
 package com.tailoredleisure.webportal.model;
 
+import java.util.Date;
+
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -27,6 +31,8 @@ public class Users {
 
     @NotBlank(message = "Role is required")
     private String role;
+    
+    private Date createdAt;
     
     public Users() {
     	
@@ -96,4 +102,13 @@ public class Users {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	
 }

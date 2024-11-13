@@ -50,87 +50,70 @@ body{
     transition: background-color 0.3s ease;
 }
 
-.cards_container{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	gap: 3vw;
-	padding: 2em 0;
-}
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 20px 0;
+     font-size: 1rem;
+     text-align: left;
+ }
 
-.cards_common_container{
-	display: flex;
-	position: relative;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
-	width: 30vw;
-	background-color: salmon;
-	border-radius: 10px;
-	padding: 4em 0.75em;
-}
+ table thead tr {
+     background-color: #333;
+     color: #fff;
+ }
 
-.card_title{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap: 5px;
-	}
+ table th, table td {
+     padding: 12px 15px;
+     border: 1px solid #ddd;
+ }
 
-.card_title img{
-	width: 100px;
-	height: 100px;
-}
+ table tbody tr:nth-child(even) {
+     background-color: #f3f3f3;
+ }
 
+ table tbody tr:hover {
+     background-color: #f1f1f1;
+ }
 
-.card_title h2,h5,p{
-	text-align: center;
-}
+ .button-container {
+     margin: 20px 0;
+     display: flex;
+     justify-content: flex-end;
+     gap: 10px;
+ }
 
-.card_title h2{
-	font-size: 2.5em;
-}
+ .button-container button {
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     font-size: 1rem;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
 
+ .button-container .add-user-btn {
+     background-color: #4CAF50;
+     color: white;
+ }
 
-.cards_common_container:hover{
-	border: 2px solid black;
-	cursor: pointer;
-}
+ .button-container .add-user-btn:hover {
+     background-color: #45a049;
+ }
 
-.tailored_venues_card_container{
-	background-color: #FFEB3B;
-}
-.about_us_card_container{
-	background-color: #FFEB3B;
-}
-.advertise_card_common_container{
-	background-color: #FF9800;
-}
-.manage_user_card_common_container{
-	background-color: #03A9F4;
-}
-.verify_venue_card_common_container{
-	background-color: #FF7043 ;
-}
-.verify_rating_card_common_container{
-	background-color: #607D8B   ;
-}
+ .button-container .delete-user-btn {
+     background-color: #FF4C4C;
+     color: white;
+ }
 
-.card_title p{
-	font-size: 1.5em;
-}
-
-.card_anchor_tag{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	left: 0;
-	top: 0;
-}
-
+ .button-container .delete-user-btn:hover {
+     background-color: #ff3333;
+ }
+ 
+ .content-container h2{
+ 	text-align: center;
+ }
+        
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
     
@@ -157,8 +140,7 @@ body{
 		width: 75px;
 		height: 75px;
 	}
-	.cards_common_container{
-		width: 90vw;
-		padding: 3em 0;
+	.content-container{
+		width: 100vw;
 	}
 }

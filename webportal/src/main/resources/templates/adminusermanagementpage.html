@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/adminusermanagementpageStyles.css}">
+</head>
+<body>
+	<div class="header-container">
+        <div class="left-alignment-header-container common-header-container">
+            <h1>Welcome, <span th:text="${firstName}"></span></h1>
+        </div>
+        <div class="center-alignment-header-container common-header-container">
+            <img th:src="@{/images/tailored_leisure_logo.png}" alt="Tailored Leisure Logo">
+            <div class="header-inner-text-container">
+                <h1>Tailored Leisure</h1>
+                <h4>Accessibility for Everyone</h4>
+            </div>
+        </div>
+        <div class="right-alignment-header-container common-header-container">
+            <form action="/logout" method="post">
+                <button type="submit" class="form_btn_logout">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <h2>User Management</h2>
+        <div class="button-container">
+            <button class="add-user-btn">Add User</button>
+            <button class="delete-user-btn">Delete Selected</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.phoneNumber}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td th:text="${user.createdAt}"></td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
+</body>
+</html>

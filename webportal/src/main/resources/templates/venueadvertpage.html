@@ -7,10 +7,28 @@
     <link rel="stylesheet" th:href="@{/css/venueadvertpageStyles.css}">
 </head>
 <body>
-
-<div>
-    <h1>Advertise Your Venue</h1>
+	<div class="header-container">
+		<div class="left-alignment-header-container common-header-container">
+			<h1></h1>
+		</div>
+		<div class="center-alignment-header-container common-header-container">
+			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
+			<div class="header-inner-text-container">
+				<h1>Tailored Leisure</h1>
+				<h4>Accessibility for Everyone</h4>
+			</div>
+		</div>
+		<div class="right-alignment-header-container common-header-container">
+			<form action="/logout" method="post">
+			    <button type="submit" class="form_btn_logout">Logout</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="main-content-form-container">
+    <h1 class="advert-h1-tag">Advertise Your Venue</h1>
     <form th:action="@{/submitVenue}" th:method="post" enctype="multipart/form-data">
+        
         <!-- Venue Information Section -->
         <div class="form-section">
             <button type="button" class="section-toggle" onclick="toggleSection('venueInfo')">Venue Information</button>
@@ -23,62 +41,227 @@
             </div>
         </div>
 
-        <!-- Media Section -->
+        <!-- Media Upload Section -->
         <div class="form-section">
             <button type="button" class="section-toggle" onclick="toggleSection('mediaSection')">Upload Images/Videos</button>
             <div id="mediaSection" class="section-content slide-down">
-                <label for="media">Upload Media:</label>
-                <input type="file" id="media" name="media" multiple aria-describedby="mediaDesc">
-                <small id="mediaDesc">Accepts images and videos for visual representation</small>
+                <label for="media">Upload Media (Images/Videos):</label>
+                <input type="file" id="media" name="media" multiple accept="image/*,video/mp4,video/webm,video/ogg" onchange="previewFiles()">
+                <small>Accepted formats: Images and videos</small>
+                <div id="previewContainer" class="preview-container"></div>
             </div>
         </div>
 
-        <!-- Accessibility Checklist Section -->
+        <!-- Accessibility Checklist Sections -->
+
+        <!-- Blind - Visually Impaired Access Checklist -->
         <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('accessibilityChecklist')">Accessibility Checklist</button>
-            <div id="accessibilityChecklist" class="section-content slide-down">
-                <p>Answer these questions to help users understand the accessibility of your venue.</p>
-                
-                <label>Mobility Accessibility (1 to 5 rating):</label>
-                <select name="mobilityAccessibility" aria-label="Mobility Accessibility rating">
-                    <option value="1">1 - Needs Improvement</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 - Exceptional</option>
-                </select>
-
-                <label>Visual Accessibility (1 to 5 rating):</label>
-                <select name="visualAccessibility" aria-label="Visual Accessibility rating">
-                    <option value="1">1 - Needs Improvement</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 - Exceptional</option>
-                </select>
-
-                <label>Hearing Accessibility (1 to 5 rating):</label>
-                <select name="hearingAccessibility" aria-label="Hearing Accessibility rating">
-                    <option value="1">1 - Needs Improvement</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 - Exceptional</option>
-                </select>
+            <button type="button" class="section-toggle" onclick="toggleSection('blindChecklist')">Blind - Visually Impaired Access Checklist</button>
+            <div id="blindChecklist" class="section-content">
+                <div class="question">
+                    <label>1. Is the car parking and outside access to the building accessible for people who are blind or partially sighted?</label>
+                    <input type="radio" name="carParkingBlind" value="Yes"> Yes
+                    <input type="radio" name="carParkingBlind" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="carParkingBlindComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>2. When entering the building - Is the signage large enough and well contrasted?</label>
+                    <input type="radio" name="signageBlind" value="Yes"> Yes
+                    <input type="radio" name="signageBlind" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="signageBlindComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>3. Are touch tours available for blind/visually impaired people?</label>
+                    <input type="radio" name="touchTours" value="Yes"> Yes
+                    <input type="radio" name="touchTours" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="touchToursComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>4. Are there audio descriptions available on exhibits and in other important areas within the venue?</label>
+                    <input type="radio" name="audioDescriptions" value="Yes"> Yes
+                    <input type="radio" name="audioDescriptions" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="audioDescriptionsComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>5. Is there braille signage/signage offered in larger fonts and effective colour contrasts to help you engage with exhibit?</label>
+                    <input type="radio" name="brailleSignage" value="Yes"> Yes
+                    <input type="radio" name="brailleSignage" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="brailleSignageComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>6. Are corridors and walkways flat and free of trip hazards? Are they easy to navigate?</label>
+                    <input type="radio" name="corridorsWalkways" value="Yes"> Yes
+                    <input type="radio" name="corridorsWalkways" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="corridorsWalkwaysComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>7. Are floors, steps, walls, ramps, etc., well contrasted against one another to support navigation around the venue?</label>
+                    <input type="radio" name="contrastedFloors" value="Yes"> Yes
+                    <input type="radio" name="contrastedFloors" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="contrastedFloorsComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>8. Are stairs and steps visible, well contrasted with a clear edge for visibility?</label>
+                    <input type="radio" name="stairsContrast" value="Yes"> Yes
+                    <input type="radio" name="stairsContrast" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="stairsContrastComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>9. Do stairs/steps/ramps have handrails that are visible/well contrasted?</label>
+                    <input type="radio" name="handrails" value="Yes"> Yes
+                    <input type="radio" name="handrails" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="handrailsComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>10. Are seating/catering areas accessible for the visually impaired/blind?</label>
+                    <input type="radio" name="seatingAreas" value="Yes"> Yes
+                    <input type="radio" name="seatingAreas" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="seatingAreasComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>11. Is there adequate lighting throughout the centre to help with navigation and enjoyment of exhibits?</label>
+                    <input type="radio" name="adequateLighting" value="Yes"> Yes
+                    <input type="radio" name="adequateLighting" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="adequateLightingComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>12. Are the toilets accessible for people who are blind/have a visual impairment?</label>
+                    <input type="radio" name="toiletAccessBlind" value="Yes"> Yes
+                    <input type="radio" name="toiletAccessBlind" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="toiletAccessBlindComments"></textarea>
+                </div>
             </div>
         </div>
 
-        <button type="submit">Submit Advertisement</button>
-    </form>
-</div>
+        <!-- Deaf - Hard of Hearing Access Checklist -->
+        <div class="form-section">
+            <button type="button" class="section-toggle" onclick="toggleSection('deafChecklist')">Deaf - Hard of Hearing Access Checklist</button>
+            <div id="deafChecklist" class="section-content">
+                <div class="question">
+                    <label>1. Is there a hearing/induction loop system available?</label>
+                    <input type="radio" name="hearingLoop" value="Yes"> Yes
+                    <input type="radio" name="hearingLoop" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="hearingLoopComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>2. Are other assistive hearing devices available?</label>
+                    <input type="radio" name="assistiveDevices" value="Yes"> Yes
+                    <input type="radio" name="assistiveDevices" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="assistiveDevicesComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>3. Is there adequate, clear, visual signage for people with auditory requirements?</label>
+                    <input type="radio" name="visualSignage" value="Yes"> Yes
+                    <input type="radio" name="visualSignage" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="visualSignageComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>4. Are toilets accessible for people who have reduced hearing or are deaf?</label>
+                    <input type="radio" name="toiletAccessDeaf" value="Yes"> Yes
+                    <input type="radio" name="toiletAccessDeaf" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="toiletAccessDeafComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>5. Are subtitles available on exhibits/shows where applicable?</label>
+                    <input type="radio" name="subtitlesAvailable" value="Yes"> Yes
+                    <input type="radio" name="subtitlesAvailable" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="subtitlesAvailableComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>6. Are there any British Sign Language (BSL) translation support/tools available?</label>
+                    <input type="radio" name="bslSupport" value="Yes"> Yes
+                    <input type="radio" name="bslSupport" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="bslSupportComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>7. Is there support to move closer during events/shows to see better?</label>
+                    <input type="radio" name="eventSupport" value="Yes"> Yes
+                    <input type="radio" name="eventSupport" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="eventSupportComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>8. Are staff present to cater for your needs?</label>
+                    <input type="radio" name="staffSupport" value="Yes"> Yes
+                    <input type="radio" name="staffSupport" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="staffSupportComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>9. Are exhibits interactive and inclusive for your specific needs?</label>
+                    <input type="radio" name="interactiveExhibits" value="Yes"> Yes
+                    <input type="radio" name="interactiveExhibits" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="interactiveExhibitsComments"></textarea>
+                </div>
+            </div>
+        </div>
 
-<script>
-    // Function to toggle visibility of each section when button is clicked
-    function toggleSection(sectionId) {
-        const sectionContent = document.getElementById(sectionId);
-        sectionContent.style.display = sectionContent.style.display === "none" ? "block" : "none";
-    }
-</script>
+        <!-- Mobility Checklist -->
+        <div class="form-section">
+            <button type="button" class="section-toggle" onclick="toggleSection('mobilityChecklist')">Mobility Checklist</button>
+            <div id="mobilityChecklist" class="section-content">
+                <div class="question">
+                    <label>1. Are there accessible transport links (Bus, Taxi, Metro)?</label>
+                    <input type="radio" name="transportLinks" value="Yes"> Yes
+                    <input type="radio" name="transportLinks" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="transportLinksComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>2. How accessible is the car park at the venue?</label>
+                    <input type="radio" name="carParkAccessibility" value="Yes"> Yes
+                    <input type="radio" name="carParkAccessibility" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="carParkAccessibilityComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>3. Are there adequate ramps and accessible pathways throughout the venue?</label>
+                    <input type="radio" name="accessibleRamps" value="Yes"> Yes
+                    <input type="radio" name="accessibleRamps" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="accessibleRampsComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>4. Are the toilets accessible for people with mobility impairments?</label>
+                    <input type="radio" name="toiletAccessMobility" value="Yes"> Yes
+                    <input type="radio" name="toiletAccessMobility" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="toiletAccessMobilityComments"></textarea>
+                </div>
+                <div class="question">
+                    <label>5. Is seating/catering area wheelchair accessible and easy to navigate?</label>
+                    <input type="radio" name="wheelchairAccess" value="Yes"> Yes
+                    <input type="radio" name="wheelchairAccess" value="No"> No
+                    <label>Any Comments:</label>
+                    <textarea name="wheelchairAccessComments"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button class="advert_btn_class" type="submit">Submit Advertisement</button>
+    </form>
+    </div>
+
+<script th:src="@{/js/venueadvertpage.js}"></script>
 
 </body>
 </html>

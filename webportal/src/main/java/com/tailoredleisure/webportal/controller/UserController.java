@@ -83,4 +83,5 @@ public class UserController {
         // Redirect to login after successful signup
         return "redirect:/login";
     }
+	
 }

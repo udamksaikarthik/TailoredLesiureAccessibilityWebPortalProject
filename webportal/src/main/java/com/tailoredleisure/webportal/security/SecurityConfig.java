@@ -18,7 +18,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/signup", "/login").permitAll()  // Public paths
                 .requestMatchers("/admin/**").hasRole("ADMIN")  // Only admins can access /admin/**
-                .requestMatchers("/business/**").hasRole("BUSINESS_MEMBER")  // Only business members can access /business/**
+                .requestMatchers("/business/**").hasAnyRole("BUSINESS_MEMBER", "ADMIN")  // Only business members can access /business/**
                 .requestMatchers("/user/**").hasRole("USER")  // Only users can access /user/**
                 .anyRequest().authenticated()  // All other requests require authentication
             )

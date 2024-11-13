@@ -1,121 +1,217 @@
-/* Base Styles */
-        body {
-            font-family: Arial, sans-serif;
-            padding: 1rem;
-        }
 
-        h1 {
-            font-size: 1.8rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
+.main-content-form-container{
+	padding: 1em;
+}     
+.header-container{
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1em 0;
+	padding: 0.5em 0;
+	border-bottom: 1px solid black;
+}
 
-        /* Styling for form sections */
-        .form-section {
-            margin-bottom: 1.5rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
+.common-header-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	gap: 10px;
+}
 
-        /* Toggle button style */
-        .section-toggle {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: left;
-            cursor: pointer;
-            background-color: #0073e6;
-            color: #fff;
-            border: none;
-            outline: none;
-            transition: background-color 0.3s ease;
-        }
+.header-container img{
+	width: 100px;
+	height: 100px;
+}
 
-        /* Hover and focus styling for accessibility */
-        .section-toggle:focus, .section-toggle:hover {
-            background-color: #005bb5;
-        }
+.header-inner-text-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	text-align: center;
+	flex-direction: column;
+}
 
-        /* Hidden content for collapsed sections */
-        .section-content {
-            display: none;
-            padding: 15px;
-        }
+.mobile-left-alignment-header-container{
+	display: none;
+}
 
-        /* Slide-down animation for smooth expansion */
-        .slide-down {
-            animation: slide-down 0.3s ease;
-        }
 
-        @keyframes slide-down {
-            from { max-height: 0; opacity: 0; }
-            to { max-height: 100%; opacity: 1; }
-        }
+ .advert-h1-tag {
+     font-size: 1.8em;
+     color: #333;
+     text-align: center;
+     margin-bottom: 1.5em;
+ }
 
-        /* Focus outline for keyboard navigation */
-        .section-toggle:focus-visible {
-            outline: 2px solid #000;
-            outline-offset: 2px;
-        }
+ /* Styling for form sections */
+ .form-section {
+     margin-bottom: 0.5em;
+     border: 1px solid #ddd;
+     border-radius: 8px;
+     padding: 10px;
+     background-color: #f9f9f9;
+ }
 
-        /* Styling for labels and input fields */
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 0.5rem;
-        }
+ /* Toggle button style */
+ .section-toggle {
+     width: 100%;
+     padding: 10px;
+     font-size: 1.2em;
+     font-weight: bold;
+     text-align: left;
+     cursor: pointer;
+     background-color: #0073e6;
+     color: #fff;
+     border: none;
+     outline: none;
+     transition: background-color 0.3s ease;
+ }
 
-        input[type="text"], input[type="file"], select {
-            width: 100%;
-            padding: 0.5rem;
-            margin-top: 0.3rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
+ /* Hover and focus styling for accessibility */
+ .section-toggle:focus, .section-toggle:hover {
+     background-color: #005bb5;
+ }
 
-        /* Submit button styling */
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: background-color 0.3s ease;
-        }
+ /* Hidden content for collapsed sections */
+ .section-content {
+     display: none;
+     padding: 15px;
+ }
 
-        button[type="submit"]:hover {
-            background-color: #218838;
-        }
+ /* Slide-down animation for smooth expansion */
+ .slide-down {
+     animation: slide-down 0.3s ease;
+ }
 
-        /* Responsive adjustments for screens 768px and below */
-        @media (max-width: 768px) {
-            body {
-                padding: 0.5rem;
-            }
+ @keyframes slide-down {
+     from { max-height: 0; opacity: 0; }
+     to { max-height: 100%; opacity: 1; }
+ }
 
-            h1 {
-                font-size: 1.5rem;
-            }
+ /* Focus outline for keyboard navigation */
+ .section-toggle:focus-visible {
+     outline: 2px solid #000;
+     outline-offset: 2px;
+ }
 
-            /* Adjusting button and font sizes for smaller screens */
-            .section-toggle {
-                font-size: 1rem;
-                padding: 8px;
-            }
+ /* Styling for labels and input fields */
+ label {
+     font-weight: bold;
+     display: block;
+     margin-top: 0.5em;
+ }
 
-            input[type="text"], input[type="file"], select, button[type="submit"] {
-                font-size: 0.9rem;
-                padding: 0.4rem;
-            }
-        }
+ input[type="text"], input[type="file"], select {
+     width: 100%;
+     padding: 0.5em;
+     margin-top: 0.3em;
+     margin-bottom: 0.5em;
+     border-radius: 4px;
+     border: 1px solid #ccc;
+     font-size: 1em;
+ }
+
+ /* Submit button styling */
+.advert_btn_class {
+     width: 100%;
+     padding: 10px;
+     font-size: 1.2em;
+     font-weight: bold;
+     background-color: #28a745;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-top: 1em;
+     transition: background-color 0.3s ease;
+ }
+
+ .advert_btn_class:hover {
+     background-color: #218838;
+ }
+
+/* Container for media previews */
+ .preview-container {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+     margin-top: 10px;
+ }
+ /* Individual preview styling */
+ .preview-item {
+     position: relative;
+     width: 100px;
+     height: 100px;
+     overflow: hidden;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+ }
+ /* Image and video preview settings */
+ .preview-item img, .preview-item video {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+ 
+ 
+.form_btn_logout{
+    width: 100%;
+    padding: 10px;
+    background-color: #FF4C4C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+textarea{
+	width: 100%;
+}
+
+/* Responsive adjustments for screens 768px and below */
+@media (max-width: 1000px) {
+
+   .main-content-form-container {
+        padding: 0.5em;
+        font-size: 2em;
+    }
+
+    .advert-h1-tag {
+        font-size: 1.5em;
+    }
+
+    /* Adjusting button and font sizes for smaller screens */
+    .section-toggle {
+        font-size: 1.5em;
+    }
+
+    input[type="text"], input[type="file"], select, button[type="submit"] {
+        font-size: 1.5em;
+    }
+    
+    .left-alignment-header-container{
+   		display: none;
+   }
+   
+   .header-container{
+		font-size: 1.5em;
+	}
+
+	.center-alignment-header-container{
+   		width: 75vw;
+   }
+   
+   .right-alignment-header-container{
+   		width: 25vw;
+   }
+	.mobile-left-alignment-header-container{
+		display: flex;
+		font-size: 0.75em;
+	}
+	
+}
