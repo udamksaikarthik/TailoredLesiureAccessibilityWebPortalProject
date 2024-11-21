@@ -2,7 +2,7 @@ package com.tailoredleisure.webportal.service.admin;
 
 import java.util.ArrayList;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
 
 public interface AdminServiceImpl {
 

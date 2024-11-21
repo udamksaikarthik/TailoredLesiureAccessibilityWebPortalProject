@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venue Advertise Page</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/commonHeaderCss.css}">
     <link rel="stylesheet" th:href="@{/css/venueadvertpageStyles.css}">
 </head>
 <body>
 	<div class="header-container">
 		<div class="left-alignment-header-container common-header-container">
-			<h1></h1>
+			<h1>Welcome, <span th:text="${firstName}"></span></h1>
 		</div>
 		<div class="center-alignment-header-container common-header-container">
 			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
@@ -25,243 +27,518 @@
 		</div>
 	</div>
 	
-	<div class="main-content-form-container">
-    <h1 class="advert-h1-tag">Advertise Your Venue</h1>
-    <form th:action="@{/submitVenue}" th:method="post" enctype="multipart/form-data">
+	<div class="mobile-left-alignment-header-container common-header-container">
+			<h1>Welcome, <span th:text="${firstName}"></span></h1>
+	</div>
+    <h1 class="advert_title_class_h1"> Venue Accessibility Checklist Advertisement Form</h1>
+    <form class="advert_checklist_form" th:action="@{/business/submitVenueAdvertForm}" th:object="${venueForm}" method="post" enctype="multipart/form-data">
         
-        <!-- Venue Information Section -->
-        <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('venueInfo')">Venue Information</button>
-            <div id="venueInfo" class="section-content slide-down">
-                <label for="venueName">Venue Name:</label>
-                <input type="text" id="venueName" name="venueName" required aria-required="true">
+        <!-- Section 1: Venue Information -->
+		<div class="section">
+		    <button type="button" class="section-header">Section 1: Venue Information</button>
+		    <div class="section-content venue_content_section_class">
+		        <label for="venueName">Venue Name<span class="mandatory">* </span>:</label>
+		        <input type="text" id="venueName" th:field="*{venueName}" placeholder="Enter venue name">
+		        <div th:if="${#fields.hasErrors('venueName')}" th:errors="*{venueName}" class="error-message"></div>
+		        <br>
+		
+		        <label for="venueType">Venue Type<span class="mandatory">* </span>:</label>
+		        <input type="text" id="venueType" th:field="*{venueType}" placeholder="E.g., Restaurant, Theatre">
+		        <div th:if="${#fields.hasErrors('venueType')}" th:errors="*{venueType}" class="error-message"></div>
+		        <br>
+		
+		        <label for="venueLocation">Venue Location<span class="mandatory">* </span>:</label>
+		        <input type="text" id="venueLocation" th:field="*{venueLocation}" placeholder="Enter venue location">
+		        <div th:if="${#fields.hasErrors('venueLocation')}" th:errors="*{venueLocation}" class="error-message"></div>
+		        <br>
+		
+		        <label for="venuePostCode">Venue Post Code<span class="mandatory">* </span>:</label>
+		        <input type="text" id="venuePostCode" th:field="*{venuePostCode}" placeholder="Enter post code">
+		        <div th:if="${#fields.hasErrors('venuePostCode')}" th:errors="*{venuePostCode}" class="error-message"></div>
+		    </div>
+		</div>
 
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="location" required aria-required="true">
+
+        <!-- Section 2: Upload Venue Images/Videos -->
+        <div class="section">
+            <button type="button" class="section-header">Section 2: Upload Venue Images/Videos</button>
+            <div class="section-content">
+                <!-- Media Upload -->
+	            <label for="mediaFiles">Upload Media (Images/Videos):</label>
+	            <input type="file" id="mediaFiles" name="mediaFiles" th:field="*{mediaFiles}" multiple accept="image/*,video/*" onchange="validateFileSize(this), validateFileCount(this), previewMedia()" />
+				
+				<!-- Display a message if the file count exceeds the limit -->
+				<p id="fileCountError" style="color: red; display: none;">You can only upload up to 5 files.</p>
+				<p class="error" th:if="${#fields.hasErrors('mediaFiles')}" th:errors="*{mediaFiles}"></p>
+							
+	            <!-- Media Preview Section -->
+	            <div class="preview-container" id="preview-container"></div>
+                <p>Maximum 5 files, each no larger than 10MB.</p>
+                
             </div>
         </div>
 
-        <!-- Media Upload Section -->
-        <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('mediaSection')">Upload Images/Videos</button>
-            <div id="mediaSection" class="section-content slide-down">
-                <label for="media">Upload Media (Images/Videos):</label>
-                <input type="file" id="media" name="media" multiple accept="image/*,video/mp4,video/webm,video/ogg" onchange="previewFiles()">
-                <small>Accepted formats: Images and videos</small>
-                <div id="previewContainer" class="preview-container"></div>
-            </div>
-        </div>
+        <!-- Section 3: Mobility Access Checklist -->
+		<div class="section">
+	    <button type="button" class="section-header">Section 3: Mobility Access Checklist</button>
+	    <div class="section-content">
+        <ul>
+            <li>
+                <label>1. Disabled car parking close to the venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityDisabledCarParking}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityDisabledCarParking}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityDisabledCarParking')}" th:errors="*{mobilityDisabledCarParking}" class="error-message"></div>
+            </li>
+            <li>
+                <label>2. Are headphones available for people who are sensitive to noise? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityHeadphonesAvailable}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityHeadphonesAvailable}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityHeadphonesAvailable')}" th:errors="*{mobilityHeadphonesAvailable}" class="error-message"></div>
+            </li>
+            <li>
+                <label>3. Is the car parking flat with an accessible route to the venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityAccessibleRoute}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityAccessibleRoute}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityAccessibleRoute')}" th:errors="*{mobilityAccessibleRoute}" class="error-message"></div>
+            </li>
+            <li>
+                <label>4. Doorways, entrances and corridors wide enough for wheelchair access? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityWideDoorways}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityWideDoorways}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityWideDoorways')}" th:errors="*{mobilityWideDoorways}" class="error-message"></div>
+            </li>
+            <li>
+                <label>5. Is there suitable seating for wheelchair users? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityWheelchairSeating}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityWheelchairSeating}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityWheelchairSeating')}" th:errors="*{mobilityWheelchairSeating}" class="error-message"></div>
+            </li>
+            <li>
+                <label>6. Do you have disabled toilets? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityDisabledToilets}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityDisabledToilets}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityDisabledToilets')}" th:errors="*{mobilityDisabledToilets}" class="error-message"></div>
+            </li>
+            <li>
+                <label>7. Are the toilets suitable for larger wheelchairs to turnaround? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityToiletTurnaround}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityToiletTurnaround}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityToiletTurnaround')}" th:errors="*{mobilityToiletTurnaround}" class="error-message"></div>
+            </li>
+            <li>
+                <label>8. A changing place? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityChangingPlace}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityChangingPlace}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityChangingPlace')}" th:errors="*{mobilityChangingPlace}" class="error-message"></div>
+            </li>
+            <li>
+                <label>9. Lower counters in key areas like reception, café areas, etc.? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityLowerCounters}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityLowerCounters}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityLowerCounters')}" th:errors="*{mobilityLowerCounters}" class="error-message"></div>
+            </li>
+            <li>
+                <label>10. Lifts to access other areas of the building that are on different levels? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityLifts}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityLifts}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityLifts')}" th:errors="*{mobilityLifts}" class="error-message"></div>
+            </li>
+            <li>
+                <label>11. Ramps to support wheelchair access, where applicable? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityRamps}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityRamps}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityRamps')}" th:errors="*{mobilityRamps}" class="error-message"></div>
+            </li>
+            <li>
+                <label>12. Unrestricted viewing, if at a show or viewing? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="No"> No
+                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="N/A"> N/A
+                <div th:if="${#fields.hasErrors('mobilityUnrestrictedViewing')}" th:errors="*{mobilityUnrestrictedViewing}" class="error-message"></div>
+            </li>
+            <li>
+                <label>13. Accessible doors i.e., easy to open and close, automatic, etc.? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityAccessibleDoors}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityAccessibleDoors}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityAccessibleDoors')}" th:errors="*{mobilityAccessibleDoors}" class="error-message"></div>
+            </li>
+            <li>
+                <label>14. Signage at eye level for wheelchair users? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityEyeLevelSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityEyeLevelSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityEyeLevelSignage')}" th:errors="*{mobilityEyeLevelSignage}" class="error-message"></div>
+            </li>
+            <li>
+                <label>15. Staff at hand to support the disabled customer if needed? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilitySupportiveStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilitySupportiveStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilitySupportiveStaff')}" th:errors="*{mobilitySupportiveStaff}" class="error-message"></div>
+            </li>
+            <li>
+                <label>16. Trained staff in disability awareness? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{mobilityTrainedStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{mobilityTrainedStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('mobilityTrainedStaff')}" th:errors="*{mobilityTrainedStaff}" class="error-message"></div>
+            </li>
+        </ul>
+        <label for="mobilityComments">Additional Comments:</label>
+        <textarea class="additional_comments_class" id="mobilityComments" th:field="*{mobilityComments}" placeholder="Enter additional comments" rows="4"></textarea>
+		        <div th:if="${#fields.hasErrors('mobilityComments')}" th:errors="*{mobilityComments}" class="error-message"></div>
+		    </div>
+		</div>
 
-        <!-- Accessibility Checklist Sections -->
 
-        <!-- Blind - Visually Impaired Access Checklist -->
-        <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('blindChecklist')">Blind - Visually Impaired Access Checklist</button>
-            <div id="blindChecklist" class="section-content">
-                <div class="question">
-                    <label>1. Is the car parking and outside access to the building accessible for people who are blind or partially sighted?</label>
-                    <input type="radio" name="carParkingBlind" value="Yes"> Yes
-                    <input type="radio" name="carParkingBlind" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="carParkingBlindComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>2. When entering the building - Is the signage large enough and well contrasted?</label>
-                    <input type="radio" name="signageBlind" value="Yes"> Yes
-                    <input type="radio" name="signageBlind" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="signageBlindComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>3. Are touch tours available for blind/visually impaired people?</label>
-                    <input type="radio" name="touchTours" value="Yes"> Yes
-                    <input type="radio" name="touchTours" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="touchToursComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>4. Are there audio descriptions available on exhibits and in other important areas within the venue?</label>
-                    <input type="radio" name="audioDescriptions" value="Yes"> Yes
-                    <input type="radio" name="audioDescriptions" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="audioDescriptionsComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>5. Is there braille signage/signage offered in larger fonts and effective colour contrasts to help you engage with exhibit?</label>
-                    <input type="radio" name="brailleSignage" value="Yes"> Yes
-                    <input type="radio" name="brailleSignage" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="brailleSignageComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>6. Are corridors and walkways flat and free of trip hazards? Are they easy to navigate?</label>
-                    <input type="radio" name="corridorsWalkways" value="Yes"> Yes
-                    <input type="radio" name="corridorsWalkways" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="corridorsWalkwaysComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>7. Are floors, steps, walls, ramps, etc., well contrasted against one another to support navigation around the venue?</label>
-                    <input type="radio" name="contrastedFloors" value="Yes"> Yes
-                    <input type="radio" name="contrastedFloors" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="contrastedFloorsComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>8. Are stairs and steps visible, well contrasted with a clear edge for visibility?</label>
-                    <input type="radio" name="stairsContrast" value="Yes"> Yes
-                    <input type="radio" name="stairsContrast" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="stairsContrastComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>9. Do stairs/steps/ramps have handrails that are visible/well contrasted?</label>
-                    <input type="radio" name="handrails" value="Yes"> Yes
-                    <input type="radio" name="handrails" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="handrailsComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>10. Are seating/catering areas accessible for the visually impaired/blind?</label>
-                    <input type="radio" name="seatingAreas" value="Yes"> Yes
-                    <input type="radio" name="seatingAreas" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="seatingAreasComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>11. Is there adequate lighting throughout the centre to help with navigation and enjoyment of exhibits?</label>
-                    <input type="radio" name="adequateLighting" value="Yes"> Yes
-                    <input type="radio" name="adequateLighting" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="adequateLightingComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>12. Are the toilets accessible for people who are blind/have a visual impairment?</label>
-                    <input type="radio" name="toiletAccessBlind" value="Yes"> Yes
-                    <input type="radio" name="toiletAccessBlind" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="toiletAccessBlindComments"></textarea>
-                </div>
-            </div>
-        </div>
 
-        <!-- Deaf - Hard of Hearing Access Checklist -->
-        <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('deafChecklist')">Deaf - Hard of Hearing Access Checklist</button>
-            <div id="deafChecklist" class="section-content">
-                <div class="question">
-                    <label>1. Is there a hearing/induction loop system available?</label>
-                    <input type="radio" name="hearingLoop" value="Yes"> Yes
-                    <input type="radio" name="hearingLoop" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="hearingLoopComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>2. Are other assistive hearing devices available?</label>
-                    <input type="radio" name="assistiveDevices" value="Yes"> Yes
-                    <input type="radio" name="assistiveDevices" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="assistiveDevicesComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>3. Is there adequate, clear, visual signage for people with auditory requirements?</label>
-                    <input type="radio" name="visualSignage" value="Yes"> Yes
-                    <input type="radio" name="visualSignage" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="visualSignageComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>4. Are toilets accessible for people who have reduced hearing or are deaf?</label>
-                    <input type="radio" name="toiletAccessDeaf" value="Yes"> Yes
-                    <input type="radio" name="toiletAccessDeaf" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="toiletAccessDeafComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>5. Are subtitles available on exhibits/shows where applicable?</label>
-                    <input type="radio" name="subtitlesAvailable" value="Yes"> Yes
-                    <input type="radio" name="subtitlesAvailable" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="subtitlesAvailableComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>6. Are there any British Sign Language (BSL) translation support/tools available?</label>
-                    <input type="radio" name="bslSupport" value="Yes"> Yes
-                    <input type="radio" name="bslSupport" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="bslSupportComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>7. Is there support to move closer during events/shows to see better?</label>
-                    <input type="radio" name="eventSupport" value="Yes"> Yes
-                    <input type="radio" name="eventSupport" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="eventSupportComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>8. Are staff present to cater for your needs?</label>
-                    <input type="radio" name="staffSupport" value="Yes"> Yes
-                    <input type="radio" name="staffSupport" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="staffSupportComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>9. Are exhibits interactive and inclusive for your specific needs?</label>
-                    <input type="radio" name="interactiveExhibits" value="Yes"> Yes
-                    <input type="radio" name="interactiveExhibits" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="interactiveExhibitsComments"></textarea>
-                </div>
-            </div>
-        </div>
+        <!-- Section 4: Blind Visually Impaired Access Checklist -->
+		<div class="section">
+	    <button type="button" class="section-header">Section 4: Blind Visually Impaired Access Checklist</button>
+	    <div class="section-content">
+        <ul>
+            <li>
+                <label>1. Signage that is highly contrasted i.e., yellow and black or black and white? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindHighContrastSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindHighContrastSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindHighContrastSignage')}" th:errors="*{blindHighContrastSignage}" class="error-message"></div>
+            </li>
+            <li>
+                <label>2. Signage that has larger font? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindLargeFontSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindLargeFontSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindLargeFontSignage')}" th:errors="*{blindLargeFontSignage}" class="error-message"></div>
+            </li>
+            <li>
+                <label>3. Braille Signage? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindBrailleSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindBrailleSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindBrailleSignage')}" th:errors="*{blindBrailleSignage}" class="error-message"></div>
+            </li>
+            <li>
+                <label>4. Visible walkways and steps, that are highly contrasted? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindVisibleWalkways}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindVisibleWalkways}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindVisibleWalkways')}" th:errors="*{blindVisibleWalkways}" class="error-message"></div>
+            </li>
+            <li>
+                <label>5. Touch tours, to support navigation of the building? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindTouchTours}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindTouchTours}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindTouchTours')}" th:errors="*{blindTouchTours}" class="error-message"></div>
+            </li>
+            <li>
+                <label>6. Offer subtitles in large font on screens? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindLargeSubtitles}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindLargeSubtitles}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindLargeSubtitles')}" th:errors="*{blindLargeSubtitles}" class="error-message"></div>
+            </li>
+            <li>
+                <label>7. No trip hazards/obstacles around the building? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindNoTripHazards}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindNoTripHazards}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindNoTripHazards')}" th:errors="*{blindNoTripHazards}" class="error-message"></div>
+            </li>
+            <li>
+                <label>8. Lighting that can be dimmed or made brighter depending on visual needs? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindAdjustableLighting}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindAdjustableLighting}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindAdjustableLighting')}" th:errors="*{blindAdjustableLighting}" class="error-message"></div>
+            </li>
+            <li>
+                <label>9. Audio descriptions to give info to people who are completely blind or have low visibility? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindAudioDescriptions}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindAudioDescriptions}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindAudioDescriptions')}" th:errors="*{blindAudioDescriptions}" class="error-message"></div>
+            </li>
+            <li>
+                <label>10. Adapted leaflets for people who are blind or visually impaired? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindAdaptedLeaflets}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindAdaptedLeaflets}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindAdaptedLeaflets')}" th:errors="*{blindAdaptedLeaflets}" class="error-message"></div>
+            </li>
+            <li>
+                <label>11. Adequate adapted signage in popular areas like the toilet, café, lifts, etc.? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindAdaptedSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindAdaptedSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindAdaptedSignage')}" th:errors="*{blindAdaptedSignage}" class="error-message"></div>
+            </li>
+            <li>
+                <label>12. Opportunities for people to sit at the front, if at a show or viewing? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindFrontSeating}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindFrontSeating}" value="No"> No
+                <input type="radio" th:field="*{blindFrontSeating}" value="N/A"> N/A
+                <div th:if="${#fields.hasErrors('blindFrontSeating')}" th:errors="*{blindFrontSeating}" class="error-message"></div>
+            </li>
+            <li>
+                <label>13. Staff at hand to support disabled customers if needed? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindSupportiveStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindSupportiveStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindSupportiveStaff')}" th:errors="*{blindSupportiveStaff}" class="error-message"></div>
+            </li>
+            <li>
+                <label>14. Trained staff in disability awareness? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{blindTrainedStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{blindTrainedStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('blindTrainedStaff')}" th:errors="*{blindTrainedStaff}" class="error-message"></div>
+            </li>
+        </ul>
+        <label for="blindComments">Additional Comments:</label>
+        <textarea class="additional_comments_class" id="blindComments" th:field="*{blindComments}" placeholder="Enter additional comments" rows="4"></textarea>
+		   	<div th:if="${#fields.hasErrors('blindComments')}" th:errors="*{blindComments}" class="error-message"></div>
+		    </div>
+		</div>
 
-        <!-- Mobility Checklist -->
-        <div class="form-section">
-            <button type="button" class="section-toggle" onclick="toggleSection('mobilityChecklist')">Mobility Checklist</button>
-            <div id="mobilityChecklist" class="section-content">
-                <div class="question">
-                    <label>1. Are there accessible transport links (Bus, Taxi, Metro)?</label>
-                    <input type="radio" name="transportLinks" value="Yes"> Yes
-                    <input type="radio" name="transportLinks" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="transportLinksComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>2. How accessible is the car park at the venue?</label>
-                    <input type="radio" name="carParkAccessibility" value="Yes"> Yes
-                    <input type="radio" name="carParkAccessibility" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="carParkAccessibilityComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>3. Are there adequate ramps and accessible pathways throughout the venue?</label>
-                    <input type="radio" name="accessibleRamps" value="Yes"> Yes
-                    <input type="radio" name="accessibleRamps" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="accessibleRampsComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>4. Are the toilets accessible for people with mobility impairments?</label>
-                    <input type="radio" name="toiletAccessMobility" value="Yes"> Yes
-                    <input type="radio" name="toiletAccessMobility" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="toiletAccessMobilityComments"></textarea>
-                </div>
-                <div class="question">
-                    <label>5. Is seating/catering area wheelchair accessible and easy to navigate?</label>
-                    <input type="radio" name="wheelchairAccess" value="Yes"> Yes
-                    <input type="radio" name="wheelchairAccess" value="No"> No
-                    <label>Any Comments:</label>
-                    <textarea name="wheelchairAccessComments"></textarea>
-                </div>
-            </div>
-        </div>
+        
+        <!-- Section 5: Deaf/Hard of Hearing Access Checklist -->
+		<div class="section">
+	    <button type="button" class="section-header">Section 5: Deaf/Hard of Hearing Access Checklist</button>
+	    <div class="section-content">
+        <ul>
+            <li>
+                <label>1. Hearing loops at reception or other important areas like the café etc.? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafHearingLoops}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafHearingLoops}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafHearingLoops')}" th:errors="*{deafHearingLoops}" class="error"></div>
+            </li>
+            <li>
+                <label>2. Other hearing assistive technology available at your venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafAssistiveTechnology}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafAssistiveTechnology}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafAssistiveTechnology')}" th:errors="*{deafAssistiveTechnology}" class="error"></div>
+            </li>
+            <li>
+                <label>3. Anyone who can do British Sign Language at your venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafSignLanguage}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafSignLanguage}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafSignLanguage')}" th:errors="*{deafSignLanguage}" class="error"></div>
+            </li>
+            <li>
+                <label>4. Adequate signage to support navigation at your venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafAdequateSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafAdequateSignage}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafAdequateSignage')}" th:errors="*{deafAdequateSignage}" class="error"></div>
+            </li>
+            <li>
+                <label>5. Subtitles on digital boards or any videos you are displaying? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafSubtitles}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafSubtitles}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafSubtitles')}" th:errors="*{deafSubtitles}" class="error"></div>
+            </li>
+            <li>
+                <label>6. Opportunities for people to sit at the front, if at a show or viewing? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafFrontSeating}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafFrontSeating}" value="No"> No
+                <input type="radio" th:field="*{deafFrontSeating}" value="N/A"> N/A
+                <div th:if="${#fields.hasErrors('deafFrontSeating')}" th:errors="*{deafFrontSeating}" class="error"></div>
+            </li>
+            <li>
+                <label>7. Staff at hand to support the disabled customer if needed? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafSupportiveStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafSupportiveStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafSupportiveStaff')}" th:errors="*{deafSupportiveStaff}" class="error"></div>
+            </li>
+            <li>
+                <label>8. Trained staff in disability awareness? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{deafTrainedStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{deafTrainedStaff}" value="No"> No
+                <div th:if="${#fields.hasErrors('deafTrainedStaff')}" th:errors="*{deafTrainedStaff}" class="error"></div>
+            </li>
+        </ul>
+        <label for="deafComments">Additional Comments:</label>
+        <textarea class="additional_comments_class" id="deafComments" th:field="*{deafComments}" placeholder="Enter additional comments" rows="4"></textarea>
+		<div th:if="${#fields.hasErrors('deafComments')}" th:errors="*{deafComments}" class="error"></div>
+		    </div>
+		</div>
 
-        <button class="advert_btn_class" type="submit">Submit Advertisement</button>
+
+
+        <!-- Section 6: Neurodiverse Access Checklist -->
+		<div class="section">
+	    <button type="button" class="section-header">Section 6: Neurodiverse Access Checklist</button>
+	    <div class="section-content">
+        <ul>
+            <li>
+                <label>
+                    1. Can music and other noise be reduced to support people with sensitivity to noise? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseNoiseReduction')}" th:errors="*{neurodiverseNoiseReduction}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    2. Is there adjustable lighting for people who are sensitive to light? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseAdjustableLighting')}" th:errors="*{neurodiverseAdjustableLighting}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    3. Are there quieter areas for people to retreat to? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseQuieterAreas')}" th:errors="*{neurodiverseQuieterAreas}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    4. Do you offer a sensory bag for people to enjoy at their visit? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseSensoryBag}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseSensoryBag}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseSensoryBag')}" th:errors="*{neurodiverseSensoryBag}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    5. Can music or other noise be reduced to support people with sensitivity to loud noise? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseLoudNoiseReduction')}" th:errors="*{neurodiverseLoudNoiseReduction}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    6. Advertisements for quieter times for neurodiverse people to visit? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseQuieterTimeAds')}" th:errors="*{neurodiverseQuieterTimeAds}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    7. Signage to advise on any flashing images, if relevant? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="No"> No
+                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="N/A"> N/A
+                <span th:if="${#fields.hasErrors('neurodiverseFlashingSignage')}" th:errors="*{neurodiverseFlashingSignage}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    8. Adapted/simplified leaflets or menus to communicate key business/customer information? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseAdaptedLeaflets')}" th:errors="*{neurodiverseAdaptedLeaflets}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    9. Staff at hand to support the disabled customer if needed? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseSupportiveStaff')}" th:errors="*{neurodiverseSupportiveStaff}" class="error"></span>
+            </li>
+            <li>
+                <label>
+                    10. Trained staff in disability awareness? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="Yes"> Yes
+                <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="No"> No
+                <span th:if="${#fields.hasErrors('neurodiverseTrainedStaff')}" th:errors="*{neurodiverseTrainedStaff}" class="error"></span>
+            </li>
+        </ul>
+        <label for="neurodiverseComments">Additional Comments:</label>
+        <textarea class="additional_comments_class" id="neurodiverseComments" th:field="*{neurodiverseComments}" placeholder="Enter additional comments" rows="4"></textarea>
+		        <span th:if="${#fields.hasErrors('neurodiverseComments')}" th:errors="*{neurodiverseComments}" class="error"></span>
+		    </div>
+		</div>
+
+
+
+
+        <button class="form_submit_btn" type="submit">Submit</button>
     </form>
+    <!-- Full-Screen Modal -->
+    <div class="modal" id="modal" onclick="closeModal()">
+        <img id="modalImage" />
+        <video id="modalVideo" controls></video>
     </div>
-
-<script th:src="@{/js/venueadvertpage.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/venueadvertpage.js}"></script>
 </body>
 </html>

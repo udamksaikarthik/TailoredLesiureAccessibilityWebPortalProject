@@ -1,4 +1,4 @@
-package com.tailoredleisure.webportal.model;
+package com.tailoredleisure.webportal.bean;
 
 import java.util.Date;
 

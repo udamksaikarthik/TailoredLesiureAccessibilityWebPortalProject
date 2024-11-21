@@ -1,42 +1,89 @@
-// Function to toggle visibility of each section when button is clicked
-function toggleSection(sectionId) {
-    const sectionContent = document.getElementById(sectionId);
-    sectionContent.style.display = sectionContent.style.display === "none" ? "block" : "none";
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const headers = document.querySelectorAll(".section-header");
 
+    headers.forEach(header => {
+        header.addEventListener("click", () => {
+            const content = header.nextElementSibling;
+            content.classList.toggle("deactive");
+        });
+    });
+});
 
-function previewFiles() {
-    const previewContainer = document.getElementById('previewContainer');
-    const files = document.getElementById('media').files;
-
-    // Clear previous previews
+// Preview Media
+function previewMedia() {
+    const previewContainer = document.getElementById('preview-container');
+    const files = document.getElementById('mediaFiles').files;
     previewContainer.innerHTML = '';
 
-    Array.from(files).forEach(file => {
-        const fileReader = new FileReader();
-        const previewItem = document.createElement('div');
-        previewItem.classList.add('preview-item');
+    for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const fileType = file.type.split('/')[0];
+            let previewElement;
 
-        fileReader.onload = (e) => {
-            if (file.type.startsWith('image/')) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                previewItem.appendChild(img);
-            } else if (file.type.startsWith('video/')) {
-                const video = document.createElement('video');
-                video.src = e.target.result;
-                video.controls = true;
-
-                // Set MIME type for the video
-                video.type = file.type; // Ensure video type matches the file's MIME type
-                previewItem.appendChild(video);
+            if (fileType === 'image') {
+                previewElement = document.createElement('img');
+                previewElement.src = e.target.result;
+                previewElement.onclick = () => showModal(e.target.result, 'image');
+            } else if (fileType === 'video') {
+                previewElement = document.createElement('video');
+                previewElement.src = e.target.result;
+                previewElement.controls = true;
+                previewElement.onclick = () => showModal(e.target.result, 'video');
             }
-        };
 
-        fileReader.onloadend = () => {
-            previewContainer.appendChild(previewItem);
+            previewContainer.appendChild(previewElement);
         };
-
-        fileReader.readAsDataURL(file); // Read file as data URL
-    });
+        reader.readAsDataURL(file);
+    }
 }
+
+// Show Full-Screen Modal
+function showModal(src, type) {
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalVideo = document.getElementById('modalVideo');
+
+    if (type === 'image') {
+        modalImage.src = src;
+        modalImage.style.display = 'block';
+        modalVideo.style.display = 'none';
+    } else {
+        modalVideo.src = src;
+        modalVideo.style.display = 'block';
+        modalImage.style.display = 'none';
+    }
+
+    modal.style.display = 'flex';
+}
+
+// Close Modal
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+
+// Limit on media files
+function validateFileCount(input) {
+        const maxFiles = 5;
+        const fileCountError = document.getElementById('fileCountError');
+
+        if (input.files.length > maxFiles) {
+            fileCountError.style.display = 'block'; // Show error message
+            input.value = ''; // Clear the input field
+        } else {
+            fileCountError.style.display = 'none'; // Hide error message
+        }
+    }
+    
+function validateFileSize(input) {
+        const maxSize = 10 * 1024 * 1024; // 10 MB
+        for (const file of input.files) {
+            if (file.size > maxSize) {
+                alert(`File ${file.name} exceeds the maximum size of 10MB.`);
+                input.value = ''; // Clear the input field
+                break;
+            }
+        }
+    }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
 import com.tailoredleisure.webportal.service.users.UserServiceImpl;
 
 import jakarta.validation.Valid;

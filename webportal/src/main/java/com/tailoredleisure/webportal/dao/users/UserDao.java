@@ -5,9 +5,10 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Repository
 public class UserDao {

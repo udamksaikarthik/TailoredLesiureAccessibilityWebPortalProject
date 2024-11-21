@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
 import com.tailoredleisure.webportal.service.admin.AdminServiceImpl;
 
 @Controller
