@@ -3,6 +3,7 @@ package com.tailoredleisure.webportal.bean;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
@@ -21,164 +22,167 @@ public class VenueAdvertForm {
 
     @NotBlank(message = "Venue Post Code is mandatory")
     private String venuePostCode;
+    
+    @NotNull(message = "This field is mandatory")
+    private Boolean venueAuditFlg;
 
     // Section 2: Upload Venue Images/Videos
     @Size(max = 5, message = "You can upload a maximum of 5 media files")
     private List<MultipartFile> mediaFiles;
 
     // Section 3: Mobility Access Checklist
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityDisabledCarParking;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityDisabledCarParking;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityHeadphonesAvailable;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityHeadphonesAvailable;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityAccessibleRoute;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityAccessibleRoute;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityWideDoorways;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityWideDoorways;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityWheelchairSeating;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityWheelchairSeating;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityDisabledToilets;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityDisabledToilets;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityToiletTurnaround;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityToiletTurnaround;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityChangingPlace;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityChangingPlace;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityLowerCounters;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityLowerCounters;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityLifts;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityLifts;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityRamps;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityRamps;
 
     @NotBlank(message = "This field is mandatory")
     private String mobilityUnrestrictedViewing;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityAccessibleDoors;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityAccessibleDoors;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityEyeLevelSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityEyeLevelSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilitySupportiveStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilitySupportiveStaff;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityTrainedStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityTrainedStaff;
 
     private String mobilityComments;
 
     // Section 4: Blind Visually Impaired Access Checklist
-    @NotBlank(message = "This field is mandatory")
-    private String blindHighContrastSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindHighContrastSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindLargeFontSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindLargeFontSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindBrailleSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindBrailleSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindVisibleWalkways;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindVisibleWalkways;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindTouchTours;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindTouchTours;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindLargeSubtitles;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindLargeSubtitles;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindNoTripHazards;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindNoTripHazards;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindAdjustableLighting;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindAdjustableLighting;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindAudioDescriptions;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindAudioDescriptions;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindAdaptedLeaflets;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindAdaptedLeaflets;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindAdaptedSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindAdaptedSignage;
 
     @NotBlank(message = "This field is mandatory")
     private String blindFrontSeating;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindSupportiveStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindSupportiveStaff;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindTrainedStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindTrainedStaff;
 
     private String blindComments;
 
     // Section 5: Deaf/Hard of Hearing Access Checklist
-    @NotBlank(message = "This field is mandatory")
-    private String deafHearingLoops;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafHearingLoops;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafAssistiveTechnology;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafAssistiveTechnology;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafSignLanguage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafSignLanguage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafAdequateSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafAdequateSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafSubtitles;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafSubtitles;
 
     @NotBlank(message = "This field is mandatory")
     private String deafFrontSeating;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafSupportiveStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafSupportiveStaff;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafTrainedStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafTrainedStaff;
 
     private String deafComments;
 
     // Section 6: Neurodiverse Access Checklist
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseNoiseReduction;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseNoiseReduction;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseAdjustableLighting;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseAdjustableLighting;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseQuieterAreas;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseQuieterAreas;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseSensoryBag;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseSensoryBag;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseLoudNoiseReduction;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseLoudNoiseReduction;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseQuieterTimeAds;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseQuieterTimeAds;
 
     @NotBlank(message = "This field is mandatory")
     private String neurodiverseFlashingSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseAdaptedLeaflets;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseAdaptedLeaflets;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseSupportiveStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseSupportiveStaff;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseTrainedStaff;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseTrainedStaff;
 
     private String neurodiverseComments;
 
@@ -215,8 +219,17 @@ public class VenueAdvertForm {
     public void setVenuePostCode(String venuePostCode) {
         this.venuePostCode = venuePostCode;
     }
+    
 
-    public List<MultipartFile> getMediaFiles() {
+    public Boolean getVenueAuditFlg() {
+		return venueAuditFlg;
+	}
+
+	public void setVenueAuditFlg(Boolean venueAuditFlg) {
+		this.venueAuditFlg = venueAuditFlg;
+	}
+
+	public List<MultipartFile> getMediaFiles() {
         return mediaFiles;
     }
 
@@ -224,92 +237,91 @@ public class VenueAdvertForm {
         this.mediaFiles = mediaFiles;
     }
 
-    public String getMobilityDisabledCarParking() {
-        return mobilityDisabledCarParking;
-    }
+	public Boolean getMobilityDisabledCarParking() {
+		return mobilityDisabledCarParking;
+	}
 
-    public void setMobilityDisabledCarParking(String mobilityDisabledCarParking) {
-        this.mobilityDisabledCarParking = mobilityDisabledCarParking;
-    }
+	public void setMobilityDisabledCarParking(Boolean mobilityDisabledCarParking) {
+		this.mobilityDisabledCarParking = mobilityDisabledCarParking;
+	}
 
-    public String getMobilityHeadphonesAvailable() {
-        return mobilityHeadphonesAvailable;
-    }
+	public Boolean getMobilityHeadphonesAvailable() {
+		return mobilityHeadphonesAvailable;
+	}
 
-    public void setMobilityHeadphonesAvailable(String mobilityHeadphonesAvailable) {
-        this.mobilityHeadphonesAvailable = mobilityHeadphonesAvailable;
-    }
+	public void setMobilityHeadphonesAvailable(Boolean mobilityHeadphonesAvailable) {
+		this.mobilityHeadphonesAvailable = mobilityHeadphonesAvailable;
+	}
 
-    public String getMobilityAccessibleRoute() {
-        return mobilityAccessibleRoute;
-    }
+	public Boolean getMobilityAccessibleRoute() {
+		return mobilityAccessibleRoute;
+	}
 
-    public void setMobilityAccessibleRoute(String mobilityAccessibleRoute) {
-        this.mobilityAccessibleRoute = mobilityAccessibleRoute;
-    }
+	public void setMobilityAccessibleRoute(Boolean mobilityAccessibleRoute) {
+		this.mobilityAccessibleRoute = mobilityAccessibleRoute;
+	}
 
-    public String getMobilityWideDoorways() {
-        return mobilityWideDoorways;
-    }
+	public Boolean getMobilityWideDoorways() {
+		return mobilityWideDoorways;
+	}
 
-    public void setMobilityWideDoorways(String mobilityWideDoorways) {
-        this.mobilityWideDoorways = mobilityWideDoorways;
-    }
+	public void setMobilityWideDoorways(Boolean mobilityWideDoorways) {
+		this.mobilityWideDoorways = mobilityWideDoorways;
+	}
 
-    public String getMobilityWheelchairSeating() {
-        return mobilityWheelchairSeating;
-    }
+	public Boolean getMobilityWheelchairSeating() {
+		return mobilityWheelchairSeating;
+	}
 
-    public void setMobilityWheelchairSeating(String mobilityWheelchairSeating) {
-        this.mobilityWheelchairSeating = mobilityWheelchairSeating;
-    }
+	public void setMobilityWheelchairSeating(Boolean mobilityWheelchairSeating) {
+		this.mobilityWheelchairSeating = mobilityWheelchairSeating;
+	}
 
-    public String getMobilityDisabledToilets() {
-        return mobilityDisabledToilets;
-    }
+	public Boolean getMobilityDisabledToilets() {
+		return mobilityDisabledToilets;
+	}
 
-    public void setMobilityDisabledToilets(String mobilityDisabledToilets) {
-        this.mobilityDisabledToilets = mobilityDisabledToilets;
-    }
+	public void setMobilityDisabledToilets(Boolean mobilityDisabledToilets) {
+		this.mobilityDisabledToilets = mobilityDisabledToilets;
+	}
 
-    public String getMobilityToiletTurnaround() {
-        return mobilityToiletTurnaround;
-    }
+	public Boolean getMobilityToiletTurnaround() {
+		return mobilityToiletTurnaround;
+	}
 
-    public void setMobilityToiletTurnaround(String mobilityToiletTurnaround) {
-        this.mobilityToiletTurnaround = mobilityToiletTurnaround;
-    }
+	public void setMobilityToiletTurnaround(Boolean mobilityToiletTurnaround) {
+		this.mobilityToiletTurnaround = mobilityToiletTurnaround;
+	}
 
-    public String getMobilityChangingPlace() {
-        return mobilityChangingPlace;
-    }
+	public Boolean getMobilityChangingPlace() {
+		return mobilityChangingPlace;
+	}
 
-    public void setMobilityChangingPlace(String mobilityChangingPlace) {
-        this.mobilityChangingPlace = mobilityChangingPlace;
-    }
+	public void setMobilityChangingPlace(Boolean mobilityChangingPlace) {
+		this.mobilityChangingPlace = mobilityChangingPlace;
+	}
 
-    public String getMobilityLowerCounters() {
-        return mobilityLowerCounters;
-    }
+	public Boolean getMobilityLowerCounters() {
+		return mobilityLowerCounters;
+	}
 
-    public void setMobilityLowerCounters(String mobilityLowerCounters) {
-        this.mobilityLowerCounters = mobilityLowerCounters;
-    }
+	public void setMobilityLowerCounters(Boolean mobilityLowerCounters) {
+		this.mobilityLowerCounters = mobilityLowerCounters;
+	}
 
-    public String getMobilityLifts() {
-        return mobilityLifts;
-    }
+	public Boolean getMobilityLifts() {
+		return mobilityLifts;
+	}
 
-    public void setMobilityLifts(String mobilityLifts) {
-        this.mobilityLifts = mobilityLifts;
-    }
+	public void setMobilityLifts(Boolean mobilityLifts) {
+		this.mobilityLifts = mobilityLifts;
+	}
 
-    
-    public String getMobilityRamps() {
+	public Boolean getMobilityRamps() {
 		return mobilityRamps;
 	}
 
-	public void setMobilityRamps(String mobilityRamps) {
+	public void setMobilityRamps(Boolean mobilityRamps) {
 		this.mobilityRamps = mobilityRamps;
 	}
 
@@ -321,35 +333,35 @@ public class VenueAdvertForm {
 		this.mobilityUnrestrictedViewing = mobilityUnrestrictedViewing;
 	}
 
-	public String getMobilityAccessibleDoors() {
+	public Boolean getMobilityAccessibleDoors() {
 		return mobilityAccessibleDoors;
 	}
 
-	public void setMobilityAccessibleDoors(String mobilityAccessibleDoors) {
+	public void setMobilityAccessibleDoors(Boolean mobilityAccessibleDoors) {
 		this.mobilityAccessibleDoors = mobilityAccessibleDoors;
 	}
 
-	public String getMobilityEyeLevelSignage() {
+	public Boolean getMobilityEyeLevelSignage() {
 		return mobilityEyeLevelSignage;
 	}
 
-	public void setMobilityEyeLevelSignage(String mobilityEyeLevelSignage) {
+	public void setMobilityEyeLevelSignage(Boolean mobilityEyeLevelSignage) {
 		this.mobilityEyeLevelSignage = mobilityEyeLevelSignage;
 	}
 
-	public String getMobilitySupportiveStaff() {
+	public Boolean getMobilitySupportiveStaff() {
 		return mobilitySupportiveStaff;
 	}
 
-	public void setMobilitySupportiveStaff(String mobilitySupportiveStaff) {
+	public void setMobilitySupportiveStaff(Boolean mobilitySupportiveStaff) {
 		this.mobilitySupportiveStaff = mobilitySupportiveStaff;
 	}
 
-	public String getMobilityTrainedStaff() {
+	public Boolean getMobilityTrainedStaff() {
 		return mobilityTrainedStaff;
 	}
 
-	public void setMobilityTrainedStaff(String mobilityTrainedStaff) {
+	public void setMobilityTrainedStaff(Boolean mobilityTrainedStaff) {
 		this.mobilityTrainedStaff = mobilityTrainedStaff;
 	}
 
@@ -361,203 +373,91 @@ public class VenueAdvertForm {
         this.mobilityComments = mobilityComments;
     }
 
-    public String getBlindHighContrastSignage() {
-        return blindHighContrastSignage;
-    }
+	public Boolean getBlindHighContrastSignage() {
+		return blindHighContrastSignage;
+	}
 
-    public void setBlindHighContrastSignage(String blindHighContrastSignage) {
-        this.blindHighContrastSignage = blindHighContrastSignage;
-    }
+	public void setBlindHighContrastSignage(Boolean blindHighContrastSignage) {
+		this.blindHighContrastSignage = blindHighContrastSignage;
+	}
 
-    public String getBlindLargeFontSignage() {
-        return blindLargeFontSignage;
-    }
+	public Boolean getBlindLargeFontSignage() {
+		return blindLargeFontSignage;
+	}
 
-    public void setBlindLargeFontSignage(String blindLargeFontSignage) {
-        this.blindLargeFontSignage = blindLargeFontSignage;
-    }
+	public void setBlindLargeFontSignage(Boolean blindLargeFontSignage) {
+		this.blindLargeFontSignage = blindLargeFontSignage;
+	}
 
-    public String getBlindBrailleSignage() {
-        return blindBrailleSignage;
-    }
+	public Boolean getBlindBrailleSignage() {
+		return blindBrailleSignage;
+	}
 
-    public void setBlindBrailleSignage(String blindBrailleSignage) {
-        this.blindBrailleSignage = blindBrailleSignage;
-    }
+	public void setBlindBrailleSignage(Boolean blindBrailleSignage) {
+		this.blindBrailleSignage = blindBrailleSignage;
+	}
 
-    public String getBlindVisibleWalkways() {
-        return blindVisibleWalkways;
-    }
+	public Boolean getBlindVisibleWalkways() {
+		return blindVisibleWalkways;
+	}
 
-    public void setBlindVisibleWalkways(String blindVisibleWalkways) {
-        this.blindVisibleWalkways = blindVisibleWalkways;
-    }
+	public void setBlindVisibleWalkways(Boolean blindVisibleWalkways) {
+		this.blindVisibleWalkways = blindVisibleWalkways;
+	}
 
-    public String getBlindTouchTours() {
-        return blindTouchTours;
-    }
+	public Boolean getBlindTouchTours() {
+		return blindTouchTours;
+	}
 
-    public void setBlindTouchTours(String blindTouchTours) {
-        this.blindTouchTours = blindTouchTours;
-    }
+	public void setBlindTouchTours(Boolean blindTouchTours) {
+		this.blindTouchTours = blindTouchTours;
+	}
 
-    public String getBlindLargeSubtitles() {
-        return blindLargeSubtitles;
-    }
+	public Boolean getBlindLargeSubtitles() {
+		return blindLargeSubtitles;
+	}
 
-    public void setBlindLargeSubtitles(String blindLargeSubtitles) {
-        this.blindLargeSubtitles = blindLargeSubtitles;
-    }
+	public void setBlindLargeSubtitles(Boolean blindLargeSubtitles) {
+		this.blindLargeSubtitles = blindLargeSubtitles;
+	}
 
-    public String getBlindNoTripHazards() {
-        return blindNoTripHazards;
-    }
+	public Boolean getBlindNoTripHazards() {
+		return blindNoTripHazards;
+	}
 
-    public void setBlindNoTripHazards(String blindNoTripHazards) {
-        this.blindNoTripHazards = blindNoTripHazards;
-    }
+	public void setBlindNoTripHazards(Boolean blindNoTripHazards) {
+		this.blindNoTripHazards = blindNoTripHazards;
+	}
 
-    public String getBlindAdjustableLighting() {
-        return blindAdjustableLighting;
-    }
+	public Boolean getBlindAdjustableLighting() {
+		return blindAdjustableLighting;
+	}
 
-    public void setBlindAdjustableLighting(String blindAdjustableLighting) {
-        this.blindAdjustableLighting = blindAdjustableLighting;
-    }
+	public void setBlindAdjustableLighting(Boolean blindAdjustableLighting) {
+		this.blindAdjustableLighting = blindAdjustableLighting;
+	}
 
-    public String getBlindAudioDescriptions() {
-        return blindAudioDescriptions;
-    }
+	public Boolean getBlindAudioDescriptions() {
+		return blindAudioDescriptions;
+	}
 
-    public void setBlindAudioDescriptions(String blindAudioDescriptions) {
-        this.blindAudioDescriptions = blindAudioDescriptions;
-    }
+	public void setBlindAudioDescriptions(Boolean blindAudioDescriptions) {
+		this.blindAudioDescriptions = blindAudioDescriptions;
+	}
 
-    public String getBlindAdaptedLeaflets() {
-        return blindAdaptedLeaflets;
-    }
+	public Boolean getBlindAdaptedLeaflets() {
+		return blindAdaptedLeaflets;
+	}
 
-    public void setBlindAdaptedLeaflets(String blindAdaptedLeaflets) {
-        this.blindAdaptedLeaflets = blindAdaptedLeaflets;
-    }
+	public void setBlindAdaptedLeaflets(Boolean blindAdaptedLeaflets) {
+		this.blindAdaptedLeaflets = blindAdaptedLeaflets;
+	}
 
-    public String getBlindComments() {
-        return blindComments;
-    }
-
-    public void setBlindComments(String blindComments) {
-        this.blindComments = blindComments;
-    }
-
-    public String getDeafHearingLoops() {
-        return deafHearingLoops;
-    }
-
-    public void setDeafHearingLoops(String deafHearingLoops) {
-        this.deafHearingLoops = deafHearingLoops;
-    }
-
-    public String getDeafAssistiveTechnology() {
-        return deafAssistiveTechnology;
-    }
-
-    public void setDeafAssistiveTechnology(String deafAssistiveTechnology) {
-        this.deafAssistiveTechnology = deafAssistiveTechnology;
-    }
-
-    public String getDeafSignLanguage() {
-        return deafSignLanguage;
-    }
-
-    public void setDeafSignLanguage(String deafSignLanguage) {
-        this.deafSignLanguage = deafSignLanguage;
-    }
-
-    public String getDeafAdequateSignage() {
-        return deafAdequateSignage;
-    }
-
-    public void setDeafAdequateSignage(String deafAdequateSignage) {
-        this.deafAdequateSignage = deafAdequateSignage;
-    }
-
-    public String getDeafSubtitles() {
-        return deafSubtitles;
-    }
-
-    public void setDeafSubtitles(String deafSubtitles) {
-        this.deafSubtitles = deafSubtitles;
-    }
-
-    public String getDeafComments() {
-        return deafComments;
-    }
-
-    public void setDeafComments(String deafComments) {
-        this.deafComments = deafComments;
-    }
-
-    public String getNeurodiverseNoiseReduction() {
-        return neurodiverseNoiseReduction;
-    }
-
-    public void setNeurodiverseNoiseReduction(String neurodiverseNoiseReduction) {
-        this.neurodiverseNoiseReduction = neurodiverseNoiseReduction;
-    }
-
-    public String getNeurodiverseAdjustableLighting() {
-        return neurodiverseAdjustableLighting;
-    }
-
-    public void setNeurodiverseAdjustableLighting(String neurodiverseAdjustableLighting) {
-        this.neurodiverseAdjustableLighting = neurodiverseAdjustableLighting;
-    }
-
-    public String getNeurodiverseQuieterAreas() {
-        return neurodiverseQuieterAreas;
-    }
-
-    public void setNeurodiverseQuieterAreas(String neurodiverseQuieterAreas) {
-        this.neurodiverseQuieterAreas = neurodiverseQuieterAreas;
-    }
-
-    public String getNeurodiverseSensoryBag() {
-        return neurodiverseSensoryBag;
-    }
-
-    public void setNeurodiverseSensoryBag(String neurodiverseSensoryBag) {
-        this.neurodiverseSensoryBag = neurodiverseSensoryBag;
-    }
-
-    public String getNeurodiverseFlashingSignage() {
-        return neurodiverseFlashingSignage;
-    }
-
-    public void setNeurodiverseFlashingSignage(String neurodiverseFlashingSignage) {
-        this.neurodiverseFlashingSignage = neurodiverseFlashingSignage;
-    }
-
-    public String getNeurodiverseAdaptedLeaflets() {
-        return neurodiverseAdaptedLeaflets;
-    }
-
-    public void setNeurodiverseAdaptedLeaflets(String neurodiverseAdaptedLeaflets) {
-        this.neurodiverseAdaptedLeaflets = neurodiverseAdaptedLeaflets;
-    }
-
-    public String getNeurodiverseComments() {
-        return neurodiverseComments;
-    }
-
-    public void setNeurodiverseComments(String neurodiverseComments) {
-        this.neurodiverseComments = neurodiverseComments;
-    }
-
-	public String getBlindAdaptedSignage() {
+	public Boolean getBlindAdaptedSignage() {
 		return blindAdaptedSignage;
 	}
 
-	public void setBlindAdaptedSignage(String blindAdaptedSignage) {
+	public void setBlindAdaptedSignage(Boolean blindAdaptedSignage) {
 		this.blindAdaptedSignage = blindAdaptedSignage;
 	}
 
@@ -569,20 +469,68 @@ public class VenueAdvertForm {
 		this.blindFrontSeating = blindFrontSeating;
 	}
 
-	public String getBlindSupportiveStaff() {
+	public Boolean getBlindSupportiveStaff() {
 		return blindSupportiveStaff;
 	}
 
-	public void setBlindSupportiveStaff(String blindSupportiveStaff) {
+	public void setBlindSupportiveStaff(Boolean blindSupportiveStaff) {
 		this.blindSupportiveStaff = blindSupportiveStaff;
 	}
 
-	public String getBlindTrainedStaff() {
+	public Boolean getBlindTrainedStaff() {
 		return blindTrainedStaff;
 	}
 
-	public void setBlindTrainedStaff(String blindTrainedStaff) {
+	public void setBlindTrainedStaff(Boolean blindTrainedStaff) {
 		this.blindTrainedStaff = blindTrainedStaff;
+	}
+
+	public String getBlindComments() {
+		return blindComments;
+	}
+
+	public void setBlindComments(String blindComments) {
+		this.blindComments = blindComments;
+	}
+
+	public Boolean getDeafHearingLoops() {
+		return deafHearingLoops;
+	}
+
+	public void setDeafHearingLoops(Boolean deafHearingLoops) {
+		this.deafHearingLoops = deafHearingLoops;
+	}
+
+	public Boolean getDeafAssistiveTechnology() {
+		return deafAssistiveTechnology;
+	}
+
+	public void setDeafAssistiveTechnology(Boolean deafAssistiveTechnology) {
+		this.deafAssistiveTechnology = deafAssistiveTechnology;
+	}
+
+	public Boolean getDeafSignLanguage() {
+		return deafSignLanguage;
+	}
+
+	public void setDeafSignLanguage(Boolean deafSignLanguage) {
+		this.deafSignLanguage = deafSignLanguage;
+	}
+
+	public Boolean getDeafAdequateSignage() {
+		return deafAdequateSignage;
+	}
+
+	public void setDeafAdequateSignage(Boolean deafAdequateSignage) {
+		this.deafAdequateSignage = deafAdequateSignage;
+	}
+
+	public Boolean getDeafSubtitles() {
+		return deafSubtitles;
+	}
+
+	public void setDeafSubtitles(Boolean deafSubtitles) {
+		this.deafSubtitles = deafSubtitles;
 	}
 
 	public String getDeafFrontSeating() {
@@ -593,53 +541,119 @@ public class VenueAdvertForm {
 		this.deafFrontSeating = deafFrontSeating;
 	}
 
-	public String getDeafSupportiveStaff() {
+	public Boolean getDeafSupportiveStaff() {
 		return deafSupportiveStaff;
 	}
 
-	public void setDeafSupportiveStaff(String deafSupportiveStaff) {
+	public void setDeafSupportiveStaff(Boolean deafSupportiveStaff) {
 		this.deafSupportiveStaff = deafSupportiveStaff;
 	}
 
-	public String getDeafTrainedStaff() {
+	public Boolean getDeafTrainedStaff() {
 		return deafTrainedStaff;
 	}
 
-	public void setDeafTrainedStaff(String deafTrainedStaff) {
+	public void setDeafTrainedStaff(Boolean deafTrainedStaff) {
 		this.deafTrainedStaff = deafTrainedStaff;
 	}
 
-	public String getNeurodiverseLoudNoiseReduction() {
+	public String getDeafComments() {
+		return deafComments;
+	}
+
+	public void setDeafComments(String deafComments) {
+		this.deafComments = deafComments;
+	}
+
+	public Boolean getNeurodiverseNoiseReduction() {
+		return neurodiverseNoiseReduction;
+	}
+
+	public void setNeurodiverseNoiseReduction(Boolean neurodiverseNoiseReduction) {
+		this.neurodiverseNoiseReduction = neurodiverseNoiseReduction;
+	}
+
+	public Boolean getNeurodiverseAdjustableLighting() {
+		return neurodiverseAdjustableLighting;
+	}
+
+	public void setNeurodiverseAdjustableLighting(Boolean neurodiverseAdjustableLighting) {
+		this.neurodiverseAdjustableLighting = neurodiverseAdjustableLighting;
+	}
+
+	public Boolean getNeurodiverseQuieterAreas() {
+		return neurodiverseQuieterAreas;
+	}
+
+	public void setNeurodiverseQuieterAreas(Boolean neurodiverseQuieterAreas) {
+		this.neurodiverseQuieterAreas = neurodiverseQuieterAreas;
+	}
+
+	public Boolean getNeurodiverseSensoryBag() {
+		return neurodiverseSensoryBag;
+	}
+
+	public void setNeurodiverseSensoryBag(Boolean neurodiverseSensoryBag) {
+		this.neurodiverseSensoryBag = neurodiverseSensoryBag;
+	}
+
+	public Boolean getNeurodiverseLoudNoiseReduction() {
 		return neurodiverseLoudNoiseReduction;
 	}
 
-	public void setNeurodiverseLoudNoiseReduction(String neurodiverseLoudNoiseReduction) {
+	public void setNeurodiverseLoudNoiseReduction(Boolean neurodiverseLoudNoiseReduction) {
 		this.neurodiverseLoudNoiseReduction = neurodiverseLoudNoiseReduction;
 	}
 
-	public String getNeurodiverseQuieterTimeAds() {
+	public Boolean getNeurodiverseQuieterTimeAds() {
 		return neurodiverseQuieterTimeAds;
 	}
 
-	public void setNeurodiverseQuieterTimeAds(String neurodiverseQuieterTimeAds) {
+	public void setNeurodiverseQuieterTimeAds(Boolean neurodiverseQuieterTimeAds) {
 		this.neurodiverseQuieterTimeAds = neurodiverseQuieterTimeAds;
 	}
 
-	public String getNeurodiverseSupportiveStaff() {
+	public String getNeurodiverseFlashingSignage() {
+		return neurodiverseFlashingSignage;
+	}
+
+	public void setNeurodiverseFlashingSignage(String neurodiverseFlashingSignage) {
+		this.neurodiverseFlashingSignage = neurodiverseFlashingSignage;
+	}
+
+	public Boolean getNeurodiverseAdaptedLeaflets() {
+		return neurodiverseAdaptedLeaflets;
+	}
+
+	public void setNeurodiverseAdaptedLeaflets(Boolean neurodiverseAdaptedLeaflets) {
+		this.neurodiverseAdaptedLeaflets = neurodiverseAdaptedLeaflets;
+	}
+
+	public Boolean getNeurodiverseSupportiveStaff() {
 		return neurodiverseSupportiveStaff;
 	}
 
-	public void setNeurodiverseSupportiveStaff(String neurodiverseSupportiveStaff) {
+	public void setNeurodiverseSupportiveStaff(Boolean neurodiverseSupportiveStaff) {
 		this.neurodiverseSupportiveStaff = neurodiverseSupportiveStaff;
 	}
 
-	public String getNeurodiverseTrainedStaff() {
+	public Boolean getNeurodiverseTrainedStaff() {
 		return neurodiverseTrainedStaff;
 	}
 
-	public void setNeurodiverseTrainedStaff(String neurodiverseTrainedStaff) {
+	public void setNeurodiverseTrainedStaff(Boolean neurodiverseTrainedStaff) {
 		this.neurodiverseTrainedStaff = neurodiverseTrainedStaff;
 	}
+
+	public String getNeurodiverseComments() {
+		return neurodiverseComments;
+	}
+
+	public void setNeurodiverseComments(String neurodiverseComments) {
+		this.neurodiverseComments = neurodiverseComments;
+	}
+
+    
     
 }
 

@@ -74,8 +74,8 @@ body {
 
 .preview-container img,
 .preview-container video {
-    width: 150px;
-    height: 150px;
+    width: 45%;
+    height: auto;
     object-fit: cover;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -135,8 +135,14 @@ input{
 .form_submit_btn:hover{
 	background-color: #0056b3;
 }
-.venue_content_section_class input{
+.input_field_inside_venue_info_class{
 	width: 60%;
 	font-size: 1.25em;
 	padding: 5px;
+}
+textarea{
+	padding: 1em;
+}
+li{
+	margin: 1em 0;
 }

@@ -8,23 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/adminusermanagementpageStyles.css}">
 </head>
 <body>
-	<div class="header-container">
-        <div class="left-alignment-header-container common-header-container">
-            <h1>Welcome, <span th:text="${firstName}"></span></h1>
-        </div>
-        <div class="center-alignment-header-container common-header-container">
-            <img th:src="@{/images/tailored_leisure_logo.png}" alt="Tailored Leisure Logo">
-            <div class="header-inner-text-container">
-                <h1>Tailored Leisure</h1>
-                <h4>Accessibility for Everyone</h4>
-            </div>
-        </div>
-        <div class="right-alignment-header-container common-header-container">
-            <form action="/logout" method="post">
-                <button type="submit" class="form_btn_logout">Logout</button>
-            </form>
-        </div>
-    </div>
+	<div th:replace="fragments.html :: header"></div>
 
     <div class="content-container">
         <h2>User Management</h2>
