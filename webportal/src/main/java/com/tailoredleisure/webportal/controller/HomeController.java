@@ -82,11 +82,23 @@ public class HomeController {
         }else {
         	System.out.println("bindingResult has no Errors.");
         }
+        
+        // Get the logged-in user's email (username in this case)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();  // Get the logged-in user's email
+
+        // Fetch the user entity from the database using the email
+        Users user = userRepository.findByEmail(email);
+
 
         // Process the valid form (e.g., save venue form to the database)
-        Boolean flag = homeServiceImpl.saveAdvertForm(venueAdvertForm);
-
-        mv.setViewName("redirect:/business/showVenueAdvertPage");
+        Boolean flag = homeServiceImpl.saveAdvertForm(venueAdvertForm, user);
+        if(flag) {
+            mv.addObject("advert_form_success_msg", "Advert added successfully.");
+        }else {
+        	
+        }
+        mv.setViewName("redirect:/");
 
 		return mv;
 	}

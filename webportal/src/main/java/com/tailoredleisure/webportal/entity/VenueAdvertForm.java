@@ -1,15 +1,22 @@
 package com.tailoredleisure.webportal.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
+@Entity
+@Table(name = "venue_advert_form")
 public class VenueAdvertForm {
 
 	@Id
@@ -35,6 +42,10 @@ public class VenueAdvertForm {
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)
     @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Media> media; // Media files associated with the venue
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user;
 
     // Section 3: Mobility Access Checklist
     @NotNull(message = "This field is mandatory")
@@ -667,42 +678,53 @@ public class VenueAdvertForm {
 		this.neurodiverseComments = neurodiverseComments;
 	}
 
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "VenueAdvertForm [id=" + id + ", venueName=" + venueName + ", venueType=" + venueType
 				+ ", venueLocation=" + venueLocation + ", venuePostCode=" + venuePostCode + ", venueAuditFlg="
-				+ venueAuditFlg + ", media=" + media + ", mobilityDisabledCarParking=" + mobilityDisabledCarParking
-				+ ", mobilityHeadphonesAvailable=" + mobilityHeadphonesAvailable + ", mobilityAccessibleRoute="
-				+ mobilityAccessibleRoute + ", mobilityWideDoorways=" + mobilityWideDoorways
-				+ ", mobilityWheelchairSeating=" + mobilityWheelchairSeating + ", mobilityDisabledToilets="
-				+ mobilityDisabledToilets + ", mobilityToiletTurnaround=" + mobilityToiletTurnaround
-				+ ", mobilityChangingPlace=" + mobilityChangingPlace + ", mobilityLowerCounters="
-				+ mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts + ", mobilityRamps=" + mobilityRamps
-				+ ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing + ", mobilityAccessibleDoors="
-				+ mobilityAccessibleDoors + ", mobilityEyeLevelSignage=" + mobilityEyeLevelSignage
-				+ ", mobilitySupportiveStaff=" + mobilitySupportiveStaff + ", mobilityTrainedStaff="
-				+ mobilityTrainedStaff + ", mobilityComments=" + mobilityComments + ", blindHighContrastSignage="
-				+ blindHighContrastSignage + ", blindLargeFontSignage=" + blindLargeFontSignage
-				+ ", blindBrailleSignage=" + blindBrailleSignage + ", blindVisibleWalkways=" + blindVisibleWalkways
-				+ ", blindTouchTours=" + blindTouchTours + ", blindLargeSubtitles=" + blindLargeSubtitles
-				+ ", blindNoTripHazards=" + blindNoTripHazards + ", blindAdjustableLighting=" + blindAdjustableLighting
-				+ ", blindAudioDescriptions=" + blindAudioDescriptions + ", blindAdaptedLeaflets="
-				+ blindAdaptedLeaflets + ", blindAdaptedSignage=" + blindAdaptedSignage + ", blindFrontSeating="
-				+ blindFrontSeating + ", blindSupportiveStaff=" + blindSupportiveStaff + ", blindTrainedStaff="
-				+ blindTrainedStaff + ", blindComments=" + blindComments + ", deafHearingLoops=" + deafHearingLoops
-				+ ", deafAssistiveTechnology=" + deafAssistiveTechnology + ", deafSignLanguage=" + deafSignLanguage
-				+ ", deafAdequateSignage=" + deafAdequateSignage + ", deafSubtitles=" + deafSubtitles
-				+ ", deafFrontSeating=" + deafFrontSeating + ", deafSupportiveStaff=" + deafSupportiveStaff
-				+ ", deafTrainedStaff=" + deafTrainedStaff + ", deafComments=" + deafComments
-				+ ", neurodiverseNoiseReduction=" + neurodiverseNoiseReduction + ", neurodiverseAdjustableLighting="
-				+ neurodiverseAdjustableLighting + ", neurodiverseQuieterAreas=" + neurodiverseQuieterAreas
-				+ ", neurodiverseSensoryBag=" + neurodiverseSensoryBag + ", neurodiverseLoudNoiseReduction="
-				+ neurodiverseLoudNoiseReduction + ", neurodiverseQuieterTimeAds=" + neurodiverseQuieterTimeAds
-				+ ", neurodiverseFlashingSignage=" + neurodiverseFlashingSignage + ", neurodiverseAdaptedLeaflets="
-				+ neurodiverseAdaptedLeaflets + ", neurodiverseSupportiveStaff=" + neurodiverseSupportiveStaff
-				+ ", neurodiverseTrainedStaff=" + neurodiverseTrainedStaff + ", neurodiverseComments="
-				+ neurodiverseComments + "]";
+				+ venueAuditFlg + ", media=" + media + ", user=" + user + ", mobilityDisabledCarParking="
+				+ mobilityDisabledCarParking + ", mobilityHeadphonesAvailable=" + mobilityHeadphonesAvailable
+				+ ", mobilityAccessibleRoute=" + mobilityAccessibleRoute + ", mobilityWideDoorways="
+				+ mobilityWideDoorways + ", mobilityWheelchairSeating=" + mobilityWheelchairSeating
+				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityToiletTurnaround="
+				+ mobilityToiletTurnaround + ", mobilityChangingPlace=" + mobilityChangingPlace
+				+ ", mobilityLowerCounters=" + mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts
+				+ ", mobilityRamps=" + mobilityRamps + ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing
+				+ ", mobilityAccessibleDoors=" + mobilityAccessibleDoors + ", mobilityEyeLevelSignage="
+				+ mobilityEyeLevelSignage + ", mobilitySupportiveStaff=" + mobilitySupportiveStaff
+				+ ", mobilityTrainedStaff=" + mobilityTrainedStaff + ", mobilityComments=" + mobilityComments
+				+ ", blindHighContrastSignage=" + blindHighContrastSignage + ", blindLargeFontSignage="
+				+ blindLargeFontSignage + ", blindBrailleSignage=" + blindBrailleSignage + ", blindVisibleWalkways="
+				+ blindVisibleWalkways + ", blindTouchTours=" + blindTouchTours + ", blindLargeSubtitles="
+				+ blindLargeSubtitles + ", blindNoTripHazards=" + blindNoTripHazards + ", blindAdjustableLighting="
+				+ blindAdjustableLighting + ", blindAudioDescriptions=" + blindAudioDescriptions
+				+ ", blindAdaptedLeaflets=" + blindAdaptedLeaflets + ", blindAdaptedSignage=" + blindAdaptedSignage
+				+ ", blindFrontSeating=" + blindFrontSeating + ", blindSupportiveStaff=" + blindSupportiveStaff
+				+ ", blindTrainedStaff=" + blindTrainedStaff + ", blindComments=" + blindComments
+				+ ", deafHearingLoops=" + deafHearingLoops + ", deafAssistiveTechnology=" + deafAssistiveTechnology
+				+ ", deafSignLanguage=" + deafSignLanguage + ", deafAdequateSignage=" + deafAdequateSignage
+				+ ", deafSubtitles=" + deafSubtitles + ", deafFrontSeating=" + deafFrontSeating
+				+ ", deafSupportiveStaff=" + deafSupportiveStaff + ", deafTrainedStaff=" + deafTrainedStaff
+				+ ", deafComments=" + deafComments + ", neurodiverseNoiseReduction=" + neurodiverseNoiseReduction
+				+ ", neurodiverseAdjustableLighting=" + neurodiverseAdjustableLighting + ", neurodiverseQuieterAreas="
+				+ neurodiverseQuieterAreas + ", neurodiverseSensoryBag=" + neurodiverseSensoryBag
+				+ ", neurodiverseLoudNoiseReduction=" + neurodiverseLoudNoiseReduction + ", neurodiverseQuieterTimeAds="
+				+ neurodiverseQuieterTimeAds + ", neurodiverseFlashingSignage=" + neurodiverseFlashingSignage
+				+ ", neurodiverseAdaptedLeaflets=" + neurodiverseAdaptedLeaflets + ", neurodiverseSupportiveStaff="
+				+ neurodiverseSupportiveStaff + ", neurodiverseTrainedStaff=" + neurodiverseTrainedStaff
+				+ ", neurodiverseComments=" + neurodiverseComments + "]";
 	}
+	
+	
+
 
     
 }

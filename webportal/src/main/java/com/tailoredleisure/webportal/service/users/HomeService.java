@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.dao.users.HomeDao;
+import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
 
@@ -15,10 +16,10 @@ public class HomeService implements HomeServiceImpl{
 	private HomeDao homeDao;
 
 	@Override
-	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm) {
+	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
 		
-		return homeDao.saveAdvertForm(venueAdvertForm);
+		return homeDao.saveAdvertForm(venueAdvertForm,user);
 	}
 
 }
