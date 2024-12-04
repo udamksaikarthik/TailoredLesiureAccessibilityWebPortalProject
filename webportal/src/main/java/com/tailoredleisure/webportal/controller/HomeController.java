@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.dao.users.UserRepository;
 import com.tailoredleisure.webportal.entity.Users;
+import com.tailoredleisure.webportal.service.users.HomeServiceImpl;
 
 import jakarta.validation.Valid;
 
@@ -21,6 +22,10 @@ public class HomeController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+
+	@Autowired
+	private HomeServiceImpl homeServiceImpl;
 
 	@GetMapping("/")
 	private ModelAndView showHomePage() {
@@ -78,8 +83,8 @@ public class HomeController {
         	System.out.println("bindingResult has no Errors.");
         }
 
-        // Process the valid form (e.g., save user to the database)
-        // Signup logic here...
+        // Process the valid form (e.g., save venue form to the database)
+        Boolean flag = homeServiceImpl.saveAdvertForm(venueAdvertForm);
 
         mv.setViewName("redirect:/business/showVenueAdvertPage");
 
