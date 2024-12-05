@@ -31,4 +31,10 @@ public class AdminService implements AdminServiceImpl{
 		return homeDao.getAllAdverts(flag);
 	}
 
+	@Override
+	public VenueAdvertForm getSelectedVenueAdvertForm(Long id) {
+		// TODO Auto-generated method stub
+		return homeDao.getSelectedVenueAdvertForm(id);
+	}
+
 }

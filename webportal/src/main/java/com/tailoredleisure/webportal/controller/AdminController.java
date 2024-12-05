@@ -43,4 +43,13 @@ public class AdminController {
 		mv.setViewName("verifyvenuespage.html");
 		return mv;
 	}
+	
+	@GetMapping("/admin/showSelectedVenuePage")
+	public ModelAndView showSelectedVenuePage(@RequestParam Long id) {
+		ModelAndView mv = new ModelAndView();
+		VenueAdvertForm venueAdvertForm = adminServiceImpl.getSelectedVenueAdvertForm(id);
+		mv.addObject("advert", venueAdvertForm);
+		mv.setViewName("selectedvenuepage.html");
+		return mv;
+	}
 }

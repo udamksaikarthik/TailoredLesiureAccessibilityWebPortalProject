@@ -2,6 +2,7 @@ package com.tailoredleisure.webportal.dao.users;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -162,6 +163,18 @@ public class HomeDao {
 		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = venueAdvertRepository.findAllAdvertsByVerifiedFlag(flag);
 		System.out.println("adverts: "+adverts.toString());
 		return adverts;
+	}
+
+	public com.tailoredleisure.webportal.entity.VenueAdvertForm getSelectedVenueAdvertForm(Long id) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvert = venueAdvertRepository.findById(id);
+		
+		com.tailoredleisure.webportal.entity.VenueAdvertForm venueAdvertFormEntity = new com.tailoredleisure.webportal.entity.VenueAdvertForm();
+		if(venueAdvert.isPresent()) {
+			venueAdvertFormEntity = venueAdvert.get();
+		}
+		System.out.println("venueAdvertFormEntity: "+venueAdvertFormEntity.toString());
+		return venueAdvertFormEntity;
 	}
 
 }

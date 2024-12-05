@@ -1,0 +1,49 @@
+.venue_info_container{
+	padding: 1em 0;
+}
+.venue_info_container h3{
+	font-size: 1.5em;
+}
+.venue_info_container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.common_checklist_info_container{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.venue_info_container h1{
+	text-align: center;
+}
+.checklists_main_container{
+	width: 100vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.common_checklist_info_container{
+	width: 24%;
+	padding: 1em;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: white;
+}
+.common_checklist_info_container h1{
+	text-align: center;
+}
+.common_checklist_info_container h3,.venue_info_container h3{
+	margin: 0.5em 0;
+}
+.common_checklist_info_container textarea {
+	width: 100%;
+	padding: 10px;
+}
+.red-class{
+	color: red;
+}
+.green-class{
+	color: green;
+}

@@ -11,5 +11,7 @@ public interface AdminServiceImpl {
 
 	ArrayList<VenueAdvertForm> getAllAdverts(boolean b);
 
+	VenueAdvertForm getSelectedVenueAdvertForm(Long id);
+
 
 }
