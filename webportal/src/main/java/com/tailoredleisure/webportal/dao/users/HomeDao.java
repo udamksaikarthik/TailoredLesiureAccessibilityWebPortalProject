@@ -157,4 +157,11 @@ public class HomeDao {
 		return venueAdvertFormEntity;
 	}
 
+	public ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdverts(boolean flag) {
+		// TODO Auto-generated method stub
+		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = venueAdvertRepository.findAllAdvertsByVerifiedFlag(flag);
+		System.out.println("adverts: "+adverts.toString());
+		return adverts;
+	}
+
 }

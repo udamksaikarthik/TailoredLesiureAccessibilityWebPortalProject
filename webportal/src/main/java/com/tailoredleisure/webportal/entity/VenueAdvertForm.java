@@ -38,6 +38,12 @@ public class VenueAdvertForm {
 
     @NotNull(message = "This field is mandatory")
     private Boolean venueAuditFlg;
+    
+    @NotNull(message = "This field is mandatory")
+    private Boolean venueAuditFlgTL = false;
+    
+    @NotNull(message = "This field is mandatory")
+    private Boolean TLVerifiedVenueAdvertFlg = false;
 
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)
     @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -684,6 +690,22 @@ public class VenueAdvertForm {
 
 	public void setUser(Users user) {
 		this.user = user;
+	}
+
+	public Boolean getVenueAuditFlgTL() {
+		return venueAuditFlgTL;
+	}
+
+	public void setVenueAuditFlgTL(Boolean venueAuditFlgTL) {
+		this.venueAuditFlgTL = venueAuditFlgTL;
+	}
+
+	public Boolean getTLVerifiedVenueAdvertFlg() {
+		return TLVerifiedVenueAdvertFlg;
+	}
+
+	public void setTLVerifiedVenueAdvertFlg(Boolean tLVerifiedVenueAdvertFlg) {
+		TLVerifiedVenueAdvertFlg = tLVerifiedVenueAdvertFlg;
 	}
 
 	@Override

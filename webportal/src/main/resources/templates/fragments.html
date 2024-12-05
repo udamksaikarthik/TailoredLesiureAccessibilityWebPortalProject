@@ -19,6 +19,24 @@
 		</div>
 	</div>
 	
+	<div class="header-container" th:fragment="header_back_btn">
+		<div class="left-alignment-header-container common-header-container">
+			<a th:href="@{/}">Back to DashBoard</a>
+		</div>
+		<div class="center-alignment-header-container common-header-container">
+			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
+			<div class="header-inner-text-container">
+				<h1>Tailored Leisure</h1>
+				<h4>Accessibility for Everyone</h4>
+			</div>
+		</div>
+		<div class="right-alignment-header-container common-header-container">
+			<form action="/logout" method="post">
+			    <button type="submit" class="form_btn_logout">Logout</button>
+			</form>
+		</div>
+	</div>
+	
 	<div class="mobile-left-alignment-header-container common-header-container" th:fragment="header_mobile">
 			<h1>Welcome, <span th:text="${firstName}"></span></h1>
 	</div>

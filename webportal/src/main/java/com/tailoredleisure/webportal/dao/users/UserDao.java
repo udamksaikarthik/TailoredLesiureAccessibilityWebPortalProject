@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tailoredleisure.webportal.bean.Users;
+import com.tailoredleisure.webportal.entity.VenueAdvertForm;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -88,5 +89,6 @@ public class UserDao {
 
         return userModels;
     }
+
 
 }

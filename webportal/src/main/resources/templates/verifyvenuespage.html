@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/verifyVenuesStyles.css}">
+</head>
+<body>
+	<div th:replace="fragments.html :: header_back_btn"></div>
+	<div th:replace="fragments.html :: header_mobile"></div>
+	
+	<div class="verified_btns_container_class">
+		<a th:href="@{/admin/showVerifyVenuesPage(type='unverified')}">Unverfied Adverts</a>
+		<a th:href="@{/admin/showVerifyVenuesPage(type='verified')}">Verfied Adverts</a>
+	</div>
+	<h1 class="verify_venues_title_class" th:text="${adverts_title}"></h1>
+	<div class="venues_list_container">
+		<div class="venues_cards_common_container" th:each="advert : ${adverts}">
+			<h1>Venue Name: </h1> <h1 th:text="${advert.venueName}"></h1> <br>
+			<h1>Venue Type: </h1> <h1 th:text="${advert.venueType}"></h1> <br>
+			<h1>Location: </h1> <h1 th:text="${advert.venueLocation}"></h1> <br>
+			<h1>Post Code: </h1> <h1 th:text="${advert.venuePostCode}"></h1> <br>
+			<h1>Audit: </h1> <h1 th:text="${advert.venueAuditFlgTL}"></h1> <br>
+			<h1>Verified: </h1> <h1 th:text="${advert.TLVerifiedVenueAdvertFlg}"></h1> <br>
+			<a th:href="@{/admin/showSelectedVenuePage(id=${advert.Id})}"></a>
+		</div>
+	</div>
+</body>
+</html>
