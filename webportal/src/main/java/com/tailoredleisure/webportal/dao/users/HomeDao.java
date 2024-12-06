@@ -2,6 +2,8 @@ package com.tailoredleisure.webportal.dao.users;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class HomeDao {
 	
 	@Autowired
 	private VenueAdvertRepository venueAdvertRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
@@ -48,8 +53,12 @@ public class HomeDao {
 		com.tailoredleisure.webportal.entity.VenueAdvertForm venueAdvertFormEntity = new com.tailoredleisure.webportal.entity.VenueAdvertForm();
 		if(venueAdvertForm!=null) {
 			
-
-			user.setVenueAdvertForm(venueAdvertFormEntity);
+			
+			List<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormList = new ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm>(user.getVenueAdvertForm());
+			venueAdvertFormList.add(venueAdvertFormEntity);
+			
+			userRepository.save(user);
+			
 			venueAdvertFormEntity.setUser(user);
 			
 			

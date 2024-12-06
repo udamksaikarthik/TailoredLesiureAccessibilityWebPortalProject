@@ -75,5 +75,6 @@ public class Media {
 	public void setVenueAdvertForm(VenueAdvertForm venueAdvertForm) {
 		this.venueAdvertForm = venueAdvertForm;
 	}
+
     
 }
