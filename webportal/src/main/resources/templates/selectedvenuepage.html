@@ -150,6 +150,44 @@
 			</div>
 		</div>
 		
+		<h1 style="text-align: center; margin: 1em 0;">Venue Images/Videos</h1>
+		
+		<!-- Media Section -->
+         <div class="advert-media">
+		    <div class="media-container" th:each="media : ${advert.media}">
+		        <!-- Image Preview -->
+		        <img th:if="${media.mediaType.startsWith('image')}" 
+		             th:src="${media.base64MediaData}" 
+		             alt="Post Media" 
+		             class="media-preview" 
+		             onclick="showMediaFullscreen(this)">
+		             
+		        <!-- Video Preview -->
+		        <video th:if="${media.mediaType.startsWith('video')}" 
+		               class="media-preview-video" 
+		               controls 
+		               onclick="showVideoFullscreen(this)">
+		            <source th:src="${media.base64MediaData}" th:type="${media.mediaType}">
+		            
+		        </video>
+		    </div>
+		</div>
+		
+		<h1 style="text-align: center; margin: 1em 0;">Venue Status</h1>			
+		<div class="status_section">
+			<form action="#">
+			<div>
+			<label for="tl_verify_status_name">TL Verify Status</label>
+                <input type="radio" th:field="*{advert.venueAuditFlgTL}" name="tl_verify_status_name" value="true"> &check; True
+                <input type="radio" th:field="*{advert.venueAuditFlgTL}" name="tl_verify_status_name" value="false"> &cross; False
+            </div>
+			<div>
+				<label for="tl_verify_status_name">TL Audit Status</label>
+                <input type="text" th:value="${advert.venueAuditFlg}" name="tl_verify_status_name" readonly="readonly">
+			</div>
+			</form>
+		</div>
+		
 		
 					
 	</div>

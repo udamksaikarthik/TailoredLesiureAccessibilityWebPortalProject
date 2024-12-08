@@ -1,6 +1,10 @@
 package com.tailoredleisure.webportal.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.tailoredleisure.webportal.entity.VenueAdvertForm;
 
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -33,6 +37,8 @@ public class Users {
     private String role;
     
     private Date createdAt;
+    
+    private List<VenueAdvertForm> venueAdvertForm = new ArrayList<>();
     
     public Users() {
     	
@@ -109,6 +115,14 @@ public class Users {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public List<VenueAdvertForm> getVenueAdvertForm() {
+		return venueAdvertForm;
+	}
+
+	public void setVenueAdvertForm(List<VenueAdvertForm> venueAdvertForm) {
+		this.venueAdvertForm = venueAdvertForm;
 	}
 	
 }

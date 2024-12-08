@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
+import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.entity.Media;
 import com.tailoredleisure.webportal.entity.Users;
 
@@ -174,16 +176,134 @@ public class HomeDao {
 		return adverts;
 	}
 
-	public com.tailoredleisure.webportal.entity.VenueAdvertForm getSelectedVenueAdvertForm(Long id) {
+	public VenueAdvertFormBean getSelectedVenueAdvertForm(Long id) {
 		// TODO Auto-generated method stub
 		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvert = venueAdvertRepository.findById(id);
 		
 		com.tailoredleisure.webportal.entity.VenueAdvertForm venueAdvertFormEntity = new com.tailoredleisure.webportal.entity.VenueAdvertForm();
+		VenueAdvertFormBean venueAdvertFormBean = new VenueAdvertFormBean();
 		if(venueAdvert.isPresent()) {
 			venueAdvertFormEntity = venueAdvert.get();
+			venueAdvertFormBean = convertEntityIntoBean(venueAdvertFormEntity);
 		}
 		System.out.println("venueAdvertFormEntity: "+venueAdvertFormEntity.toString());
-		return venueAdvertFormEntity;
+		return venueAdvertFormBean;
+	}
+
+	private VenueAdvertFormBean convertEntityIntoBean(
+			com.tailoredleisure.webportal.entity.VenueAdvertForm venueAdvertFormEntity) {
+		// TODO Auto-generated method stub
+		VenueAdvertFormBean venueAdvertFormBean = new VenueAdvertFormBean();
+		
+		venueAdvertFormBean.setUser(convertEntityToBean(venueAdvertFormEntity.getUser()));
+		
+		venueAdvertFormBean.setMedia(convertEntityToBean(venueAdvertFormEntity.getMedia()));
+		
+		//Section-1
+		venueAdvertFormBean.setVenueName(venueAdvertFormEntity.getVenueName());
+		venueAdvertFormBean.setVenueType(venueAdvertFormEntity.getVenueType());
+		venueAdvertFormBean.setVenueLocation(venueAdvertFormEntity.getVenueLocation());
+		venueAdvertFormBean.setVenuePostCode(venueAdvertFormEntity.getVenuePostCode());
+		venueAdvertFormBean.setVenueAuditFlg(venueAdvertFormEntity.getVenueAuditFlg());
+		venueAdvertFormBean.setVenueAuditFlgTL(venueAdvertFormEntity.getVenueAuditFlgTL());
+		
+		
+		
+		
+		//Section-3
+		venueAdvertFormBean.setMobilityAccessibleDoors(venueAdvertFormEntity.getMobilityAccessibleDoors());
+		venueAdvertFormBean.setMobilityAccessibleRoute(venueAdvertFormEntity.getMobilityAccessibleRoute());
+		venueAdvertFormBean.setMobilityChangingPlace(venueAdvertFormEntity.getMobilityChangingPlace());
+		venueAdvertFormBean.setMobilityComments(venueAdvertFormEntity.getMobilityComments());
+		venueAdvertFormBean.setMobilityDisabledCarParking(venueAdvertFormEntity.getMobilityDisabledCarParking());
+		venueAdvertFormBean.setMobilityDisabledToilets(venueAdvertFormEntity.getMobilityDisabledToilets());
+		venueAdvertFormBean.setMobilityEyeLevelSignage(venueAdvertFormEntity.getMobilityEyeLevelSignage());
+		venueAdvertFormBean.setMobilityHeadphonesAvailable(venueAdvertFormEntity.getMobilityHeadphonesAvailable());
+		venueAdvertFormBean.setMobilityLifts(venueAdvertFormEntity.getMobilityLifts());
+		venueAdvertFormBean.setMobilityLowerCounters(venueAdvertFormEntity.getMobilityLowerCounters());
+		venueAdvertFormBean.setMobilityRamps(venueAdvertFormEntity.getMobilityRamps());
+		venueAdvertFormBean.setMobilitySupportiveStaff(venueAdvertFormEntity.getMobilitySupportiveStaff());
+		venueAdvertFormBean.setMobilityToiletTurnaround(venueAdvertFormEntity.getMobilityToiletTurnaround());
+		venueAdvertFormBean.setMobilityTrainedStaff(venueAdvertFormEntity.getMobilityTrainedStaff());
+		venueAdvertFormBean.setMobilityUnrestrictedViewing(venueAdvertFormEntity.getMobilityUnrestrictedViewing());
+		venueAdvertFormBean.setMobilityWheelchairSeating(venueAdvertFormEntity.getMobilityWheelchairSeating());
+		venueAdvertFormBean.setMobilityWideDoorways(venueAdvertFormEntity.getMobilityWideDoorways());
+		
+		//Section-4
+
+		venueAdvertFormBean.setBlindAdaptedLeaflets(venueAdvertFormEntity.getBlindAdaptedLeaflets());
+		venueAdvertFormBean.setBlindAdaptedSignage(venueAdvertFormEntity.getBlindAdaptedSignage());
+		venueAdvertFormBean.setBlindAdjustableLighting(venueAdvertFormEntity.getBlindAdjustableLighting());
+		venueAdvertFormBean.setBlindAudioDescriptions(venueAdvertFormEntity.getBlindAudioDescriptions());
+		venueAdvertFormBean.setBlindBrailleSignage(venueAdvertFormEntity.getBlindBrailleSignage());
+		venueAdvertFormBean.setBlindComments(venueAdvertFormEntity.getBlindComments());
+		venueAdvertFormBean.setBlindFrontSeating(venueAdvertFormEntity.getBlindFrontSeating());
+		venueAdvertFormBean.setBlindHighContrastSignage(venueAdvertFormEntity.getBlindHighContrastSignage());
+		venueAdvertFormBean.setBlindLargeFontSignage(venueAdvertFormEntity.getBlindLargeFontSignage());
+		venueAdvertFormBean.setBlindLargeSubtitles(venueAdvertFormEntity.getBlindLargeSubtitles());
+		venueAdvertFormBean.setBlindNoTripHazards(venueAdvertFormEntity.getBlindNoTripHazards());
+		venueAdvertFormBean.setBlindSupportiveStaff(venueAdvertFormEntity.getBlindSupportiveStaff());
+		venueAdvertFormBean.setBlindTouchTours(venueAdvertFormEntity.getBlindTouchTours());
+		venueAdvertFormBean.setBlindTrainedStaff(venueAdvertFormEntity.getBlindTrainedStaff());
+		venueAdvertFormBean.setBlindVisibleWalkways(venueAdvertFormEntity.getBlindVisibleWalkways());
+		
+		//Section-5
+		venueAdvertFormBean.setDeafAdequateSignage(venueAdvertFormEntity.getDeafAdequateSignage());
+		venueAdvertFormBean.setDeafAssistiveTechnology(venueAdvertFormEntity.getDeafAssistiveTechnology());
+		venueAdvertFormBean.setDeafComments(venueAdvertFormEntity.getDeafComments());
+		venueAdvertFormBean.setDeafFrontSeating(venueAdvertFormEntity.getDeafFrontSeating());
+		venueAdvertFormBean.setDeafHearingLoops(venueAdvertFormEntity.getDeafHearingLoops());
+		venueAdvertFormBean.setDeafSignLanguage(venueAdvertFormEntity.getDeafSignLanguage());
+		venueAdvertFormBean.setDeafSubtitles(venueAdvertFormEntity.getDeafSubtitles());
+		venueAdvertFormBean.setDeafSupportiveStaff(venueAdvertFormEntity.getDeafSupportiveStaff());
+		venueAdvertFormBean.setDeafTrainedStaff(venueAdvertFormEntity.getDeafTrainedStaff());
+		
+		//Section-6
+		venueAdvertFormBean.setNeurodiverseAdaptedLeaflets(venueAdvertFormEntity.getNeurodiverseAdaptedLeaflets());
+		venueAdvertFormBean.setNeurodiverseAdjustableLighting(venueAdvertFormEntity.getNeurodiverseAdjustableLighting());
+		venueAdvertFormBean.setNeurodiverseComments(venueAdvertFormEntity.getNeurodiverseComments());
+		venueAdvertFormBean.setNeurodiverseFlashingSignage(venueAdvertFormEntity.getNeurodiverseFlashingSignage());
+		venueAdvertFormBean.setNeurodiverseLoudNoiseReduction(venueAdvertFormEntity.getNeurodiverseLoudNoiseReduction());
+		venueAdvertFormBean.setNeurodiverseNoiseReduction(venueAdvertFormEntity.getNeurodiverseLoudNoiseReduction());
+		venueAdvertFormBean.setNeurodiverseQuieterAreas(venueAdvertFormEntity.getNeurodiverseQuieterAreas());
+		venueAdvertFormBean.setNeurodiverseQuieterTimeAds(venueAdvertFormEntity.getNeurodiverseQuieterTimeAds());
+		venueAdvertFormBean.setNeurodiverseSensoryBag(venueAdvertFormEntity.getNeurodiverseSensoryBag());
+		venueAdvertFormBean.setNeurodiverseSupportiveStaff(venueAdvertFormEntity.getNeurodiverseSupportiveStaff());
+		venueAdvertFormBean.setNeurodiverseTrainedStaff(venueAdvertFormEntity.getNeurodiverseTrainedStaff());
+		
+		return venueAdvertFormBean;
+	}
+
+	private List<MediaBean> convertEntityToBean(List<Media> media) {
+		// TODO Auto-generated method stub
+		List<MediaBean> mediaBean = new ArrayList<>();
+		if(media!=null) {
+			for (Media m : media) {
+				MediaBean mb = new MediaBean();
+				mb.setBase64MediaData("data:" + m.getMediaType() + ";base64," +
+			            Base64.getEncoder().encodeToString(m.getMediaData()));
+				mb.setId(m.getId());
+				mb.setFileName(m.getFileName());
+				mb.setMediaData(m.getMediaData());
+				mb.setMediaType(m.getMediaType());
+				mb.setVenueAdvertFormId(m.getVenueAdvertForm().getId());
+				mediaBean.add(mb);
+			}
+		}
+		return mediaBean;
+	}
+
+	private com.tailoredleisure.webportal.bean.Users convertEntityToBean(Users user) {
+		// TODO Auto-generated method stub
+		com.tailoredleisure.webportal.bean.Users userBean = new com.tailoredleisure.webportal.bean.Users();
+		userBean.setCreatedAt(user.getCreatedAt());
+		userBean.setEmail(user.getEmail());
+		userBean.setFirstName(user.getFirstName());
+		userBean.setLastName(user.getLastName());
+		userBean.setPhoneNumber(user.getPhoneNumber());
+		userBean.setRole(user.getRole());
+		userBean.setVenueAdvertForm(user.getVenueAdvertForm());
+		return userBean;
 	}
 
 }

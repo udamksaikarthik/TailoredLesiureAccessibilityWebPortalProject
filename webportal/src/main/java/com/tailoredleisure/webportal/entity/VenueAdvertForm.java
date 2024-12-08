@@ -40,10 +40,8 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean venueAuditFlg;
     
-    @NotNull(message = "This field is mandatory")
     private Boolean venueAuditFlgTL = false;
     
-    @NotNull(message = "This field is mandatory")
     private Boolean TLVerifiedVenueAdvertFlg = false;
 
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)

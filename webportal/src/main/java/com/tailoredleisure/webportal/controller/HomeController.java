@@ -77,6 +77,8 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
         if (bindingResult.hasErrors()) {
         	System.out.println("bindingResult has Errors.");
+        	System.out.println("bindingResult.getErrorCount(): "+bindingResult.getErrorCount());
+        	System.out.println("bindingResult.getAllErrors(): "+bindingResult.getAllErrors());
         	mv.setViewName("venueadvertpage");
             return mv;  // return to signup form if errors
         }else {

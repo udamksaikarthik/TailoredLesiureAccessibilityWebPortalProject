@@ -47,3 +47,32 @@
 .green-class{
 	color: green;
 }
+.advert-media{
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.media-container{
+	width: 45vw;
+	
+}
+.media-container img, .media-container video{
+	width: 100%;
+	height: auto;
+}
+.status_section{
+	width: 100vw;
+}
+.status_section form{
+	width: 100%;
+	padding: 1em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.status_section form label{
+	margin: 0.5em 0;
+	}

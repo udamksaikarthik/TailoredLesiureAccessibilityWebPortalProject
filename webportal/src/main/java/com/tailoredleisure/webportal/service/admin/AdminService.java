@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tailoredleisure.webportal.bean.Users;
+import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.HomeDao;
 import com.tailoredleisure.webportal.dao.users.UserDao;
 import com.tailoredleisure.webportal.entity.VenueAdvertForm;
@@ -32,8 +33,9 @@ public class AdminService implements AdminServiceImpl{
 	}
 
 	@Override
-	public VenueAdvertForm getSelectedVenueAdvertForm(Long id) {
+	public VenueAdvertFormBean getSelectedVenueAdvertForm(Long id) {
 		// TODO Auto-generated method stub
+		
 		return homeDao.getSelectedVenueAdvertForm(id);
 	}
 

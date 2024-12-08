@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tailoredleisure.webportal.bean.Users;
+import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.entity.VenueAdvertForm;
 import com.tailoredleisure.webportal.service.admin.AdminServiceImpl;
 
@@ -47,8 +48,9 @@ public class AdminController {
 	@GetMapping("/admin/showSelectedVenuePage")
 	public ModelAndView showSelectedVenuePage(@RequestParam Long id) {
 		ModelAndView mv = new ModelAndView();
-		VenueAdvertForm venueAdvertForm = adminServiceImpl.getSelectedVenueAdvertForm(id);
-		mv.addObject("advert", venueAdvertForm);
+		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.getSelectedVenueAdvertForm(id);
+		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
+		mv.addObject("advert", venueAdvertFormBean);
 		mv.setViewName("selectedvenuepage.html");
 		return mv;
 	}
