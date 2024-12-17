@@ -176,22 +176,37 @@
 		</div>
 		
 		<h1 style="text-align: center; margin: 1em 0;">Venue Status</h1>			
-		<div class="status_section">
-			<form action="#">
-			<div>
-			<label for="tl_verify_status_name">TL Verify Status</label>
-                <input type="radio" th:field="*{advert.venueAuditFlgTL}" name="tl_verify_status_name" value="true"> &check; True
-                <input type="radio" th:field="*{advert.venueAuditFlgTL}" name="tl_verify_status_name" value="false"> &cross; False
-            </div>
-			<div>
-				<label for="tl_verify_status_name">TL Audit Status</label>
-                <input type="text" th:value="${advert.venueAuditFlg}" name="tl_verify_status_name" readonly="readonly">
-			</div>
-			</form>
-		</div>
+		<div class="status-section">
+	        <form action="#" class="status-form">
+	            <div class="form-group">
+	                <label class="form-label">TL Verify Status</label>
+	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" name="tl_verify_status_name" value="true"> ✔ True
+	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" name="tl_verify_status_name" value="false"> ✘ False
+	            </div>
+	
+	            <div class="form-group">
+	                <label class="form-label">TL Audit Status (Venue chosen option)</label>
+	                <input class="form-input readonly" type="text" name="tl_audit_status" readonly th:value="${advert.venueAuditFlg}">
+	            </div>
+	
+	            <div class="form-group">
+	                <label class="form-label">Did Tailored Leisure Team audit this Venue?</label>
+	                <input class="form-radio" type="radio" name="venue_audit" value="true"> Yes
+	                <input class="form-radio" type="radio" name="venue_audit" value="false"> No
+	            </div>
+	
+	            <div class="form-group">
+	                <label class="form-label">Business Email</label>
+	                <input class="form-input readonly" type="email" name="business_email" readonly th:value="${advert.businessEmail}">
+	            </div>
+	
+	            <div class="button-group">
+	                <button type="submit" class="form-button">Update</button>
+	            </div>
+	        </form>
+	    </div>
 		
-		
-					
+				
 	</div>
 </body>
 </html>

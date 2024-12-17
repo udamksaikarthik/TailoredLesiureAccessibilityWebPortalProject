@@ -13,6 +13,7 @@ public class VenueAdvertFormBean {
     private Boolean venueAuditFlg;
     private Boolean venueAuditFlgTL;
     private Boolean TLVerifiedVenueAdvertFlg;
+    private String businessEmail;
 
     // Related Entities
     private List<MediaBean> media;
@@ -446,6 +447,13 @@ public class VenueAdvertFormBean {
 	}
 	public void setNeurodiverseComments(String neurodiverseComments) {
 		this.neurodiverseComments = neurodiverseComments;
+	}
+	
+	public String getBusinessEmail() {
+		return businessEmail;
+	}
+	public void setBusinessEmail(String businessEmail) {
+		this.businessEmail = businessEmail;
 	}
 	@Override
 	public String toString() {

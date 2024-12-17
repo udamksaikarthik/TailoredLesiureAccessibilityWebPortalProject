@@ -206,6 +206,7 @@ public class HomeDao {
 		venueAdvertFormBean.setVenuePostCode(venueAdvertFormEntity.getVenuePostCode());
 		venueAdvertFormBean.setVenueAuditFlg(venueAdvertFormEntity.getVenueAuditFlg());
 		venueAdvertFormBean.setVenueAuditFlgTL(venueAdvertFormEntity.getVenueAuditFlgTL());
+		venueAdvertFormBean.setBusinessEmail(venueAdvertFormEntity.getBusinessEmail());
 		
 		
 		

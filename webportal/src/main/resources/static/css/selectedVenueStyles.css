@@ -76,3 +76,68 @@
 .status_section form label{
 	margin: 0.5em 0;
 	}
+	
+.status-section {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.status-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-radio {
+    margin-right: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f4f4f4;
+}
+
+.form-input.readonly {
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: not-allowed;
+}
+
+.button-group {
+    text-align: right;
+}
+
+.form-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #45a049;
+}
