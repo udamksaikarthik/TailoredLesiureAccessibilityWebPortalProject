@@ -87,3 +87,46 @@ function validateFileSize(input) {
             }
         }
     }
+    
+    
+  // Function to show media in fullscreen mode
+function showMediaFullscreen(element) {
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    const fullscreenVideo = document.getElementById('fullscreen-video');
+    const fullscreenVideoSource = document.getElementById('fullscreen-video-source');
+
+    // Check if the clicked media is an image
+    if (element.tagName === 'IMG') {
+        fullscreenImage.src = element.src;
+        fullscreenImage.style.display = 'block';
+        fullscreenVideo.style.display = 'none';
+    }
+
+    // Check if the clicked media is a video
+    if (element.tagName === 'VIDEO') {
+        fullscreenVideoSource.src = element.querySelector('source').src;
+        fullscreenVideo.load();
+        fullscreenVideo.style.display = 'block';
+        fullscreenImage.style.display = 'none';
+    }
+
+    fullscreenContainer.classList.remove('fullscreen-hidden');
+}
+
+// Function to close the fullscreen view
+function closeFullscreen() {
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    const fullscreenVideo = document.getElementById('fullscreen-video');
+
+    // Stop video playback
+    fullscreenVideo.pause();
+
+    // Hide fullscreen container
+    fullscreenContainer.classList.add('fullscreen-hidden');
+
+    // Clear image and video sources
+    fullscreenImage.src = '';
+    fullscreenVideo.querySelector('source').src = '';
+}

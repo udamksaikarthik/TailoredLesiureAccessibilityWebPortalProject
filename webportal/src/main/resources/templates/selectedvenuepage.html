@@ -177,7 +177,7 @@
 		
 		<h1 style="text-align: center; margin: 1em 0;">Venue Status</h1>			
 		<div class="status-section">
-	        <form action="#" class="status-form">
+	        <form th:action="@{/#}" method="post" class="status-form">
 	            <div class="form-group">
 	                <label class="form-label">TL Verify Status</label>
 	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" name="tl_verify_status_name" value="true"> ✔ True
@@ -208,5 +208,6 @@
 		
 				
 	</div>
+	<script type="text/javascript"  th:src="@{/js/venueadvertpage.js}"></script>
 </body>
 </html>

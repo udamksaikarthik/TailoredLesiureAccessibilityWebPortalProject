@@ -60,7 +60,7 @@
 }
 .media-container img, .media-container video{
 	width: 100%;
-	height: auto;
+	height: 50vh;
 }
 .status_section{
 	width: 100vw;
