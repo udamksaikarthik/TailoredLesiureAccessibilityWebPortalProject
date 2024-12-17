@@ -70,6 +70,7 @@ public class HomeDao {
 			venueAdvertFormEntity.setVenueLocation(venueAdvertForm.getVenueLocation());
 			venueAdvertFormEntity.setVenuePostCode(venueAdvertForm.getVenuePostCode());
 			venueAdvertFormEntity.setVenueAuditFlg(venueAdvertForm.getVenueAuditFlg());
+			venueAdvertFormEntity.setBusinessEmail(venueAdvertForm.getBusinessEmail());
 			
 			
 			//Section-2
@@ -115,7 +116,6 @@ public class HomeDao {
 			venueAdvertFormEntity.setMobilityLowerCounters(venueAdvertForm.getMobilityLowerCounters());
 			venueAdvertFormEntity.setMobilityRamps(venueAdvertForm.getMobilityRamps());
 			venueAdvertFormEntity.setMobilitySupportiveStaff(venueAdvertForm.getMobilitySupportiveStaff());
-			venueAdvertFormEntity.setMobilityToiletTurnaround(venueAdvertForm.getMobilityToiletTurnaround());
 			venueAdvertFormEntity.setMobilityTrainedStaff(venueAdvertForm.getMobilityTrainedStaff());
 			venueAdvertFormEntity.setMobilityUnrestrictedViewing(venueAdvertForm.getMobilityUnrestrictedViewing());
 			venueAdvertFormEntity.setMobilityWheelchairSeating(venueAdvertForm.getMobilityWheelchairSeating());
@@ -223,7 +223,6 @@ public class HomeDao {
 		venueAdvertFormBean.setMobilityLowerCounters(venueAdvertFormEntity.getMobilityLowerCounters());
 		venueAdvertFormBean.setMobilityRamps(venueAdvertFormEntity.getMobilityRamps());
 		venueAdvertFormBean.setMobilitySupportiveStaff(venueAdvertFormEntity.getMobilitySupportiveStaff());
-		venueAdvertFormBean.setMobilityToiletTurnaround(venueAdvertFormEntity.getMobilityToiletTurnaround());
 		venueAdvertFormBean.setMobilityTrainedStaff(venueAdvertFormEntity.getMobilityTrainedStaff());
 		venueAdvertFormBean.setMobilityUnrestrictedViewing(venueAdvertFormEntity.getMobilityUnrestrictedViewing());
 		venueAdvertFormBean.setMobilityWheelchairSeating(venueAdvertFormEntity.getMobilityWheelchairSeating());

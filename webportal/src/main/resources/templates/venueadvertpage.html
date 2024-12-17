@@ -31,6 +31,7 @@
 			<h1>Welcome, <span th:text="${firstName}"></span></h1>
 	</div>
     <h1 class="advert_title_class_h1"> Venue Accessibility Checklist Advertisement Form</h1>
+    <p class="error-message" th:text="${images_warn_msg}"></p>
     <form class="advert_checklist_form" th:action="@{/business/submitVenueAdvertForm}" th:object="${venueForm}" method="post" enctype="multipart/form-data">
         
         <!-- Section 1: Venue Information -->
@@ -63,6 +64,11 @@
                 <input id="venueAuditFlgId" type="radio" th:field="*{venueAuditFlg}" value="false"> No
                 <div th:if="${#fields.hasErrors('venueAuditFlg')}" th:errors="*{venueAuditFlg}" class="error-message"></div>
             
+            	<label for="businessEmailId"> Do you want Tailored Leisure team to audit your venue? 
+                    <span class="mandatory">*</span>
+                </label>
+                <input class="input_field_inside_venue_info_class" id="businessEmailId" type="text" th:field="*{businessEmail}" placeholder="Enter your business email here..."> 
+                <div th:if="${#fields.hasErrors('businessEmail')}" th:errors="*{businessEmail}" class="error-message"></div>
 		    </div>
 		</div>
 
@@ -71,6 +77,8 @@
         <div class="section">
             <button type="button" class="section-header">Section 2: Upload Venue Images/Videos</button>
             <div class="section-content">
+            	
+    			<p class="error-message" > To enlarge the selected media files! please click on the image/ video file.</p>
                 <!-- Media Upload -->
 	            <label for="mediaFiles">Upload Media (Images/Videos):</label>
 	            <input type="file" id="mediaFiles" name="mediaFiles" th:field="*{mediaFiles}" multiple accept="image/*,video/*" onchange="validateFileSize(this), validateFileCount(this), previewMedia()" />
@@ -140,15 +148,7 @@
                 <div th:if="${#fields.hasErrors('mobilityDisabledToilets')}" th:errors="*{mobilityDisabledToilets}" class="error-message"></div>
             </li>
             <li>
-                <label>7. Are the toilets suitable for larger wheelchairs to turnaround? 
-                    <span class="mandatory">*</span>
-                </label>
-                <input type="radio" th:field="*{mobilityToiletTurnaround}" value="true"> Yes
-                <input type="radio" th:field="*{mobilityToiletTurnaround}" value="false"> No
-                <div th:if="${#fields.hasErrors('mobilityToiletTurnaround')}" th:errors="*{mobilityToiletTurnaround}" class="error-message"></div>
-            </li>
-            <li>
-                <label>8. A changing place? 
+                <label>7. A changing place? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityChangingPlace}" value="true"> Yes
@@ -156,7 +156,7 @@
                 <div th:if="${#fields.hasErrors('mobilityChangingPlace')}" th:errors="*{mobilityChangingPlace}" class="error-message"></div>
             </li>
             <li>
-                <label>9. Lower counters in key areas like reception, café areas, etc.? 
+                <label>8. Lower counters in key areas like reception, café areas, etc.? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityLowerCounters}" value="true"> Yes
@@ -164,7 +164,7 @@
                 <div th:if="${#fields.hasErrors('mobilityLowerCounters')}" th:errors="*{mobilityLowerCounters}" class="error-message"></div>
             </li>
             <li>
-                <label>10. Lifts to access other areas of the building that are on different levels? 
+                <label>9. Lifts to access other areas of the building that are on different levels? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityLifts}" value="true"> Yes
@@ -172,7 +172,7 @@
                 <div th:if="${#fields.hasErrors('mobilityLifts')}" th:errors="*{mobilityLifts}" class="error-message"></div>
             </li>
             <li>
-                <label>11. Ramps to support wheelchair access, where applicable? 
+                <label>10. Ramps to support wheelchair access, where applicable? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityRamps}" value="true"> Yes
@@ -180,16 +180,15 @@
                 <div th:if="${#fields.hasErrors('mobilityRamps')}" th:errors="*{mobilityRamps}" class="error-message"></div>
             </li>
             <li>
-                <label>12. Unrestricted viewing, if at a show or viewing? 
+                <label>11. Unrestricted viewing, if at a show or viewing? 
                     <span class="mandatory">*</span>
                 </label>
-                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="Yes"> Yes
-                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="No"> No
-                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="N/A"> N/A
+                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="true"> Yes
+                <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityUnrestrictedViewing')}" th:errors="*{mobilityUnrestrictedViewing}" class="error-message"></div>
             </li>
             <li>
-                <label>13. Accessible doors i.e., easy to open and close, automatic, etc.? 
+                <label>12. Accessible doors i.e., easy to open and close, automatic, etc.? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityAccessibleDoors}" value="true"> Yes
@@ -197,7 +196,7 @@
                 <div th:if="${#fields.hasErrors('mobilityAccessibleDoors')}" th:errors="*{mobilityAccessibleDoors}" class="error-message"></div>
             </li>
             <li>
-                <label>14. Signage at eye level for wheelchair users? 
+                <label>13. Signage at eye level for wheelchair users? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityEyeLevelSignage}" value="true"> Yes
@@ -205,7 +204,7 @@
                 <div th:if="${#fields.hasErrors('mobilityEyeLevelSignage')}" th:errors="*{mobilityEyeLevelSignage}" class="error-message"></div>
             </li>
             <li>
-                <label>15. Staff at hand to support the disabled customer if needed? 
+                <label>14. Staff at hand to support the disabled customer if needed? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilitySupportiveStaff}" value="true"> Yes
@@ -213,7 +212,7 @@
                 <div th:if="${#fields.hasErrors('mobilitySupportiveStaff')}" th:errors="*{mobilitySupportiveStaff}" class="error-message"></div>
             </li>
             <li>
-                <label>16. Trained staff in disability awareness? 
+                <label>15. Trained staff in disability awareness? 
                     <span class="mandatory">*</span>
                 </label>
                 <input type="radio" th:field="*{mobilityTrainedStaff}" value="true"> Yes
@@ -326,9 +325,8 @@
                 <label>12. Opportunities for people to sit at the front, if at a show or viewing? 
                     <span class="mandatory">*</span>
                 </label>
-                <input type="radio" th:field="*{blindFrontSeating}" value="Yes"> Yes
-                <input type="radio" th:field="*{blindFrontSeating}" value="No"> No
-                <input type="radio" th:field="*{blindFrontSeating}" value="N/A"> N/A
+                <input type="radio" th:field="*{blindFrontSeating}" value="true"> Yes
+                <input type="radio" th:field="*{blindFrontSeating}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindFrontSeating')}" th:errors="*{blindFrontSeating}" class="error-message"></div>
             </li>
             <li>
@@ -404,9 +402,8 @@
                 <label>6. Opportunities for people to sit at the front, if at a show or viewing? 
                     <span class="mandatory">*</span>
                 </label>
-                <input type="radio" th:field="*{deafFrontSeating}" value="Yes"> Yes
-                <input type="radio" th:field="*{deafFrontSeating}" value="No"> No
-                <input type="radio" th:field="*{deafFrontSeating}" value="N/A"> N/A
+                <input type="radio" th:field="*{deafFrontSeating}" value="true"> Yes
+                <input type="radio" th:field="*{deafFrontSeating}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafFrontSeating')}" th:errors="*{deafFrontSeating}" class="error"></div>
             </li>
             <li>
@@ -446,7 +443,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseNoiseReduction')}" th:errors="*{neurodiverseNoiseReduction}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseNoiseReduction')}" th:errors="*{neurodiverseNoiseReduction}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -455,7 +452,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseAdjustableLighting')}" th:errors="*{neurodiverseAdjustableLighting}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseAdjustableLighting')}" th:errors="*{neurodiverseAdjustableLighting}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -464,7 +461,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseQuieterAreas')}" th:errors="*{neurodiverseQuieterAreas}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseQuieterAreas')}" th:errors="*{neurodiverseQuieterAreas}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -473,7 +470,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseSensoryBag}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseSensoryBag}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseSensoryBag')}" th:errors="*{neurodiverseSensoryBag}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseSensoryBag')}" th:errors="*{neurodiverseSensoryBag}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -482,7 +479,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseLoudNoiseReduction')}" th:errors="*{neurodiverseLoudNoiseReduction}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseLoudNoiseReduction')}" th:errors="*{neurodiverseLoudNoiseReduction}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -491,17 +488,16 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseQuieterTimeAds')}" th:errors="*{neurodiverseQuieterTimeAds}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseQuieterTimeAds')}" th:errors="*{neurodiverseQuieterTimeAds}" class="error"></div>
             </li>
             <li>
                 <label>
                     7. Signage to advise on any flashing images, if relevant? 
                     <span class="mandatory">*</span>
                 </label>
-                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="Yes"> Yes
-                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="No"> No
-                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="N/A"> N/A
-                <span th:if="${#fields.hasErrors('neurodiverseFlashingSignage')}" th:errors="*{neurodiverseFlashingSignage}" class="error"></span>
+                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="true"> Yes
+                <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="false"> No
+                <div th:if="${#fields.hasErrors('neurodiverseFlashingSignage')}" th:errors="*{neurodiverseFlashingSignage}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -510,7 +506,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseAdaptedLeaflets')}" th:errors="*{neurodiverseAdaptedLeaflets}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseAdaptedLeaflets')}" th:errors="*{neurodiverseAdaptedLeaflets}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -519,7 +515,7 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseSupportiveStaff')}" th:errors="*{neurodiverseSupportiveStaff}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseSupportiveStaff')}" th:errors="*{neurodiverseSupportiveStaff}" class="error"></div>
             </li>
             <li>
                 <label>
@@ -528,12 +524,12 @@
                 </label>
                 <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="false"> No
-                <span th:if="${#fields.hasErrors('neurodiverseTrainedStaff')}" th:errors="*{neurodiverseTrainedStaff}" class="error"></span>
+                <div th:if="${#fields.hasErrors('neurodiverseTrainedStaff')}" th:errors="*{neurodiverseTrainedStaff}" class="error"></div>
             </li>
         </ul>
         <label for="neurodiverseComments">Additional Comments (Optional):</label>
         <textarea class="additional_comments_class" id="neurodiverseComments" th:field="*{neurodiverseComments}" placeholder="Enter additional comments" rows="4"></textarea>
-		        <span th:if="${#fields.hasErrors('neurodiverseComments')}" th:errors="*{neurodiverseComments}" class="error"></span>
+		        <div th:if="${#fields.hasErrors('neurodiverseComments')}" th:errors="*{neurodiverseComments}" class="error"></div>
 		    </div>
 		</div>
 

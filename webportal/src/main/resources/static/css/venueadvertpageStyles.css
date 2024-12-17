@@ -146,3 +146,8 @@ textarea{
 li{
 	margin: 1em 0;
 }
+
+input[type="radio"] {
+	margin-left: 10px;
+  transform: scale(1.75); /* Adjust scale factor to make it larger */
+}

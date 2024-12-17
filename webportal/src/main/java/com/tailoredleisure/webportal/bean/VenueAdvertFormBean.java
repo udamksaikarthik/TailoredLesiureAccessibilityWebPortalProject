@@ -25,12 +25,11 @@ public class VenueAdvertFormBean {
     private Boolean mobilityWideDoorways;
     private Boolean mobilityWheelchairSeating;
     private Boolean mobilityDisabledToilets;
-    private Boolean mobilityToiletTurnaround;
     private Boolean mobilityChangingPlace;
     private Boolean mobilityLowerCounters;
     private Boolean mobilityLifts;
     private Boolean mobilityRamps;
-    private String mobilityUnrestrictedViewing;
+    private Boolean mobilityUnrestrictedViewing;
     private Boolean mobilityAccessibleDoors;
     private Boolean mobilityEyeLevelSignage;
     private Boolean mobilitySupportiveStaff;
@@ -49,7 +48,7 @@ public class VenueAdvertFormBean {
     private Boolean blindAudioDescriptions;
     private Boolean blindAdaptedLeaflets;
     private Boolean blindAdaptedSignage;
-    private String blindFrontSeating;
+    private Boolean blindFrontSeating;
     private Boolean blindSupportiveStaff;
     private Boolean blindTrainedStaff;
     private String blindComments;
@@ -60,7 +59,7 @@ public class VenueAdvertFormBean {
     private Boolean deafSignLanguage;
     private Boolean deafAdequateSignage;
     private Boolean deafSubtitles;
-    private String deafFrontSeating;
+    private Boolean deafFrontSeating;
     private Boolean deafSupportiveStaff;
     private Boolean deafTrainedStaff;
     private String deafComments;
@@ -72,7 +71,7 @@ public class VenueAdvertFormBean {
     private Boolean neurodiverseSensoryBag;
     private Boolean neurodiverseLoudNoiseReduction;
     private Boolean neurodiverseQuieterTimeAds;
-    private String neurodiverseFlashingSignage;
+    private Boolean neurodiverseFlashingSignage;
     private Boolean neurodiverseAdaptedLeaflets;
     private Boolean neurodiverseSupportiveStaff;
     private Boolean neurodiverseTrainedStaff;
@@ -178,12 +177,6 @@ public class VenueAdvertFormBean {
 	public void setMobilityDisabledToilets(Boolean mobilityDisabledToilets) {
 		this.mobilityDisabledToilets = mobilityDisabledToilets;
 	}
-	public Boolean getMobilityToiletTurnaround() {
-		return mobilityToiletTurnaround;
-	}
-	public void setMobilityToiletTurnaround(Boolean mobilityToiletTurnaround) {
-		this.mobilityToiletTurnaround = mobilityToiletTurnaround;
-	}
 	public Boolean getMobilityChangingPlace() {
 		return mobilityChangingPlace;
 	}
@@ -208,10 +201,10 @@ public class VenueAdvertFormBean {
 	public void setMobilityRamps(Boolean mobilityRamps) {
 		this.mobilityRamps = mobilityRamps;
 	}
-	public String getMobilityUnrestrictedViewing() {
+	public Boolean getMobilityUnrestrictedViewing() {
 		return mobilityUnrestrictedViewing;
 	}
-	public void setMobilityUnrestrictedViewing(String mobilityUnrestrictedViewing) {
+	public void setMobilityUnrestrictedViewing(Boolean mobilityUnrestrictedViewing) {
 		this.mobilityUnrestrictedViewing = mobilityUnrestrictedViewing;
 	}
 	public Boolean getMobilityAccessibleDoors() {
@@ -310,10 +303,10 @@ public class VenueAdvertFormBean {
 	public void setBlindAdaptedSignage(Boolean blindAdaptedSignage) {
 		this.blindAdaptedSignage = blindAdaptedSignage;
 	}
-	public String getBlindFrontSeating() {
+	public Boolean getBlindFrontSeating() {
 		return blindFrontSeating;
 	}
-	public void setBlindFrontSeating(String blindFrontSeating) {
+	public void setBlindFrontSeating(Boolean blindFrontSeating) {
 		this.blindFrontSeating = blindFrontSeating;
 	}
 	public Boolean getBlindSupportiveStaff() {
@@ -364,10 +357,10 @@ public class VenueAdvertFormBean {
 	public void setDeafSubtitles(Boolean deafSubtitles) {
 		this.deafSubtitles = deafSubtitles;
 	}
-	public String getDeafFrontSeating() {
+	public Boolean getDeafFrontSeating() {
 		return deafFrontSeating;
 	}
-	public void setDeafFrontSeating(String deafFrontSeating) {
+	public void setDeafFrontSeating(Boolean deafFrontSeating) {
 		this.deafFrontSeating = deafFrontSeating;
 	}
 	public Boolean getDeafSupportiveStaff() {
@@ -424,10 +417,10 @@ public class VenueAdvertFormBean {
 	public void setNeurodiverseQuieterTimeAds(Boolean neurodiverseQuieterTimeAds) {
 		this.neurodiverseQuieterTimeAds = neurodiverseQuieterTimeAds;
 	}
-	public String getNeurodiverseFlashingSignage() {
+	public Boolean getNeurodiverseFlashingSignage() {
 		return neurodiverseFlashingSignage;
 	}
-	public void setNeurodiverseFlashingSignage(String neurodiverseFlashingSignage) {
+	public void setNeurodiverseFlashingSignage(Boolean neurodiverseFlashingSignage) {
 		this.neurodiverseFlashingSignage = neurodiverseFlashingSignage;
 	}
 	public Boolean getNeurodiverseAdaptedLeaflets() {
@@ -463,8 +456,7 @@ public class VenueAdvertFormBean {
 				+ mobilityDisabledCarParking + ", mobilityHeadphonesAvailable=" + mobilityHeadphonesAvailable
 				+ ", mobilityAccessibleRoute=" + mobilityAccessibleRoute + ", mobilityWideDoorways="
 				+ mobilityWideDoorways + ", mobilityWheelchairSeating=" + mobilityWheelchairSeating
-				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityToiletTurnaround="
-				+ mobilityToiletTurnaround + ", mobilityChangingPlace=" + mobilityChangingPlace
+				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityChangingPlace=" + mobilityChangingPlace
 				+ ", mobilityLowerCounters=" + mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts
 				+ ", mobilityRamps=" + mobilityRamps + ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing
 				+ ", mobilityAccessibleDoors=" + mobilityAccessibleDoors + ", mobilityEyeLevelSignage="

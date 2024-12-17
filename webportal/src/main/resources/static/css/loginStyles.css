@@ -4,6 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #f4f4f4;
 }
 
@@ -66,7 +67,7 @@ body {
 
 .input-group label {
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1.25em;
 }
 
 .input-group input {
@@ -75,7 +76,7 @@ body {
     margin-top: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.25em;
 }
 
 /* Submit button styling */
@@ -107,6 +108,16 @@ body {
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+
+.form-success-message {
+	text-align: center;
+    background-color: #d4edda; /* Light green background */
+    color: #155724;          /* Dark green text */
+    border: 1px solid #c3e6cb; /* Green border */
+    padding: 15px;           /* Space inside the box */
+    border-radius: 5px;      /* Rounded corners */
+    font-size: 16px;         /* Text size */
 }
 
 /* Responsive Design for Mobile */

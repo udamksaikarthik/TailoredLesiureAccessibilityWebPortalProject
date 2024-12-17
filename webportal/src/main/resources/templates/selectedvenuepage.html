@@ -37,8 +37,6 @@
 					<h3 th:unless="${advert.mobilityWheelchairSeating}"><span class="red-class">&cross;</span> Wheel chair Seating</h3>
 					<h3 th:if="${advert.mobilityDisabledToilets}"><span class="green-class">&check;</span> Disabled Toilets</h3>
 					<h3 th:unless="${advert.mobilityDisabledToilets}"><span class="red-class">&cross;</span> Disabled Toilets</h3>
-					<h3 th:if="${advert.mobilityToiletTurnaround}"><span class="green-class">&check;</span> Toilet Turn Around</h3>
-					<h3 th:unless="${advert.mobilityToiletTurnaround}"><span class="red-class">&cross;</span> Toilet Turn Around</h3>
 					<h3 th:if="${advert.mobilityChangingPlace}"><span class="green-class">&check;</span> Changing Place</h3>
 					<h3 th:unless="${advert.mobilityChangingPlace}"><span class="red-class">&cross;</span> Changing Place</h3>
 					<h3 th:if="${advert.mobilityLowerCounters}"><span class="green-class">&check;</span> Lower Counters</h3>
@@ -55,9 +53,10 @@
 					<h3 th:unless="${advert.mobilitySupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.mobilityTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.mobilityTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
+					<h3 th:if="${advert.mobilityUnrestrictedViewing}"><span class="green-class">&check;</span> Unrestricted Viewing</h3>
+					<h3 th:unless="${advert.mobilityUnrestrictedViewing}"><span class="red-class">&cross;</span> Unrestricted Viewing</h3>
 					
 					
-					<h3> Unrestricted Viewing: <span th:text="${advert.mobilityUnrestrictedViewing}"></span> </h3>
 					<h3>Additonal Comments: </h3>
 					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityComments}"></textarea>
 				</div>
@@ -91,8 +90,9 @@
 					<h3 th:unless="${advert.blindSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.blindTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.blindTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
+					<h3 th:if="${advert.blindFrontSeating}"><span class="green-class">&check;</span> Front Seating</h3>
+					<h3 th:unless="${advert.blindFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
-					<h3> Front Seating: <span th:text="${advert.blindFrontSeating}"></span> </h3>
 					<h3>Additonal Comments: </h3>
 					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindComments}"></textarea>
 				
@@ -115,8 +115,9 @@
 					<h3 th:unless="${advert.deafSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.deafTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.deafTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
+					<h3 th:if="${advert.deafFrontSeating}"><span class="green-class">&check;</span> Front Seating</h3>
+					<h3 th:unless="${advert.deafFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
-					<h3> Front Seating: <span th:text="${advert.deafFrontSeating}"></span> </h3>
 					<h3>Additonal Comments: </h3>
 					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafComments}"></textarea>
 				</div>
@@ -142,8 +143,9 @@
 					<h3 th:unless="${advert.neurodiverseSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.neurodiverseTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.neurodiverseTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
+					<h3 th:if="${advert.neurodiverseFlashingSignage}"><span class="green-class">&check;</span> Flashing Signage</h3>
+					<h3 th:unless="${advert.neurodiverseFlashingSignage}"><span class="red-class">&cross;</span> Flashing Signage</h3>
 					
-					<h3> Flashing Signage: <span th:text="${advert.neurodiverseFlashingSignage}"></span> </h3>
 					<h3>Additonal Comments: </h3>
 					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseComments}"></textarea>
 				</div>

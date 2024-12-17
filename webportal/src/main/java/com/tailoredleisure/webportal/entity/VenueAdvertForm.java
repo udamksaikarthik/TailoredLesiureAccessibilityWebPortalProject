@@ -36,6 +36,9 @@ public class VenueAdvertForm {
 
     @NotBlank(message = "Venue Post Code is mandatory")
     private String venuePostCode;
+    
+    @NotBlank(message = "Business Email is mandatory!")
+    private String businessEmail;
 
     @NotNull(message = "This field is mandatory")
     private Boolean venueAuditFlg;
@@ -72,13 +75,10 @@ public class VenueAdvertForm {
     private Boolean mobilityDisabledToilets;
 
     @NotNull(message = "This field is mandatory")
-    private Boolean mobilityToiletTurnaround;
-
-    @NotNull(message = "This field is mandatory")
     private Boolean mobilityChangingPlace;
 
     @NotNull(message = "This field is mandatory")
-    private Boolean mobilityLowerCounters;
+    private Boolean mobilityLowerCounters; 
 
     @NotNull(message = "This field is mandatory")
     private Boolean mobilityLifts;
@@ -86,8 +86,8 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean mobilityRamps;
 
-    @NotBlank(message = "This field is mandatory")
-    private String mobilityUnrestrictedViewing;
+    @NotNull(message = "This field is mandatory")
+    private Boolean mobilityUnrestrictedViewing;
 
     @NotNull(message = "This field is mandatory")
     private Boolean mobilityAccessibleDoors;
@@ -137,8 +137,8 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean blindAdaptedSignage;
 
-    @NotBlank(message = "This field is mandatory")
-    private String blindFrontSeating;
+    @NotNull(message = "This field is mandatory")
+    private Boolean blindFrontSeating;
 
     @NotNull(message = "This field is mandatory")
     private Boolean blindSupportiveStaff;
@@ -164,8 +164,8 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean deafSubtitles;
 
-    @NotBlank(message = "This field is mandatory")
-    private String deafFrontSeating;
+    @NotNull(message = "This field is mandatory")
+    private Boolean deafFrontSeating;
 
     @NotNull(message = "This field is mandatory")
     private Boolean deafSupportiveStaff;
@@ -194,8 +194,8 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean neurodiverseQuieterTimeAds;
 
-    @NotBlank(message = "This field is mandatory")
-    private String neurodiverseFlashingSignage;
+    @NotNull(message = "This field is mandatory")
+    private Boolean neurodiverseFlashingSignage;
 
     @NotNull(message = "This field is mandatory")
     private Boolean neurodiverseAdaptedLeaflets;
@@ -315,14 +315,6 @@ public class VenueAdvertForm {
 		this.mobilityDisabledToilets = mobilityDisabledToilets;
 	}
 
-	public Boolean getMobilityToiletTurnaround() {
-		return mobilityToiletTurnaround;
-	}
-
-	public void setMobilityToiletTurnaround(Boolean mobilityToiletTurnaround) {
-		this.mobilityToiletTurnaround = mobilityToiletTurnaround;
-	}
-
 	public Boolean getMobilityChangingPlace() {
 		return mobilityChangingPlace;
 	}
@@ -355,11 +347,11 @@ public class VenueAdvertForm {
 		this.mobilityRamps = mobilityRamps;
 	}
 
-	public String getMobilityUnrestrictedViewing() {
+	public Boolean getMobilityUnrestrictedViewing() {
 		return mobilityUnrestrictedViewing;
 	}
 
-	public void setMobilityUnrestrictedViewing(String mobilityUnrestrictedViewing) {
+	public void setMobilityUnrestrictedViewing(Boolean mobilityUnrestrictedViewing) {
 		this.mobilityUnrestrictedViewing = mobilityUnrestrictedViewing;
 	}
 
@@ -491,11 +483,11 @@ public class VenueAdvertForm {
 		this.blindAdaptedSignage = blindAdaptedSignage;
 	}
 
-	public String getBlindFrontSeating() {
+	public Boolean getBlindFrontSeating() {
 		return blindFrontSeating;
 	}
 
-	public void setBlindFrontSeating(String blindFrontSeating) {
+	public void setBlindFrontSeating(Boolean blindFrontSeating) {
 		this.blindFrontSeating = blindFrontSeating;
 	}
 
@@ -563,11 +555,11 @@ public class VenueAdvertForm {
 		this.deafSubtitles = deafSubtitles;
 	}
 
-	public String getDeafFrontSeating() {
+	public Boolean getDeafFrontSeating() {
 		return deafFrontSeating;
 	}
 
-	public void setDeafFrontSeating(String deafFrontSeating) {
+	public void setDeafFrontSeating(Boolean deafFrontSeating) {
 		this.deafFrontSeating = deafFrontSeating;
 	}
 
@@ -643,11 +635,11 @@ public class VenueAdvertForm {
 		this.neurodiverseQuieterTimeAds = neurodiverseQuieterTimeAds;
 	}
 
-	public String getNeurodiverseFlashingSignage() {
+	public Boolean getNeurodiverseFlashingSignage() {
 		return neurodiverseFlashingSignage;
 	}
 
-	public void setNeurodiverseFlashingSignage(String neurodiverseFlashingSignage) {
+	public void setNeurodiverseFlashingSignage(Boolean neurodiverseFlashingSignage) {
 		this.neurodiverseFlashingSignage = neurodiverseFlashingSignage;
 	}
 
@@ -706,6 +698,14 @@ public class VenueAdvertForm {
 	public void setTLVerifiedVenueAdvertFlg(Boolean tLVerifiedVenueAdvertFlg) {
 		TLVerifiedVenueAdvertFlg = tLVerifiedVenueAdvertFlg;
 	}
+	
+	public String getBusinessEmail() {
+		return businessEmail;
+	}
+
+	public void setBusinessEmail(String businessEmail) {
+		this.businessEmail = businessEmail;
+	}
 
 	@Override
 	public String toString() {
@@ -715,8 +715,7 @@ public class VenueAdvertForm {
 				+ mobilityDisabledCarParking + ", mobilityHeadphonesAvailable=" + mobilityHeadphonesAvailable
 				+ ", mobilityAccessibleRoute=" + mobilityAccessibleRoute + ", mobilityWideDoorways="
 				+ mobilityWideDoorways + ", mobilityWheelchairSeating=" + mobilityWheelchairSeating
-				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityToiletTurnaround="
-				+ mobilityToiletTurnaround + ", mobilityChangingPlace=" + mobilityChangingPlace
+				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityChangingPlace=" + mobilityChangingPlace
 				+ ", mobilityLowerCounters=" + mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts
 				+ ", mobilityRamps=" + mobilityRamps + ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing
 				+ ", mobilityAccessibleDoors=" + mobilityAccessibleDoors + ", mobilityEyeLevelSignage="

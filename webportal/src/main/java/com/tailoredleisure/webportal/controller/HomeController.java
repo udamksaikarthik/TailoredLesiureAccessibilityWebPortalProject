@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.dao.users.UserRepository;
@@ -72,13 +73,14 @@ public class HomeController {
 	
 	@PostMapping("/business/submitVenueAdvertForm")
 	private ModelAndView submitVenueAdvertForm(@Valid @ModelAttribute("venueForm") VenueAdvertForm venueAdvertForm,
-            BindingResult bindingResult) {
+            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Inside showVenueAdvertPage method");
         ModelAndView mv = new ModelAndView();
         if (bindingResult.hasErrors()) {
         	System.out.println("bindingResult has Errors.");
         	System.out.println("bindingResult.getErrorCount(): "+bindingResult.getErrorCount());
         	System.out.println("bindingResult.getAllErrors(): "+bindingResult.getAllErrors());
+        	mv.addObject("images_warn_msg", "Please reselect the media files(images/videos) again in media section! If you have selected any before submitting the form.");
         	mv.setViewName("venueadvertpage");
             return mv;  // return to signup form if errors
         }else {
@@ -96,7 +98,7 @@ public class HomeController {
         // Process the valid form (e.g., save venue form to the database)
         Boolean flag = homeServiceImpl.saveAdvertForm(venueAdvertForm, user);
         if(flag) {
-            mv.addObject("advert_form_success_msg", "Advert added successfully.");
+        	redirectAttributes.addFlashAttribute("advert_form_success_msg", "Advert added successfully.");
         }else {
         	
         }

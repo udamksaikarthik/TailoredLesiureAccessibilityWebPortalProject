@@ -11,6 +11,7 @@
 	<div th:replace="fragments.html :: header"></div>
 	<div th:replace="fragments.html :: header_mobile"></div>
 	
+			<h2 class="form-success-message" th:if="${advert_form_success_msg != null and advert_form_success_msg != ''}" th:text="${advert_form_success_msg}"></h2>
 	<div class="cards_container">
 	
 		<div sec:authorize="isAuthenticated()" class="tailored_venues_card_container cards_common_container">
