@@ -200,12 +200,14 @@ public class HomeDao {
 		venueAdvertFormBean.setMedia(convertEntityToBean(venueAdvertFormEntity.getMedia()));
 		
 		//Section-1
+		venueAdvertFormBean.setId(venueAdvertFormEntity.getId());
 		venueAdvertFormBean.setVenueName(venueAdvertFormEntity.getVenueName());
 		venueAdvertFormBean.setVenueType(venueAdvertFormEntity.getVenueType());
 		venueAdvertFormBean.setVenueLocation(venueAdvertFormEntity.getVenueLocation());
 		venueAdvertFormBean.setVenuePostCode(venueAdvertFormEntity.getVenuePostCode());
 		venueAdvertFormBean.setVenueAuditFlg(venueAdvertFormEntity.getVenueAuditFlg());
 		venueAdvertFormBean.setVenueAuditFlgTL(venueAdvertFormEntity.getVenueAuditFlgTL());
+		venueAdvertFormBean.setTLVerifiedVenueAdvertFlg(venueAdvertFormEntity.getTLVerifiedVenueAdvertFlg());
 		venueAdvertFormBean.setBusinessEmail(venueAdvertFormEntity.getBusinessEmail());
 		
 		
@@ -304,6 +306,22 @@ public class HomeDao {
 		userBean.setRole(user.getRole());
 		userBean.setVenueAdvertForm(user.getVenueAdvertForm());
 		return userBean;
+	}
+
+	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advert_id);
+		
+		VenueAdvertFormBean venueAdvertBean = new VenueAdvertFormBean();
+		
+		if(venueAdvertFormEntity.isPresent()) {
+			com.tailoredleisure.webportal.entity.VenueAdvertForm existingAdvertEntity = venueAdvertFormEntity.get();
+			existingAdvertEntity.setTLVerifiedVenueAdvertFlg(tlVerifyStatus);
+			existingAdvertEntity.setVenueAuditFlgTL(tlVenueAuditStatus);
+			venueAdvertRepository.save(existingAdvertEntity);
+			venueAdvertBean = convertEntityIntoBean(existingAdvertEntity);
+		}
+		return venueAdvertBean;
 	}
 
 }

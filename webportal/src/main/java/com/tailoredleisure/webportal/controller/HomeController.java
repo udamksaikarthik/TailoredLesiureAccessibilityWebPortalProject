@@ -1,5 +1,7 @@
 package com.tailoredleisure.webportal.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,12 +10,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
+import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.UserRepository;
 import com.tailoredleisure.webportal.entity.Users;
+import com.tailoredleisure.webportal.service.admin.AdminServiceImpl;
 import com.tailoredleisure.webportal.service.users.HomeServiceImpl;
 
 import jakarta.validation.Valid;
@@ -27,6 +32,8 @@ public class HomeController {
 
 	@Autowired
 	private HomeServiceImpl homeServiceImpl;
+	
+
 
 	@GetMapping("/")
 	private ModelAndView showHomePage() {
@@ -104,6 +111,26 @@ public class HomeController {
         }
         mv.setViewName("redirect:/");
 
+		return mv;
+	}
+	
+	@GetMapping("/users/showVerifyVenuesPage")
+	public ModelAndView showVerifyVenuesPage() {
+		ModelAndView mv = new ModelAndView();
+		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = homeServiceImpl.getAllAdverts(true);
+		mv.addObject("adverts", adverts);
+		mv.addObject("adverts_title", "Verified Adverts");
+		mv.setViewName("verifyvenuespage.html");
+		return mv;
+	}
+	
+	@GetMapping("/users/showSelectedVenuePage")
+	public ModelAndView showSelectedVenuePage(@RequestParam Long id) {
+		ModelAndView mv = new ModelAndView();
+		VenueAdvertFormBean venueAdvertFormBean = homeServiceImpl.getSelectedVenueAdvertForm(id);
+		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
+		mv.addObject("advert", venueAdvertFormBean);
+		mv.setViewName("selectedvenuepage.html");
 		return mv;
 	}
 }

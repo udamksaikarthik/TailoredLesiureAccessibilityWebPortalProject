@@ -460,37 +460,40 @@ public class VenueAdvertFormBean {
 		return "VenueAdvertFormBean [id=" + id + ", venueName=" + venueName + ", venueType=" + venueType
 				+ ", venueLocation=" + venueLocation + ", venuePostCode=" + venuePostCode + ", venueAuditFlg="
 				+ venueAuditFlg + ", venueAuditFlgTL=" + venueAuditFlgTL + ", TLVerifiedVenueAdvertFlg="
-				+ TLVerifiedVenueAdvertFlg + ", media=" + media + ", user=" + user + ", mobilityDisabledCarParking="
-				+ mobilityDisabledCarParking + ", mobilityHeadphonesAvailable=" + mobilityHeadphonesAvailable
-				+ ", mobilityAccessibleRoute=" + mobilityAccessibleRoute + ", mobilityWideDoorways="
-				+ mobilityWideDoorways + ", mobilityWheelchairSeating=" + mobilityWheelchairSeating
-				+ ", mobilityDisabledToilets=" + mobilityDisabledToilets + ", mobilityChangingPlace=" + mobilityChangingPlace
-				+ ", mobilityLowerCounters=" + mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts
-				+ ", mobilityRamps=" + mobilityRamps + ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing
-				+ ", mobilityAccessibleDoors=" + mobilityAccessibleDoors + ", mobilityEyeLevelSignage="
-				+ mobilityEyeLevelSignage + ", mobilitySupportiveStaff=" + mobilitySupportiveStaff
-				+ ", mobilityTrainedStaff=" + mobilityTrainedStaff + ", mobilityComments=" + mobilityComments
-				+ ", blindHighContrastSignage=" + blindHighContrastSignage + ", blindLargeFontSignage="
-				+ blindLargeFontSignage + ", blindBrailleSignage=" + blindBrailleSignage + ", blindVisibleWalkways="
-				+ blindVisibleWalkways + ", blindTouchTours=" + blindTouchTours + ", blindLargeSubtitles="
-				+ blindLargeSubtitles + ", blindNoTripHazards=" + blindNoTripHazards + ", blindAdjustableLighting="
-				+ blindAdjustableLighting + ", blindAudioDescriptions=" + blindAudioDescriptions
-				+ ", blindAdaptedLeaflets=" + blindAdaptedLeaflets + ", blindAdaptedSignage=" + blindAdaptedSignage
-				+ ", blindFrontSeating=" + blindFrontSeating + ", blindSupportiveStaff=" + blindSupportiveStaff
-				+ ", blindTrainedStaff=" + blindTrainedStaff + ", blindComments=" + blindComments
-				+ ", deafHearingLoops=" + deafHearingLoops + ", deafAssistiveTechnology=" + deafAssistiveTechnology
-				+ ", deafSignLanguage=" + deafSignLanguage + ", deafAdequateSignage=" + deafAdequateSignage
-				+ ", deafSubtitles=" + deafSubtitles + ", deafFrontSeating=" + deafFrontSeating
-				+ ", deafSupportiveStaff=" + deafSupportiveStaff + ", deafTrainedStaff=" + deafTrainedStaff
-				+ ", deafComments=" + deafComments + ", neurodiverseNoiseReduction=" + neurodiverseNoiseReduction
-				+ ", neurodiverseAdjustableLighting=" + neurodiverseAdjustableLighting + ", neurodiverseQuieterAreas="
-				+ neurodiverseQuieterAreas + ", neurodiverseSensoryBag=" + neurodiverseSensoryBag
-				+ ", neurodiverseLoudNoiseReduction=" + neurodiverseLoudNoiseReduction + ", neurodiverseQuieterTimeAds="
-				+ neurodiverseQuieterTimeAds + ", neurodiverseFlashingSignage=" + neurodiverseFlashingSignage
-				+ ", neurodiverseAdaptedLeaflets=" + neurodiverseAdaptedLeaflets + ", neurodiverseSupportiveStaff="
-				+ neurodiverseSupportiveStaff + ", neurodiverseTrainedStaff=" + neurodiverseTrainedStaff
-				+ ", neurodiverseComments=" + neurodiverseComments + "]";
+				+ TLVerifiedVenueAdvertFlg + ", businessEmail=" + businessEmail + ", media=" + media + ", user=" + user
+				+ ", mobilityDisabledCarParking=" + mobilityDisabledCarParking + ", mobilityHeadphonesAvailable="
+				+ mobilityHeadphonesAvailable + ", mobilityAccessibleRoute=" + mobilityAccessibleRoute
+				+ ", mobilityWideDoorways=" + mobilityWideDoorways + ", mobilityWheelchairSeating="
+				+ mobilityWheelchairSeating + ", mobilityDisabledToilets=" + mobilityDisabledToilets
+				+ ", mobilityChangingPlace=" + mobilityChangingPlace + ", mobilityLowerCounters="
+				+ mobilityLowerCounters + ", mobilityLifts=" + mobilityLifts + ", mobilityRamps=" + mobilityRamps
+				+ ", mobilityUnrestrictedViewing=" + mobilityUnrestrictedViewing + ", mobilityAccessibleDoors="
+				+ mobilityAccessibleDoors + ", mobilityEyeLevelSignage=" + mobilityEyeLevelSignage
+				+ ", mobilitySupportiveStaff=" + mobilitySupportiveStaff + ", mobilityTrainedStaff="
+				+ mobilityTrainedStaff + ", mobilityComments=" + mobilityComments + ", blindHighContrastSignage="
+				+ blindHighContrastSignage + ", blindLargeFontSignage=" + blindLargeFontSignage
+				+ ", blindBrailleSignage=" + blindBrailleSignage + ", blindVisibleWalkways=" + blindVisibleWalkways
+				+ ", blindTouchTours=" + blindTouchTours + ", blindLargeSubtitles=" + blindLargeSubtitles
+				+ ", blindNoTripHazards=" + blindNoTripHazards + ", blindAdjustableLighting=" + blindAdjustableLighting
+				+ ", blindAudioDescriptions=" + blindAudioDescriptions + ", blindAdaptedLeaflets="
+				+ blindAdaptedLeaflets + ", blindAdaptedSignage=" + blindAdaptedSignage + ", blindFrontSeating="
+				+ blindFrontSeating + ", blindSupportiveStaff=" + blindSupportiveStaff + ", blindTrainedStaff="
+				+ blindTrainedStaff + ", blindComments=" + blindComments + ", deafHearingLoops=" + deafHearingLoops
+				+ ", deafAssistiveTechnology=" + deafAssistiveTechnology + ", deafSignLanguage=" + deafSignLanguage
+				+ ", deafAdequateSignage=" + deafAdequateSignage + ", deafSubtitles=" + deafSubtitles
+				+ ", deafFrontSeating=" + deafFrontSeating + ", deafSupportiveStaff=" + deafSupportiveStaff
+				+ ", deafTrainedStaff=" + deafTrainedStaff + ", deafComments=" + deafComments
+				+ ", neurodiverseNoiseReduction=" + neurodiverseNoiseReduction + ", neurodiverseAdjustableLighting="
+				+ neurodiverseAdjustableLighting + ", neurodiverseQuieterAreas=" + neurodiverseQuieterAreas
+				+ ", neurodiverseSensoryBag=" + neurodiverseSensoryBag + ", neurodiverseLoudNoiseReduction="
+				+ neurodiverseLoudNoiseReduction + ", neurodiverseQuieterTimeAds=" + neurodiverseQuieterTimeAds
+				+ ", neurodiverseFlashingSignage=" + neurodiverseFlashingSignage + ", neurodiverseAdaptedLeaflets="
+				+ neurodiverseAdaptedLeaflets + ", neurodiverseSupportiveStaff=" + neurodiverseSupportiveStaff
+				+ ", neurodiverseTrainedStaff=" + neurodiverseTrainedStaff + ", neurodiverseComments="
+				+ neurodiverseComments + "]";
 	}
+	
+	
 
     
 }

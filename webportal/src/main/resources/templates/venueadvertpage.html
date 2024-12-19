@@ -9,27 +9,9 @@
     <link rel="stylesheet" th:href="@{/css/venueadvertpageStyles.css}">
 </head>
 <body>
-	<div class="header-container">
-		<div class="left-alignment-header-container common-header-container">
-			<h1>Welcome, <span th:text="${firstName}"></span></h1>
-		</div>
-		<div class="center-alignment-header-container common-header-container">
-			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
-			<div class="header-inner-text-container">
-				<h1>Tailored Leisure</h1>
-				<h4>Accessibility for Everyone</h4>
-			</div>
-		</div>
-		<div class="right-alignment-header-container common-header-container">
-			<form action="/logout" method="post">
-			    <button type="submit" class="form_btn_logout">Logout</button>
-			</form>
-		</div>
-	</div>
 	
-	<div class="mobile-left-alignment-header-container common-header-container">
-			<h1>Welcome, <span th:text="${firstName}"></span></h1>
-	</div>
+	<div th:replace="fragments.html :: header_back_btn"></div>
+	<div th:replace="fragments.html :: header_mobile"></div>
     <h1 class="advert_title_class_h1"> Venue Accessibility Checklist Advertisement Form</h1>
     <p class="error-message" th:text="${images_warn_msg}"></p>
     <form class="advert_checklist_form" th:action="@{/business/submitVenueAdvertForm}" th:object="${venueForm}" method="post" enctype="multipart/form-data">
@@ -57,18 +39,6 @@
 		        <input class="input_field_inside_venue_info_class" type="text" id="venuePostCode" th:field="*{venuePostCode}" placeholder="Enter post code">
 		        <div th:if="${#fields.hasErrors('venuePostCode')}" th:errors="*{venuePostCode}" class="error-message"></div>
 		        
-		        <label for="venueAuditFlgId"> Do you want Tailored Leisure team to audit your venue? 
-                    <span class="mandatory">*</span>
-                </label>
-                <input id="venueAuditFlgId" type="radio" th:field="*{venueAuditFlg}" value="true"> Yes
-                <input id="venueAuditFlgId" type="radio" th:field="*{venueAuditFlg}" value="false"> No
-                <div th:if="${#fields.hasErrors('venueAuditFlg')}" th:errors="*{venueAuditFlg}" class="error-message"></div>
-            
-            	<label for="businessEmailId"> Do you want Tailored Leisure team to audit your venue? 
-                    <span class="mandatory">*</span>
-                </label>
-                <input class="input_field_inside_venue_info_class" id="businessEmailId" type="text" th:field="*{businessEmail}" placeholder="Enter your business email here..."> 
-                <div th:if="${#fields.hasErrors('businessEmail')}" th:errors="*{businessEmail}" class="error-message"></div>
 		    </div>
 		</div>
 
@@ -106,6 +76,7 @@
                 <input type="radio" th:field="*{mobilityDisabledCarParking}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityDisabledCarParking}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityDisabledCarParking')}" th:errors="*{mobilityDisabledCarParking}" class="error-message"></div>
+                
             </li>
             <li>
                 <label>2. Are headphones available for people who are sensitive to noise? 
@@ -533,6 +504,19 @@
 		    </div>
 		</div>
 
+		
+        <label for="venueAuditFlgId"> Would you like Tailored Leisure team to audit your venue? 
+            <span class="mandatory">*</span>
+        </label>
+        <input id="venueAuditFlgId" type="radio" th:field="*{venueAuditFlg}" value="true"> Yes
+        <input id="venueAuditFlgId" type="radio" th:field="*{venueAuditFlg}" value="false"> No
+        <div th:if="${#fields.hasErrors('venueAuditFlg')}" th:errors="*{venueAuditFlg}" class="error-message"></div>
+    
+    	<label for="businessEmailId"> Would you please share your business email with tailored leisure team? 
+            <span class="mandatory">*</span>
+        </label>
+        <input class="input_field_inside_venue_info_class" id="businessEmailId" type="text" th:field="*{businessEmail}" placeholder="Enter your business email here..."> 
+        <div th:if="${#fields.hasErrors('businessEmail')}" th:errors="*{businessEmail}" class="error-message"></div>
 
 
 

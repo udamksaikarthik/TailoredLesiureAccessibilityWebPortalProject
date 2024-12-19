@@ -26,34 +26,36 @@
 				<h1>Mobility Access Checklist</h1><br>
 				<div>
 					<h3 th:if="${advert.mobilityDisabledCarParking}"><span class="green-class">&check;</span> Disabled Car Parking</h3>
-					<h3 th:unless="${advert.mobilityDisabledCarParking}"><span class="red-class">&cross;</span> Disabled Car Parking</h3>
 					<h3 th:if="${advert.mobilityHeadphonesAvailable}"><span class="green-class">&check;</span> HeadPhones Availability</h3>
-					<h3 th:unless="${advert.mobilityHeadphonesAvailable}"><span class="red-class">&cross;</span> HeadPhones Availability</h3>
 					<h3 th:if="${advert.mobilityAccessibleRoute}"><span class="green-class">&check;</span> Accessible Route</h3>
-					<h3 th:unless="${advert.mobilityAccessibleRoute}"><span class="red-class">&cross;</span>  Accessible Route</h3>
 					<h3 th:if="${advert.mobilityWideDoorways}"><span class="green-class">&check;</span> Wide Doorways</h3>
-					<h3 th:unless="${advert.mobilityWideDoorways}"><span class="red-class">&cross;</span> Wide Doorways</h3>
 					<h3 th:if="${advert.mobilityWheelchairSeating}"><span class="green-class">&check;</span> Wheel chair Seating</h3>
-					<h3 th:unless="${advert.mobilityWheelchairSeating}"><span class="red-class">&cross;</span> Wheel chair Seating</h3>
 					<h3 th:if="${advert.mobilityDisabledToilets}"><span class="green-class">&check;</span> Disabled Toilets</h3>
-					<h3 th:unless="${advert.mobilityDisabledToilets}"><span class="red-class">&cross;</span> Disabled Toilets</h3>
 					<h3 th:if="${advert.mobilityChangingPlace}"><span class="green-class">&check;</span> Changing Place</h3>
-					<h3 th:unless="${advert.mobilityChangingPlace}"><span class="red-class">&cross;</span> Changing Place</h3>
 					<h3 th:if="${advert.mobilityLowerCounters}"><span class="green-class">&check;</span> Lower Counters</h3>
-					<h3 th:unless="${advert.mobilityLowerCounters}"><span class="red-class">&cross;</span> Lower Counters</h3>
 					<h3 th:if="${advert.mobilityLifts}"><span class="green-class">&check;</span> Lifts</h3>
-					<h3 th:unless="${advert.mobilityLifts}"><span class="red-class">&cross;</span> Lifts</h3>
 					<h3 th:if="${advert.mobilityRamps}"><span class="green-class">&check;</span> Ramps</h3>
-					<h3 th:unless="${advert.mobilityRamps}"><span class="red-class">&cross;</span> Ramps</h3>
 					<h3 th:if="${advert.mobilityAccessibleDoors}"><span class="green-class">&check;</span> Accessible Doors</h3>
-					<h3 th:unless="${advert.mobilityAccessibleDoors}"><span class="red-class">&cross;</span> Accessible Doors</h3>
 					<h3 th:if="${advert.mobilityEyeLevelSignage}"><span class="green-class">&check;</span> Eye Level Signage</h3>
-					<h3 th:unless="${advert.mobilityEyeLevelSignage}"><span class="red-class">&cross;</span> Eye Level Signage</h3>
 					<h3 th:if="${advert.mobilitySupportiveStaff}"><span class="green-class">&check;</span> Supportive Staff</h3>
-					<h3 th:unless="${advert.mobilitySupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.mobilityTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
-					<h3 th:unless="${advert.mobilityTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:if="${advert.mobilityUnrestrictedViewing}"><span class="green-class">&check;</span> Unrestricted Viewing</h3>
+					
+					
+					<h3 th:unless="${advert.mobilityDisabledCarParking}"><span class="red-class">&cross;</span> Disabled Car Parking</h3>
+					<h3 th:unless="${advert.mobilityHeadphonesAvailable}"><span class="red-class">&cross;</span> HeadPhones Availability</h3>
+					<h3 th:unless="${advert.mobilityAccessibleRoute}"><span class="red-class">&cross;</span>  Accessible Route</h3>
+					<h3 th:unless="${advert.mobilityWideDoorways}"><span class="red-class">&cross;</span> Wide Doorways</h3>
+					<h3 th:unless="${advert.mobilityWheelchairSeating}"><span class="red-class">&cross;</span> Wheel chair Seating</h3>
+					<h3 th:unless="${advert.mobilityDisabledToilets}"><span class="red-class">&cross;</span> Disabled Toilets</h3>
+					<h3 th:unless="${advert.mobilityChangingPlace}"><span class="red-class">&cross;</span> Changing Place</h3>
+					<h3 th:unless="${advert.mobilityLowerCounters}"><span class="red-class">&cross;</span> Lower Counters</h3>
+					<h3 th:unless="${advert.mobilityLifts}"><span class="red-class">&cross;</span> Lifts</h3>
+					<h3 th:unless="${advert.mobilityRamps}"><span class="red-class">&cross;</span> Ramps</h3>
+					<h3 th:unless="${advert.mobilityAccessibleDoors}"><span class="red-class">&cross;</span> Accessible Doors</h3>
+					<h3 th:unless="${advert.mobilityEyeLevelSignage}"><span class="red-class">&cross;</span> Eye Level Signage</h3>
+					<h3 th:unless="${advert.mobilitySupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
+					<h3 th:unless="${advert.mobilityTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.mobilityUnrestrictedViewing}"><span class="red-class">&cross;</span> Unrestricted Viewing</h3>
 					
 					
@@ -65,34 +67,34 @@
 				<h1>Blind Visually Impaired Access Checklist</h1><br>
 				<div>
 					<h3 th:if="${advert.blindHighContrastSignage}"><span class="green-class">&check;</span> High Contrast Signage</h3>
-					<h3 th:unless="${advert.blindHighContrastSignage}"><span class="red-class">&cross;</span> High Contrast Signage</h3>
 					<h3 th:if="${advert.blindLargeFontSignage}"><span class="green-class">&check;</span> Large Font Signage</h3>
-					<h3 th:unless="${advert.blindLargeFontSignage}"><span class="red-class">&cross;</span> Large Font Signage</h3>
 					<h3 th:if="${advert.blindBrailleSignage}"><span class="green-class">&check;</span> Braille Signage</h3>
-					<h3 th:unless="${advert.blindBrailleSignage}"><span class="red-class">&cross;</span> Braille Signage</h3>
 					<h3 th:if="${advert.blindVisibleWalkways}"><span class="green-class">&check;</span> Visible Walkways</h3>
-					<h3 th:unless="${advert.blindVisibleWalkways}"><span class="red-class">&cross;</span> Visible Walkways</h3>
 					<h3 th:if="${advert.blindTouchTours}"><span class="green-class">&check;</span> Touch Tours</h3>
-					<h3 th:unless="${advert.blindTouchTours}"><span class="red-class">&cross;</span> Touch Tours</h3>
 					<h3 th:if="${advert.blindLargeSubtitles}"><span class="green-class">&check;</span> Large Subtitles</h3>
-					<h3 th:unless="${advert.blindLargeSubtitles}"><span class="red-class">&cross;</span> Large Subtitles</h3>
 					<h3 th:if="${advert.blindNoTripHazards}"><span class="green-class">&check;</span> No Trip Hazards</h3>
-					<h3 th:unless="${advert.blindNoTripHazards}"><span class="red-class">&cross;</span> No Trip Hazards</h3>
 					<h3 th:if="${advert.blindAdjustableLighting}"><span class="green-class">&check;</span> Adjustable Lighting</h3>
-					<h3 th:unless="${advert.blindAdjustableLighting}"><span class="red-class">&cross;</span> Adjustable Lighting</h3>
 					<h3 th:if="${advert.blindAudioDescriptions}"><span class="green-class">&check;</span> Audio Descriptions</h3>
-					<h3 th:unless="${advert.blindAudioDescriptions}"><span class="red-class">&cross;</span> Audio Descriptions</h3>
 					<h3 th:if="${advert.blindAdaptedLeaflets}"><span class="green-class">&check;</span> Adapted Leaflets</h3>
-					<h3 th:unless="${advert.blindAdaptedLeaflets}"><span class="red-class">&cross;</span> Adapted Leaflets</h3>
 					<h3 th:if="${advert.blindAdaptedSignage}"><span class="green-class">&check;</span> Adapted Signage</h3>
-					<h3 th:unless="${advert.blindAdaptedSignage}"><span class="red-class">&cross;</span> Adapted Signage</h3>
 					<h3 th:if="${advert.blindSupportiveStaff}"><span class="green-class">&check;</span> Supportive Staff</h3>
-					<h3 th:unless="${advert.blindSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.blindTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
-					<h3 th:unless="${advert.blindTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:if="${advert.blindFrontSeating}"><span class="green-class">&check;</span> Front Seating</h3>
-					<h3 th:unless="${advert.blindFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
+					<h3 th:unless="${advert.blindHighContrastSignage}"><span class="red-class">&cross;</span> High Contrast Signage</h3>
+					<h3 th:unless="${advert.blindLargeFontSignage}"><span class="red-class">&cross;</span> Large Font Signage</h3>
+					<h3 th:unless="${advert.blindBrailleSignage}"><span class="red-class">&cross;</span> Braille Signage</h3>
+					<h3 th:unless="${advert.blindVisibleWalkways}"><span class="red-class">&cross;</span> Visible Walkways</h3>
+					<h3 th:unless="${advert.blindTouchTours}"><span class="red-class">&cross;</span> Touch Tours</h3>
+					<h3 th:unless="${advert.blindLargeSubtitles}"><span class="red-class">&cross;</span> Large Subtitles</h3>
+					<h3 th:unless="${advert.blindNoTripHazards}"><span class="red-class">&cross;</span> No Trip Hazards</h3>
+					<h3 th:unless="${advert.blindAdjustableLighting}"><span class="red-class">&cross;</span> Adjustable Lighting</h3>
+					<h3 th:unless="${advert.blindAudioDescriptions}"><span class="red-class">&cross;</span> Audio Descriptions</h3>
+					<h3 th:unless="${advert.blindAdaptedLeaflets}"><span class="red-class">&cross;</span> Adapted Leaflets</h3>
+					<h3 th:unless="${advert.blindAdaptedSignage}"><span class="red-class">&cross;</span> Adapted Signage</h3>
+					<h3 th:unless="${advert.blindSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
+					<h3 th:unless="${advert.blindTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
+					<h3 th:unless="${advert.blindFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					<h3>Additonal Comments: </h3>
 					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindComments}"></textarea>
 				
@@ -102,20 +104,21 @@
 				<h1>Deaf/Hard of Hearing Access Checklist</h1><br>
 				<div>
 					<h3 th:if="${advert.deafHearingLoops}"><span class="green-class">&check;</span> Hearing Loops</h3>
-					<h3 th:unless="${advert.deafHearingLoops}"><span class="red-class">&cross;</span> Hearing Loops</h3>
 					<h3 th:if="${advert.deafAssistiveTechnology}"><span class="green-class">&check;</span> Assistive Technology</h3>
-					<h3 th:unless="${advert.deafAssistiveTechnology}"><span class="red-class">&cross;</span> Assistive Technology</h3>
 					<h3 th:if="${advert.deafSignLanguage}"><span class="green-class">&check;</span> Sign Language</h3>
-					<h3 th:unless="${advert.deafSignLanguage}"><span class="red-class">&cross;</span> Sign Language</h3>
 					<h3 th:if="${advert.deafAdequateSignage}"><span class="green-class">&check;</span> Adequate Signage</h3>
-					<h3 th:unless="${advert.deafAdequateSignage}"><span class="red-class">&cross;</span> Adequate Signage</h3>
 					<h3 th:if="${advert.deafSubtitles}"><span class="green-class">&check;</span> Subtitles</h3>
-					<h3 th:unless="${advert.deafSubtitles}"><span class="red-class">&cross;</span> Subtitles</h3>
 					<h3 th:if="${advert.deafSupportiveStaff}"><span class="green-class">&check;</span> Supportive Staff</h3>
-					<h3 th:unless="${advert.deafSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.deafTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
-					<h3 th:unless="${advert.deafTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:if="${advert.deafFrontSeating}"><span class="green-class">&check;</span> Front Seating</h3>
+					
+					<h3 th:unless="${advert.deafHearingLoops}"><span class="red-class">&cross;</span> Hearing Loops</h3>
+					<h3 th:unless="${advert.deafAssistiveTechnology}"><span class="red-class">&cross;</span> Assistive Technology</h3>
+					<h3 th:unless="${advert.deafSignLanguage}"><span class="red-class">&cross;</span> Sign Language</h3>
+					<h3 th:unless="${advert.deafAdequateSignage}"><span class="red-class">&cross;</span> Adequate Signage</h3>
+					<h3 th:unless="${advert.deafSubtitles}"><span class="red-class">&cross;</span> Subtitles</h3>
+					<h3 th:unless="${advert.deafSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
+					<h3 th:unless="${advert.deafTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.deafFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
 					<h3>Additonal Comments: </h3>
@@ -126,24 +129,25 @@
 				<h1>Neurodiverse Access Checklist</h1><br>
 				<div>
 					<h3 th:if="${advert.neurodiverseNoiseReduction}"><span class="green-class">&check;</span> Noise Reduction</h3>
-					<h3 th:unless="${advert.neurodiverseNoiseReduction}"><span class="red-class">&cross;</span> Noise Reduction</h3>
 					<h3 th:if="${advert.neurodiverseAdjustableLighting}"><span class="green-class">&check;</span> Adjustable Lighting</h3>
-					<h3 th:unless="${advert.neurodiverseAdjustableLighting}"><span class="red-class">&cross;</span> Adjustable Lighting</h3>
 					<h3 th:if="${advert.neurodiverseQuieterAreas}"><span class="green-class">&check;</span> Quieter Areas</h3>
-					<h3 th:unless="${advert.neurodiverseQuieterAreas}"><span class="red-class">&cross;</span> Quieter Areas</h3>
 					<h3 th:if="${advert.neurodiverseSensoryBag}"><span class="green-class">&check;</span> Sensory Bag</h3>
-					<h3 th:unless="${advert.neurodiverseSensoryBag}"><span class="red-class">&cross;</span> Sensory Bag</h3>
 					<h3 th:if="${advert.neurodiverseLoudNoiseReduction}"><span class="green-class">&check;</span> Loud Noise Reduction</h3>
-					<h3 th:unless="${advert.neurodiverseLoudNoiseReduction}"><span class="red-class">&cross;</span> Loud Noise Reduction</h3>
 					<h3 th:if="${advert.neurodiverseQuieterTimeAds}"><span class="green-class">&check;</span> Quieter Time Ads</h3>
-					<h3 th:unless="${advert.neurodiverseQuieterTimeAds}"><span class="red-class">&cross;</span> Quieter Time Ads</h3>
 					<h3 th:if="${advert.neurodiverseAdaptedLeaflets}"><span class="green-class">&check;</span> Adapted Leaflets</h3>
-					<h3 th:unless="${advert.neurodiverseAdaptedLeaflets}"><span class="red-class">&cross;</span> Adapted Leaflets</h3>
 					<h3 th:if="${advert.neurodiverseSupportiveStaff}"><span class="green-class">&check;</span> Supportive Staff</h3>
-					<h3 th:unless="${advert.neurodiverseSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:if="${advert.neurodiverseTrainedStaff}"><span class="green-class">&check;</span> Trained Staff</h3>
-					<h3 th:unless="${advert.neurodiverseTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:if="${advert.neurodiverseFlashingSignage}"><span class="green-class">&check;</span> Flashing Signage</h3>
+					
+					<h3 th:unless="${advert.neurodiverseNoiseReduction}"><span class="red-class">&cross;</span> Noise Reduction</h3>
+					<h3 th:unless="${advert.neurodiverseAdjustableLighting}"><span class="red-class">&cross;</span> Adjustable Lighting</h3>
+					<h3 th:unless="${advert.neurodiverseQuieterAreas}"><span class="red-class">&cross;</span> Quieter Areas</h3>
+					<h3 th:unless="${advert.neurodiverseSensoryBag}"><span class="red-class">&cross;</span> Sensory Bag</h3>
+					<h3 th:unless="${advert.neurodiverseLoudNoiseReduction}"><span class="red-class">&cross;</span> Loud Noise Reduction</h3>
+					<h3 th:unless="${advert.neurodiverseQuieterTimeAds}"><span class="red-class">&cross;</span> Quieter Time Ads</h3>
+					<h3 th:unless="${advert.neurodiverseAdaptedLeaflets}"><span class="red-class">&cross;</span> Adapted Leaflets</h3>
+					<h3 th:unless="${advert.neurodiverseSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
+					<h3 th:unless="${advert.neurodiverseTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.neurodiverseFlashingSignage}"><span class="red-class">&cross;</span> Flashing Signage</h3>
 					
 					<h3>Additonal Comments: </h3>
@@ -175,24 +179,27 @@
 		    </div>
 		</div>
 		
-		<h1 style="text-align: center; margin: 1em 0;">Venue Status</h1>			
-		<div class="status-section">
-	        <form th:action="@{/#}" method="post" class="status-form">
+		<h1 sec:authorize="hasRole('ADMIN')" style="text-align: center; margin: 1em 0;">Venue Status</h1>			
+		<div sec:authorize="hasRole('ADMIN')" class="status-section">
+	        <form th:action="@{/admin/processVenueVerification}" method="post" class="status-form">
+	        	<!-- Hidden input for ID -->
+    			<input type="hidden" name="id" th:field="*{advert.id}" />
+    			
 	            <div class="form-group">
 	                <label class="form-label">TL Verify Status</label>
-	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" name="tl_verify_status_name" value="true"> ✔ True
-	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" name="tl_verify_status_name" value="false"> ✘ False
+	                <input class="form-radio" th:field="*{advert.TLVerifiedVenueAdvertFlg}" type="radio" value="true"> ✔ Verified
+	                <input class="form-radio" th:field="*{advert.TLVerifiedVenueAdvertFlg}" type="radio" value="false"> ✘ Not Verified
 	            </div>
 	
 	            <div class="form-group">
 	                <label class="form-label">TL Audit Status (Venue chosen option)</label>
-	                <input class="form-input readonly" type="text" name="tl_audit_status" readonly th:value="${advert.venueAuditFlg}">
+	                <input class="form-input readonly" type="text" name="venue_audit_status" readonly th:value="${advert.venueAuditFlg}">
 	            </div>
 	
 	            <div class="form-group">
 	                <label class="form-label">Did Tailored Leisure Team audit this Venue?</label>
-	                <input class="form-radio" type="radio" name="venue_audit" value="true"> Yes
-	                <input class="form-radio" type="radio" name="venue_audit" value="false"> No
+	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" value="true"> ✔ Audited
+	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" value="false"> ✘ Not Audited
 	            </div>
 	
 	            <div class="form-group">

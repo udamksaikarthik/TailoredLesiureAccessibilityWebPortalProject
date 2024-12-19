@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,6 +50,20 @@ public class AdminController {
 	public ModelAndView showSelectedVenuePage(@RequestParam Long id) {
 		ModelAndView mv = new ModelAndView();
 		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.getSelectedVenueAdvertForm(id);
+		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
+		mv.addObject("advert", venueAdvertFormBean);
+		mv.setViewName("selectedvenuepage.html");
+		return mv;
+	}
+	
+	@PostMapping("/admin/processVenueVerification")
+	public ModelAndView processVenueVerification(@RequestParam("id") Long advert_id,
+			@RequestParam("TLVerifiedVenueAdvertFlg") Boolean tlVerifyStatus,
+			@RequestParam("venueAuditFlgTL") Boolean tlVenueAuditStatus) {
+		System.out.println("Inside processVenueVerification method");
+		System.out.println("advert_id: "+advert_id);
+		ModelAndView mv = new ModelAndView();
+		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus);
 		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
 		mv.addObject("advert", venueAdvertFormBean);
 		mv.setViewName("selectedvenuepage.html");
