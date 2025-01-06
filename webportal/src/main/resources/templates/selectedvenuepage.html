@@ -58,9 +58,71 @@
 					<h3 th:unless="${advert.mobilityTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.mobilityUnrestrictedViewing}"><span class="red-class">&cross;</span> Unrestricted Viewing</h3>
 					
-					
-					<h3>Additonal Comments: </h3>
-					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityComments}"></textarea>
+					<div>
+						<div th:if="${advert.mobilityDisabledCarParkingComments != null and !#strings.isEmpty(advert.mobilityDisabledCarParkingComments)}">
+						    <h3>Disabled Car Parking Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityDisabledCarParkingComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityHeadphonesAvailableComments != null and !#strings.isEmpty(advert.mobilityHeadphonesAvailableComments)}">
+						    <h3>Headphones Available Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityHeadphonesAvailableComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityAccessibleRouteComments != null and !#strings.isEmpty(advert.mobilityAccessibleRouteComments)}">
+						    <h3>Accessible Route Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityAccessibleRouteComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityWideDoorwaysComments != null and !#strings.isEmpty(advert.mobilityWideDoorwaysComments)}">
+						    <h3>Wide Doorways Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityWideDoorwaysComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityWheelchairSeatingComments != null and !#strings.isEmpty(advert.mobilityWheelchairSeatingComments)}">
+						    <h3>Wheel Chair Seating Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityWheelchairSeatingComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityDisabledToiletsComments != null and !#strings.isEmpty(advert.mobilityDisabledToiletsComments)}">
+						    <h3>Disabled Toilets Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityDisabledToiletsComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityChangingPlaceComments != null and !#strings.isEmpty(advert.mobilityChangingPlaceComments)}">
+						    <h3>Changing Place Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityChangingPlaceComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityLowerCountersComments != null and !#strings.isEmpty(advert.mobilityLowerCountersComments)}">
+						    <h3>Lower Counters Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityLowerCountersComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityLiftsComments != null and !#strings.isEmpty(advert.mobilityLiftsComments)}">
+						    <h3>Lifts Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityLiftsComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityRampsComments != null and !#strings.isEmpty(advert.mobilityRampsComments)}">
+						    <h3>Ramps Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityRampsComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityUnrestrictedViewingComments != null and !#strings.isEmpty(advert.mobilityUnrestrictedViewingComments)}">
+						    <h3>Unrestricted Viewing Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityUnrestrictedViewingComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityAccessibleDoorsComments != null and !#strings.isEmpty(advert.mobilityAccessibleDoorsComments)}">
+						    <h3>Accessible Doors Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityAccessibleDoorsComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityEyeLevelSignageComments != null and !#strings.isEmpty(advert.mobilityEyeLevelSignageComments)}">
+						    <h3>Eye Level Signage Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityEyeLevelSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilitySupportiveStaffComments != null and !#strings.isEmpty(advert.mobilitySupportiveStaffComments)}">
+						    <h3>Supportive Staff Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilitySupportiveStaffComments}"></textarea>
+						</div>
+						<div th:if="${advert.mobilityTrainedStaffComments != null and !#strings.isEmpty(advert.mobilityTrainedStaffComments)}">
+						    <h3>Trained Staff Comments: </h3>
+						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityTrainedStaffComments}"></textarea>
+						</div>
+						
+						<h3>Additional Comments: </h3>
+						<textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityComments}"></textarea>
+					</div>
 				</div>
 			</div>
 			<div class="common_checklist_info_container">
@@ -95,8 +157,70 @@
 					<h3 th:unless="${advert.blindSupportiveStaff}"><span class="red-class">&cross;</span> Supportive Staff</h3>
 					<h3 th:unless="${advert.blindTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.blindFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
-					<h3>Additonal Comments: </h3>
-					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindComments}"></textarea>
+					
+					<div>
+						<div th:if="${advert.blindHighContrastSignageComments != null and !#strings.isEmpty(advert.blindHighContrastSignageComments)}">	   
+							<h3>High Contrast Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindHighContrastSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindLargeFontSignageComments != null and !#strings.isEmpty(advert.blindLargeFontSignageComments)}">	   
+							<h3>Large Font Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindLargeFontSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindBrailleSignageComments != null and !#strings.isEmpty(advert.blindBrailleSignageComments)}">	   
+							<h3>Braille Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindBrailleSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindVisibleWalkwaysComments != null and !#strings.isEmpty(advert.blindVisibleWalkwaysComments)}">	   
+							<h3>Visible Walkways Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindVisibleWalkwaysComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindTouchToursComments != null and !#strings.isEmpty(advert.blindTouchToursComments)}">	   
+							<h3>Touch Tours Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindTouchToursComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindLargeSubtitlesComments != null and !#strings.isEmpty(advert.blindLargeSubtitlesComments)}">	   
+							<h3>Large Subtitles Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindLargeSubtitlesComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindNoTripHazardsComments != null and !#strings.isEmpty(advert.blindNoTripHazardsComments)}">	   
+							<h3>No Trip Hazards Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindNoTripHazardsComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindAdjustableLightingComments != null and !#strings.isEmpty(advert.blindAdjustableLightingComments)}">	   
+							<h3>Adjustable Lighting Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindAdjustableLightingComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindAudioDescriptionsComments != null and !#strings.isEmpty(advert.blindAudioDescriptionsComments)}">	   
+							<h3>Audio Descriptions Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindAudioDescriptionsComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindAdaptedLeafletsComments != null and !#strings.isEmpty(advert.blindAdaptedLeafletsComments)}">	   
+							<h3>Adapted Leaflets Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindAdaptedLeafletsComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindAdaptedSignageComments != null and !#strings.isEmpty(advert.blindAdaptedSignageComments)}">	   
+							<h3>Adapted Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindAdaptedSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindFrontSeatingComments != null and !#strings.isEmpty(advert.blindFrontSeatingComments)}">	   
+							<h3>Front Seating Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindFrontSeatingComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindSupportiveStaffComments != null and !#strings.isEmpty(advert.blindSupportiveStaffComments)}">	   
+							<h3>Supportive Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindSupportiveStaffComments}"></textarea>
+						</div>
+						<div th:if="${advert.blindTrainedStaffComments != null and !#strings.isEmpty(advert.blindTrainedStaffComments)}">	   
+							<h3>Trained Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindTrainedStaffComments}"></textarea>
+						</div>
+					
+						<div th:if="${advert.blindComments != null and !#strings.isEmpty(advert.blindComments)}">	   
+							<h3>Additonal Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindComments}"></textarea>
+						</div>
+					</div>
 				
 				</div>
 			</div>
@@ -121,8 +245,45 @@
 					<h3 th:unless="${advert.deafTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.deafFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
-					<h3>Additonal Comments: </h3>
-					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafComments}"></textarea>
+					<div>
+						<div th:if="${advert.deafHearingLoopsComments != null and !#strings.isEmpty(advert.deafHearingLoopsComments)}">	   
+							<h3>Hearing Loops Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafHearingLoopsComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafAssistiveTechnologyComments != null and !#strings.isEmpty(advert.deafAssistiveTechnologyComments)}">	   
+							<h3>Assistive Technology Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafAssistiveTechnologyComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafSignLanguageComments != null and !#strings.isEmpty(advert.deafSignLanguageComments)}">	   
+							<h3>Sign Language Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafSignLanguageComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafAdequateSignageComments != null and !#strings.isEmpty(advert.deafAdequateSignageComments)}">	   
+							<h3>Adequate Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafAdequateSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafSubtitlesComments != null and !#strings.isEmpty(advert.deafSubtitlesComments)}">	   
+							<h3>Subtitles Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafSubtitlesComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafFrontSeatingComments != null and !#strings.isEmpty(advert.deafFrontSeatingComments)}">	   
+							<h3>Front Seating Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafFrontSeatingComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafSupportiveStaffComments != null and !#strings.isEmpty(advert.deafSupportiveStaffComments)}">	   
+							<h3>Supportive Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafSupportiveStaffComments}"></textarea>
+						</div>
+						<div th:if="${advert.deafTrainedStaffComments != null and !#strings.isEmpty(advert.deafTrainedStaffComments)}">	   
+							<h3>Trained Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafTrainedStaffComments}"></textarea>
+						</div>
+						
+						<div th:if="${advert.deafComments != null and !#strings.isEmpty(advert.deafComments)}">	   
+							<h3>Additonal Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafComments}"></textarea>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="common_checklist_info_container">
@@ -150,8 +311,53 @@
 					<h3 th:unless="${advert.neurodiverseTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.neurodiverseFlashingSignage}"><span class="red-class">&cross;</span> Flashing Signage</h3>
 					
-					<h3>Additonal Comments: </h3>
-					<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseComments}"></textarea>
+					<div>
+						<div th:if="${advert.neurodiverseNoiseReductionComments != null and !#strings.isEmpty(advert.neurodiverseNoiseReductionComments)}">	   
+							<h3>Noise Reduction Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseNoiseReductionComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseAdjustableLightingComments != null and !#strings.isEmpty(advert.neurodiverseAdjustableLightingComments)}">	   
+							<h3>Adjustable Lighting Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseAdjustableLightingComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseQuieterAreasComments != null and !#strings.isEmpty(advert.neurodiverseQuieterAreasComments)}">	   
+							<h3>Quieter Areas Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseQuieterAreasComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseSensoryBagComments != null and !#strings.isEmpty(advert.neurodiverseSensoryBagComments)}">	   
+							<h3>Sensory Bag Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseSensoryBagComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseLoudNoiseReductionComments != null and !#strings.isEmpty(advert.neurodiverseLoudNoiseReductionComments)}">	   
+							<h3>Loud Noise Reduction Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseLoudNoiseReductionComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseQuieterTimeAdsComments != null and !#strings.isEmpty(advert.neurodiverseQuieterTimeAdsComments)}">	   
+							<h3>Quieter Time Ads Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseQuieterTimeAdsComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseFlashingSignageComments != null and !#strings.isEmpty(advert.neurodiverseFlashingSignageComments)}">	   
+							<h3>Flashing Signage Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseFlashingSignageComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseAdaptedLeafletsComments != null and !#strings.isEmpty(advert.neurodiverseAdaptedLeafletsComments)}">	   
+							<h3>Adapted Leaflets Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseAdaptedLeafletsComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseSupportiveStaffComments != null and !#strings.isEmpty(advert.neurodiverseSupportiveStaffComments)}">	   
+							<h3>Supportive Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseSupportiveStaffComments}"></textarea>
+						</div>
+						<div th:if="${advert.neurodiverseTrainedStaffComments != null and !#strings.isEmpty(advert.neurodiverseTrainedStaffComments)}">	   
+							<h3>Trained Staff Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseTrainedStaffComments}"></textarea>
+						</div>
+						
+						<div th:if="${advert.deafComments != null and !#strings.isEmpty(advert.deafComments)}">	   
+							<h3>Additonal Comments: </h3>
+							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseComments}"></textarea>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

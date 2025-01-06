@@ -76,7 +76,8 @@
                 <input type="radio" th:field="*{mobilityDisabledCarParking}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityDisabledCarParking}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityDisabledCarParking')}" th:errors="*{mobilityDisabledCarParking}" class="error-message"></div>
-                
+                <label for="mobilityDisabledCarParkingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityDisabledCarParkingComments" th:field="*{mobilityDisabledCarParkingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>2. Are headphones available for people who are sensitive to noise? 
@@ -85,6 +86,8 @@
                 <input type="radio" th:field="*{mobilityHeadphonesAvailable}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityHeadphonesAvailable}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityHeadphonesAvailable')}" th:errors="*{mobilityHeadphonesAvailable}" class="error-message"></div>
+                <label for="mobilityHeadphonesAvailableComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityHeadphonesAvailableComments" th:field="*{mobilityHeadphonesAvailableComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>3. Is the car parking flat with an accessible route to the venue? 
@@ -93,6 +96,8 @@
                 <input type="radio" th:field="*{mobilityAccessibleRoute}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityAccessibleRoute}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityAccessibleRoute')}" th:errors="*{mobilityAccessibleRoute}" class="error-message"></div>
+                <label for="mobilityAccessibleRouteComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityAccessibleRouteComments" th:field="*{mobilityAccessibleRouteComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>4. Doorways, entrances and corridors wide enough for wheelchair access? 
@@ -101,6 +106,8 @@
                 <input type="radio" th:field="*{mobilityWideDoorways}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityWideDoorways}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityWideDoorways')}" th:errors="*{mobilityWideDoorways}" class="error-message"></div>
+                <label for="mobilityWideDoorwaysComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityWideDoorwaysComments" th:field="*{mobilityWideDoorwaysComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>5. Is there suitable seating for wheelchair users? 
@@ -109,6 +116,8 @@
                 <input type="radio" th:field="*{mobilityWheelchairSeating}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityWheelchairSeating}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityWheelchairSeating')}" th:errors="*{mobilityWheelchairSeating}" class="error-message"></div>
+                <label for="mobilityWheelchairSeatingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityWheelchairSeatingComments" th:field="*{mobilityWheelchairSeatingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>6. Do you have disabled toilets? 
@@ -117,6 +126,8 @@
                 <input type="radio" th:field="*{mobilityDisabledToilets}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityDisabledToilets}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityDisabledToilets')}" th:errors="*{mobilityDisabledToilets}" class="error-message"></div>
+                <label for="mobilityDisabledToiletsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityDisabledToiletsComments" th:field="*{mobilityDisabledToiletsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>7. A changing place? 
@@ -125,6 +136,8 @@
                 <input type="radio" th:field="*{mobilityChangingPlace}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityChangingPlace}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityChangingPlace')}" th:errors="*{mobilityChangingPlace}" class="error-message"></div>
+                <label for="mobilityChangingPlaceComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityChangingPlaceComments" th:field="*{mobilityChangingPlaceComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>8. Lower counters in key areas like reception, café areas, etc.? 
@@ -133,6 +146,8 @@
                 <input type="radio" th:field="*{mobilityLowerCounters}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityLowerCounters}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityLowerCounters')}" th:errors="*{mobilityLowerCounters}" class="error-message"></div>
+                <label for="mobilityLowerCountersComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityLowerCountersComments" th:field="*{mobilityLowerCountersComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>9. Lifts to access other areas of the building that are on different levels? 
@@ -141,6 +156,8 @@
                 <input type="radio" th:field="*{mobilityLifts}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityLifts}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityLifts')}" th:errors="*{mobilityLifts}" class="error-message"></div>
+                <label for="mobilityLiftsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityLiftsComments" th:field="*{mobilityLiftsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>10. Ramps to support wheelchair access, where applicable? 
@@ -149,6 +166,8 @@
                 <input type="radio" th:field="*{mobilityRamps}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityRamps}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityRamps')}" th:errors="*{mobilityRamps}" class="error-message"></div>
+                <label for="mobilityRampsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityRampsComments" th:field="*{mobilityRampsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>11. Unrestricted viewing, if at a show or viewing? 
@@ -157,6 +176,8 @@
                 <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityUnrestrictedViewing}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityUnrestrictedViewing')}" th:errors="*{mobilityUnrestrictedViewing}" class="error-message"></div>
+                <label for="mobilityUnrestrictedViewingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityUnrestrictedViewingComments" th:field="*{mobilityUnrestrictedViewingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>12. Accessible doors i.e., easy to open and close, automatic, etc.? 
@@ -165,6 +186,8 @@
                 <input type="radio" th:field="*{mobilityAccessibleDoors}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityAccessibleDoors}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityAccessibleDoors')}" th:errors="*{mobilityAccessibleDoors}" class="error-message"></div>
+                <label for="mobilityAccessibleDoorsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityAccessibleDoorsComments" th:field="*{mobilityAccessibleDoorsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>13. Signage at eye level for wheelchair users? 
@@ -173,6 +196,8 @@
                 <input type="radio" th:field="*{mobilityEyeLevelSignage}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityEyeLevelSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityEyeLevelSignage')}" th:errors="*{mobilityEyeLevelSignage}" class="error-message"></div>
+                <label for="mobilityEyeLevelSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityEyeLevelSignageComments" th:field="*{mobilityEyeLevelSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>14. Staff at hand to support the disabled customer if needed? 
@@ -181,6 +206,8 @@
                 <input type="radio" th:field="*{mobilitySupportiveStaff}" value="true"> Yes
                 <input type="radio" th:field="*{mobilitySupportiveStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilitySupportiveStaff')}" th:errors="*{mobilitySupportiveStaff}" class="error-message"></div>
+                <label for="mobilitySupportiveStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilitySupportiveStaffComments" th:field="*{mobilitySupportiveStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>15. Trained staff in disability awareness? 
@@ -189,9 +216,11 @@
                 <input type="radio" th:field="*{mobilityTrainedStaff}" value="true"> Yes
                 <input type="radio" th:field="*{mobilityTrainedStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('mobilityTrainedStaff')}" th:errors="*{mobilityTrainedStaff}" class="error-message"></div>
+                <label for="mobilityTrainedStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="mobilityTrainedStaffComments" th:field="*{mobilityTrainedStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
         </ul>
-        <label for="mobilityComments">Additional Comments (Optional):</label>
+        <label for="mobilityComments">Overall Additional Comments (Optional):</label>
         <textarea class="additional_comments_class" id="mobilityComments" th:field="*{mobilityComments}" placeholder="Enter additional comments" rows="4"></textarea>
 		        <div th:if="${#fields.hasErrors('mobilityComments')}" th:errors="*{mobilityComments}" class="error-message"></div>
 		    </div>
@@ -211,6 +240,8 @@
                 <input type="radio" th:field="*{blindHighContrastSignage}" value="true"> Yes
                 <input type="radio" th:field="*{blindHighContrastSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindHighContrastSignage')}" th:errors="*{blindHighContrastSignage}" class="error-message"></div>
+                <label for="blindHighContrastSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindHighContrastSignageComments" th:field="*{blindHighContrastSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>2. Signage that has larger font? 
@@ -219,6 +250,8 @@
                 <input type="radio" th:field="*{blindLargeFontSignage}" value="true"> Yes
                 <input type="radio" th:field="*{blindLargeFontSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindLargeFontSignage')}" th:errors="*{blindLargeFontSignage}" class="error-message"></div>
+                <label for="blindLargeFontSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindLargeFontSignageComments" th:field="*{blindLargeFontSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>3. Braille Signage? 
@@ -227,6 +260,8 @@
                 <input type="radio" th:field="*{blindBrailleSignage}" value="true"> Yes
                 <input type="radio" th:field="*{blindBrailleSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindBrailleSignage')}" th:errors="*{blindBrailleSignage}" class="error-message"></div>
+                <label for="blindBrailleSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindBrailleSignageComments" th:field="*{blindBrailleSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>4. Visible walkways and steps, that are highly contrasted? 
@@ -235,6 +270,8 @@
                 <input type="radio" th:field="*{blindVisibleWalkways}" value="true"> Yes
                 <input type="radio" th:field="*{blindVisibleWalkways}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindVisibleWalkways')}" th:errors="*{blindVisibleWalkways}" class="error-message"></div>
+                <label for="blindVisibleWalkwaysComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindVisibleWalkwaysComments" th:field="*{blindVisibleWalkwaysComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>5. Touch tours, to support navigation of the building? 
@@ -243,6 +280,8 @@
                 <input type="radio" th:field="*{blindTouchTours}" value="true"> Yes
                 <input type="radio" th:field="*{blindTouchTours}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindTouchTours')}" th:errors="*{blindTouchTours}" class="error-message"></div>
+                <label for="blindTouchToursComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindTouchToursComments" th:field="*{blindTouchToursComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>6. Offer subtitles in large font on screens? 
@@ -251,6 +290,8 @@
                 <input type="radio" th:field="*{blindLargeSubtitles}" value="true"> Yes
                 <input type="radio" th:field="*{blindLargeSubtitles}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindLargeSubtitles')}" th:errors="*{blindLargeSubtitles}" class="error-message"></div>
+                <label for="blindLargeSubtitlesComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindLargeSubtitlesComments" th:field="*{blindLargeSubtitlesComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>7. No trip hazards/obstacles around the building? 
@@ -259,6 +300,8 @@
                 <input type="radio" th:field="*{blindNoTripHazards}" value="true"> Yes
                 <input type="radio" th:field="*{blindNoTripHazards}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindNoTripHazards')}" th:errors="*{blindNoTripHazards}" class="error-message"></div>
+                <label for="blindNoTripHazardsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindNoTripHazardsComments" th:field="*{blindNoTripHazardsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>8. Lighting that can be dimmed or made brighter depending on visual needs? 
@@ -267,6 +310,8 @@
                 <input type="radio" th:field="*{blindAdjustableLighting}" value="true"> Yes
                 <input type="radio" th:field="*{blindAdjustableLighting}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindAdjustableLighting')}" th:errors="*{blindAdjustableLighting}" class="error-message"></div>
+                <label for="blindAdjustableLightingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindAdjustableLightingComments" th:field="*{blindAdjustableLightingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>9. Audio descriptions to give info to people who are completely blind or have low visibility? 
@@ -275,6 +320,8 @@
                 <input type="radio" th:field="*{blindAudioDescriptions}" value="true"> Yes
                 <input type="radio" th:field="*{blindAudioDescriptions}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindAudioDescriptions')}" th:errors="*{blindAudioDescriptions}" class="error-message"></div>
+                <label for="blindAudioDescriptionsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindAudioDescriptionsComments" th:field="*{blindAudioDescriptionsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>10. Adapted leaflets for people who are blind or visually impaired? 
@@ -283,6 +330,8 @@
                 <input type="radio" th:field="*{blindAdaptedLeaflets}" value="true"> Yes
                 <input type="radio" th:field="*{blindAdaptedLeaflets}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindAdaptedLeaflets')}" th:errors="*{blindAdaptedLeaflets}" class="error-message"></div>
+                <label for="blindAdaptedLeafletsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindAdaptedLeafletsComments" th:field="*{blindAdaptedLeafletsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>11. Adequate adapted signage in popular areas like the toilet, café, lifts, etc.? 
@@ -291,6 +340,8 @@
                 <input type="radio" th:field="*{blindAdaptedSignage}" value="true"> Yes
                 <input type="radio" th:field="*{blindAdaptedSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindAdaptedSignage')}" th:errors="*{blindAdaptedSignage}" class="error-message"></div>
+                <label for="blindAdaptedSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindAdaptedSignageComments" th:field="*{blindAdaptedSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>12. Opportunities for people to sit at the front, if at a show or viewing? 
@@ -299,6 +350,8 @@
                 <input type="radio" th:field="*{blindFrontSeating}" value="true"> Yes
                 <input type="radio" th:field="*{blindFrontSeating}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindFrontSeating')}" th:errors="*{blindFrontSeating}" class="error-message"></div>
+                <label for="blindFrontSeatingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindFrontSeatingComments" th:field="*{blindFrontSeatingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>13. Staff at hand to support disabled customers if needed? 
@@ -307,6 +360,8 @@
                 <input type="radio" th:field="*{blindSupportiveStaff}" value="true"> Yes
                 <input type="radio" th:field="*{blindSupportiveStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindSupportiveStaff')}" th:errors="*{blindSupportiveStaff}" class="error-message"></div>
+                <label for="blindSupportiveStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindSupportiveStaffComments" th:field="*{blindSupportiveStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>14. Trained staff in disability awareness? 
@@ -315,9 +370,11 @@
                 <input type="radio" th:field="*{blindTrainedStaff}" value="true"> Yes
                 <input type="radio" th:field="*{blindTrainedStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('blindTrainedStaff')}" th:errors="*{blindTrainedStaff}" class="error-message"></div>
+                <label for="blindTrainedStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="blindTrainedStaffComments" th:field="*{blindTrainedStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
         </ul>
-        <label for="blindComments">Additional Comments (Optional):</label>
+        <label for="blindComments">Overall Additional Comments (Optional):</label>
         <textarea class="additional_comments_class" id="blindComments" th:field="*{blindComments}" placeholder="Enter additional comments" rows="4"></textarea>
 		   	<div th:if="${#fields.hasErrors('blindComments')}" th:errors="*{blindComments}" class="error-message"></div>
 		    </div>
@@ -336,6 +393,8 @@
                 <input type="radio" th:field="*{deafHearingLoops}" value="true"> Yes
                 <input type="radio" th:field="*{deafHearingLoops}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafHearingLoops')}" th:errors="*{deafHearingLoops}" class="error"></div>
+                <label for="deafHearingLoopsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafHearingLoopsComments" th:field="*{deafHearingLoopsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>2. Other hearing assistive technology available at your venue? 
@@ -344,6 +403,8 @@
                 <input type="radio" th:field="*{deafAssistiveTechnology}" value="true"> Yes
                 <input type="radio" th:field="*{deafAssistiveTechnology}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafAssistiveTechnology')}" th:errors="*{deafAssistiveTechnology}" class="error"></div>
+                <label for="deafAssistiveTechnologyComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafAssistiveTechnologyComments" th:field="*{deafAssistiveTechnologyComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>3. Anyone who can do British Sign Language at your venue? 
@@ -352,6 +413,8 @@
                 <input type="radio" th:field="*{deafSignLanguage}" value="true"> Yes
                 <input type="radio" th:field="*{deafSignLanguage}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafSignLanguage')}" th:errors="*{deafSignLanguage}" class="error"></div>
+                <label for="deafSignLanguageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafSignLanguageComments" th:field="*{deafSignLanguageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>4. Adequate signage to support navigation at your venue? 
@@ -360,6 +423,8 @@
                 <input type="radio" th:field="*{deafAdequateSignage}" value="true"> Yes
                 <input type="radio" th:field="*{deafAdequateSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafAdequateSignage')}" th:errors="*{deafAdequateSignage}" class="error"></div>
+                <label for="deafAdequateSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafAdequateSignageComments" th:field="*{deafAdequateSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>5. Subtitles on digital boards or any videos you are displaying? 
@@ -368,6 +433,8 @@
                 <input type="radio" th:field="*{deafSubtitles}" value="true"> Yes
                 <input type="radio" th:field="*{deafSubtitles}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafSubtitles')}" th:errors="*{deafSubtitles}" class="error"></div>
+                <label for="deafSubtitlesComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafSubtitlesComments" th:field="*{deafSubtitlesComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>6. Opportunities for people to sit at the front, if at a show or viewing? 
@@ -376,6 +443,8 @@
                 <input type="radio" th:field="*{deafFrontSeating}" value="true"> Yes
                 <input type="radio" th:field="*{deafFrontSeating}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafFrontSeating')}" th:errors="*{deafFrontSeating}" class="error"></div>
+                <label for="deafFrontSeatingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafFrontSeatingComments" th:field="*{deafFrontSeatingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>7. Staff at hand to support the disabled customer if needed? 
@@ -384,6 +453,8 @@
                 <input type="radio" th:field="*{deafSupportiveStaff}" value="true"> Yes
                 <input type="radio" th:field="*{deafSupportiveStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafSupportiveStaff')}" th:errors="*{deafSupportiveStaff}" class="error"></div>
+                <label for="deafSupportiveStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafSupportiveStaffComments" th:field="*{deafSupportiveStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>8. Trained staff in disability awareness? 
@@ -392,9 +463,11 @@
                 <input type="radio" th:field="*{deafTrainedStaff}" value="true"> Yes
                 <input type="radio" th:field="*{deafTrainedStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('deafTrainedStaff')}" th:errors="*{deafTrainedStaff}" class="error"></div>
+                <label for="deafTrainedStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="deafTrainedStaffComments" th:field="*{deafTrainedStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
         </ul>
-        <label for="deafComments">Additional Comments (Optional):</label>
+        <label for="deafComments">Overall Additional Comments (Optional):</label>
         <textarea class="additional_comments_class" id="deafComments" th:field="*{deafComments}" placeholder="Enter additional comments" rows="4"></textarea>
 		<div th:if="${#fields.hasErrors('deafComments')}" th:errors="*{deafComments}" class="error"></div>
 		    </div>
@@ -415,6 +488,8 @@
                 <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseNoiseReduction}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseNoiseReduction')}" th:errors="*{neurodiverseNoiseReduction}" class="error"></div>
+                <label for="neurodiverseNoiseReductionComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseNoiseReductionComments" th:field="*{neurodiverseNoiseReductionComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -424,6 +499,8 @@
                 <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseAdjustableLighting}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseAdjustableLighting')}" th:errors="*{neurodiverseAdjustableLighting}" class="error"></div>
+                <label for="neurodiverseAdjustableLightingComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseAdjustableLightingComments" th:field="*{neurodiverseAdjustableLightingComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -433,6 +510,8 @@
                 <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseQuieterAreas}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseQuieterAreas')}" th:errors="*{neurodiverseQuieterAreas}" class="error"></div>
+                <label for="neurodiverseQuieterAreasComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseQuieterAreasComments" th:field="*{neurodiverseQuieterAreasComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -442,6 +521,8 @@
                 <input type="radio" th:field="*{neurodiverseSensoryBag}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseSensoryBag}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseSensoryBag')}" th:errors="*{neurodiverseSensoryBag}" class="error"></div>
+                <label for="neurodiverseSensoryBagComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseSensoryBagComments" th:field="*{neurodiverseSensoryBagComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -451,6 +532,8 @@
                 <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseLoudNoiseReduction}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseLoudNoiseReduction')}" th:errors="*{neurodiverseLoudNoiseReduction}" class="error"></div>
+                <label for="neurodiverseLoudNoiseReductionComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseLoudNoiseReductionComments" th:field="*{neurodiverseLoudNoiseReductionComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -460,6 +543,8 @@
                 <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseQuieterTimeAds}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseQuieterTimeAds')}" th:errors="*{neurodiverseQuieterTimeAds}" class="error"></div>
+                <label for="neurodiverseQuieterTimeAdsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseQuieterTimeAdsComments" th:field="*{neurodiverseQuieterTimeAdsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -469,6 +554,8 @@
                 <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseFlashingSignage}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseFlashingSignage')}" th:errors="*{neurodiverseFlashingSignage}" class="error"></div>
+                <label for="neurodiverseFlashingSignageComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseFlashingSignageComments" th:field="*{neurodiverseFlashingSignageComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -478,6 +565,8 @@
                 <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseAdaptedLeaflets}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseAdaptedLeaflets')}" th:errors="*{neurodiverseAdaptedLeaflets}" class="error"></div>
+                <label for="neurodiverseAdaptedLeafletsComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseAdaptedLeafletsComments" th:field="*{neurodiverseAdaptedLeafletsComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -487,6 +576,8 @@
                 <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseSupportiveStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseSupportiveStaff')}" th:errors="*{neurodiverseSupportiveStaff}" class="error"></div>
+                <label for="neurodiverseSupportiveStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseSupportiveStaffComments" th:field="*{neurodiverseSupportiveStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
             <li>
                 <label>
@@ -496,9 +587,11 @@
                 <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="true"> Yes
                 <input type="radio" th:field="*{neurodiverseTrainedStaff}" value="false"> No
                 <div th:if="${#fields.hasErrors('neurodiverseTrainedStaff')}" th:errors="*{neurodiverseTrainedStaff}" class="error"></div>
+                <label for="neurodiverseTrainedStaffComments">Additional Comments (Optional):</label>
+        		<textarea class="additional_comments_class" id="neurodiverseTrainedStaffComments" th:field="*{neurodiverseTrainedStaffComments}" placeholder="Enter additional comments here..." rows="4"></textarea>
             </li>
         </ul>
-        <label for="neurodiverseComments">Additional Comments (Optional):</label>
+        <label for="neurodiverseComments">Overall Additional Comments (Optional):</label>
         <textarea class="additional_comments_class" id="neurodiverseComments" th:field="*{neurodiverseComments}" placeholder="Enter additional comments" rows="4"></textarea>
 		        <div th:if="${#fields.hasErrors('neurodiverseComments')}" th:errors="*{neurodiverseComments}" class="error"></div>
 		    </div>
