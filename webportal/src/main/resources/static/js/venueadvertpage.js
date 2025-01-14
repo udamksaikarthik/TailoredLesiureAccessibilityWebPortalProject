@@ -130,3 +130,28 @@ function closeFullscreen() {
     fullscreenImage.src = '';
     fullscreenVideo.querySelector('source').src = '';
 }
+
+let showCommentsCounter = 1;
+function showComments(){
+	const show_comment_btn_id = document.getElementById('show_comment_btn_id')
+	const mobility_additional_comments_container_div_id = document.getElementById('mobility_additional_comments_container_div_id')
+	const blind_additional_comments_container_div_id = document.getElementById('blind_additional_comments_container_div_id')
+	const deaf_additional_comments_container_div_id = document.getElementById('deaf_additional_comments_container_div_id')
+	const neurodiverse_additional_comments_container_div_id = document.getElementById('neurodiverse_additional_comments_container_div_id')
+	console.log("Inside showComments")
+	showCommentsCounter++;
+	if(showCommentsCounter % 2 === 0){
+		show_comment_btn_id.innerText = "Hide Comments";
+		mobility_additional_comments_container_div_id.classList.add('show');
+		blind_additional_comments_container_div_id.classList.add('show');
+		deaf_additional_comments_container_div_id.classList.add('show');
+		neurodiverse_additional_comments_container_div_id.classList.add('show');
+	}else{
+		show_comment_btn_id.innerText = "Show Comments";
+		mobility_additional_comments_container_div_id.classList.remove('show');
+		blind_additional_comments_container_div_id.classList.remove('show');
+		deaf_additional_comments_container_div_id.classList.remove('show');
+		neurodiverse_additional_comments_container_div_id.classList.remove('show');
+	}
+	
+}

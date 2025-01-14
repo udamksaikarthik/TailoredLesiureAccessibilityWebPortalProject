@@ -58,7 +58,7 @@
 					<h3 th:unless="${advert.mobilityTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.mobilityUnrestrictedViewing}"><span class="red-class">&cross;</span> Unrestricted Viewing</h3>
 					
-					<div>
+					<div id="mobility_additional_comments_container_div_id" class="additional_comments_container_div">
 						<div th:if="${advert.mobilityDisabledCarParkingComments != null and !#strings.isEmpty(advert.mobilityDisabledCarParkingComments)}">
 						    <h3>Disabled Car Parking Comments: </h3>
 						    <textarea rows="5" cols="" readonly="readonly" th:text="${advert.mobilityDisabledCarParkingComments}"></textarea>
@@ -158,7 +158,7 @@
 					<h3 th:unless="${advert.blindTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.blindFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
-					<div>
+					<div id="blind_additional_comments_container_div_id" class="additional_comments_container_div">
 						<div th:if="${advert.blindHighContrastSignageComments != null and !#strings.isEmpty(advert.blindHighContrastSignageComments)}">	   
 							<h3>High Contrast Signage Comments: </h3>
 							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.blindHighContrastSignageComments}"></textarea>
@@ -245,7 +245,7 @@
 					<h3 th:unless="${advert.deafTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.deafFrontSeating}"><span class="red-class">&cross;</span> Front Seating</h3>
 					
-					<div>
+					<div id="deaf_additional_comments_container_div_id" class="additional_comments_container_div">
 						<div th:if="${advert.deafHearingLoopsComments != null and !#strings.isEmpty(advert.deafHearingLoopsComments)}">	   
 							<h3>Hearing Loops Comments: </h3>
 							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.deafHearingLoopsComments}"></textarea>
@@ -311,7 +311,7 @@
 					<h3 th:unless="${advert.neurodiverseTrainedStaff}"><span class="red-class">&cross;</span> Trained Staff</h3>
 					<h3 th:unless="${advert.neurodiverseFlashingSignage}"><span class="red-class">&cross;</span> Flashing Signage</h3>
 					
-					<div>
+					<div id="neurodiverse_additional_comments_container_div_id" class="additional_comments_container_div">
 						<div th:if="${advert.neurodiverseNoiseReductionComments != null and !#strings.isEmpty(advert.neurodiverseNoiseReductionComments)}">	   
 							<h3>Noise Reduction Comments: </h3>
 							<textarea rows="5" cols="" readonly="readonly" th:text="${advert.neurodiverseNoiseReductionComments}"></textarea>
@@ -362,7 +362,12 @@
 			</div>
 		</div>
 		
+		<div class="show_comments_class_btn_container_div">
+			<button id="show_comment_btn_id" class="show_comments_class_btn" onclick="showComments()">Show Comments</button>
+		</div>
+		
 		<h1 style="text-align: center; margin: 1em 0;">Venue Images/Videos</h1>
+		
 		
 		<!-- Media Section -->
          <div class="advert-media">
