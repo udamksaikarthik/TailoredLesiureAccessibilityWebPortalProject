@@ -1,0 +1,45 @@
+.back_btn_class{
+    padding: 10px;
+    background-color: #FF4C4C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.back_btn_class:hover{
+    background-color: #fd0000;
+}   
+
+
+.form_btn_logout{
+    width: 100%;
+    padding: 10px;
+    background-color: #FF4C4C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+.form_btn_logout:hover{
+    background-color: #fd0000;
+}
+.form_btn_login{
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+.form_btn_login:hover{
+    background-color: #0056b3;
+} 

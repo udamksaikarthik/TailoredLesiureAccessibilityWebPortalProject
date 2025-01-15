@@ -141,13 +141,13 @@ function showComments(){
 	console.log("Inside showComments")
 	showCommentsCounter++;
 	if(showCommentsCounter % 2 === 0){
-		show_comment_btn_id.innerText = "Hide Comments";
+		show_comment_btn_id.innerText = "Hide Venue Comments";
 		mobility_additional_comments_container_div_id.classList.add('show');
 		blind_additional_comments_container_div_id.classList.add('show');
 		deaf_additional_comments_container_div_id.classList.add('show');
 		neurodiverse_additional_comments_container_div_id.classList.add('show');
 	}else{
-		show_comment_btn_id.innerText = "Show Comments";
+		show_comment_btn_id.innerText = "Show Venue Comments";
 		mobility_additional_comments_container_div_id.classList.remove('show');
 		blind_additional_comments_container_div_id.classList.remove('show');
 		deaf_additional_comments_container_div_id.classList.remove('show');

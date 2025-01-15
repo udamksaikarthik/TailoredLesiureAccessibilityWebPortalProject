@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/fragmentstyles.css}">
     <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
 </head>
 <body>
 	<div th:replace="fragments.html :: header"></div>
 	<div th:replace="fragments.html :: header_mobile"></div>
 	
-			<h2 class="form-success-message" th:if="${advert_form_success_msg != null and advert_form_success_msg != ''}" th:text="${advert_form_success_msg}"></h2>
+	<div sec:authorize="isAnonymous()">
+    	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
+	</div>
+	
+	<h2 class="form-success-message" th:if="${advert_form_success_msg != null and advert_form_success_msg != ''}" th:text="${advert_form_success_msg}"></h2>
 	<div class="cards_container">
 	
-		<div sec:authorize="hasAnyRole('BUSINESS_MEMBER','USER')" class="tailored_venues_card_container cards_common_container">
+		<div sec:authorize="isAnonymous() or hasAnyRole('BUSINESS_MEMBER','USER')" class="tailored_venues_card_container cards_common_container">
 			<div class="card_title">
 				<img alt="" th:src="@{/images/search_icon.png}">
 				<h2>Tailored Venues</h2>
@@ -58,7 +63,7 @@
 			</div>
 		</div>
 		
-		<div sec:authorize="isAuthenticated()" class="cards_common_container about_us_card_container">
+		<div class="cards_common_container about_us_card_container">
 			<div class="card_title">
 				<img alt="" th:src="@{/images/info_icon.png}">
 				<h2>About Us</h2>

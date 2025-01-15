@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venue Advertise Page</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/fragmentstyles.css}">
     <link rel="stylesheet" th:href="@{/css/commonHeaderCss.css}">
     <link rel="stylesheet" th:href="@{/css/venueadvertpageStyles.css}">
 </head>
@@ -48,7 +49,8 @@
             <button type="button" class="section-header">Section 2: Upload Venue Images/Videos</button>
             <div class="section-content">
             	
-    			<p class="error-message" > To enlarge the selected media files! please click on the image/ video file.</p>
+    			<p style="font-size: 1.2em;" class="error-message" > To enlarge the selected media files! please click on the image/ video file.</p>
+    			<p style="font-size: 1.2em;" class="error-message" > Please upload a clear image of the venue's entrance to help visitors easily identify the building when they arrive.</p>
                 <!-- Media Upload -->
 	            <label for="mediaFiles">Upload Media (Images/Videos):</label>
 	            <input type="file" id="mediaFiles" name="mediaFiles" th:field="*{mediaFiles}" multiple accept="image/*,video/*" onchange="validateFileSize(this), validateFileCount(this), previewMedia()" />

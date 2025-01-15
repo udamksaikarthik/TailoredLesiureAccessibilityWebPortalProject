@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/fragmentstyles.css}">
     <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
     <link rel="stylesheet" th:href="@{/css/selectedVenueStyles.css}">
 </head>
 <body>
 	<div th:replace="fragments.html :: header_back_btn"></div>
 	<div th:replace="fragments.html :: header_mobile"></div>
+	
+	<div sec:authorize="isAnonymous()">
+    	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
+	</div>
+	
 	<div class="">
 		<div class="venue_info_container">
 			<h1>Venue Information</h1><br>
@@ -363,7 +369,7 @@
 		</div>
 		
 		<div class="show_comments_class_btn_container_div">
-			<button id="show_comment_btn_id" class="show_comments_class_btn" onclick="showComments()">Show Comments</button>
+			<button id="show_comment_btn_id" class="show_comments_class_btn" onclick="showComments()">Show Venue Comments</button>
 		</div>
 		
 		<h1 style="text-align: center; margin: 1em 0;">Venue Images/Videos</h1>
