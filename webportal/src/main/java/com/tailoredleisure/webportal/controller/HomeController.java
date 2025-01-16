@@ -1,6 +1,7 @@
 package com.tailoredleisure.webportal.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.UserRepository;
@@ -233,6 +236,46 @@ public class HomeController {
 		venueAdvertForm.setBlindVisibleWalkwaysComments(venueAdvertFormBean.getBlindVisibleWalkwaysComments());
 		
 
+		venueAdvertForm.setDeafAdequateSignage(venueAdvertFormBean.getDeafAdequateSignage());
+		venueAdvertForm.setDeafAdequateSignageComments(venueAdvertFormBean.getDeafAdequateSignageComments());
+		venueAdvertForm.setDeafAssistiveTechnology(venueAdvertFormBean.getDeafAssistiveTechnology());
+		venueAdvertForm.setDeafAssistiveTechnologyComments(venueAdvertFormBean.getDeafAssistiveTechnologyComments());
+		venueAdvertForm.setDeafComments(venueAdvertFormBean.getDeafComments());
+		venueAdvertForm.setDeafFrontSeating(venueAdvertFormBean.getDeafFrontSeating());
+		venueAdvertForm.setDeafFrontSeatingComments(venueAdvertFormBean.getDeafFrontSeatingComments());
+		venueAdvertForm.setDeafHearingLoops(venueAdvertFormBean.getDeafHearingLoops());
+		venueAdvertForm.setDeafHearingLoopsComments(venueAdvertFormBean.getDeafHearingLoopsComments());
+		venueAdvertForm.setDeafSignLanguage(venueAdvertFormBean.getDeafSignLanguage());
+		venueAdvertForm.setDeafSignLanguageComments(venueAdvertFormBean.getDeafSignLanguageComments());
+		venueAdvertForm.setDeafSubtitles(venueAdvertFormBean.getDeafSubtitles());
+		venueAdvertForm.setDeafSubtitlesComments(venueAdvertFormBean.getDeafSubtitlesComments());
+		venueAdvertForm.setDeafSupportiveStaff(venueAdvertFormBean.getDeafSupportiveStaff());
+		venueAdvertForm.setDeafSupportiveStaffComments(venueAdvertFormBean.getDeafSupportiveStaffComments());
+		venueAdvertForm.setDeafTrainedStaff(venueAdvertFormBean.getDeafTrainedStaff());
+		venueAdvertForm.setDeafTrainedStaffComments(venueAdvertFormBean.getDeafTrainedStaffComments());
+		
+		
+		venueAdvertForm.setNeurodiverseAdaptedLeaflets(venueAdvertFormBean.getNeurodiverseAdaptedLeaflets());
+		venueAdvertForm.setNeurodiverseAdaptedLeafletsComments(venueAdvertFormBean.getNeurodiverseAdaptedLeafletsComments());
+		venueAdvertForm.setNeurodiverseAdjustableLighting(venueAdvertFormBean.getNeurodiverseAdjustableLighting());
+		venueAdvertForm.setNeurodiverseAdjustableLightingComments(venueAdvertFormBean.getNeurodiverseAdjustableLightingComments());
+		venueAdvertForm.setNeurodiverseComments(venueAdvertFormBean.getNeurodiverseComments());
+		venueAdvertForm.setNeurodiverseFlashingSignage(venueAdvertFormBean.getNeurodiverseFlashingSignage());
+		venueAdvertForm.setNeurodiverseFlashingSignageComments(venueAdvertFormBean.getNeurodiverseFlashingSignageComments());
+		venueAdvertForm.setNeurodiverseLoudNoiseReduction(venueAdvertFormBean.getNeurodiverseLoudNoiseReduction());
+		venueAdvertForm.setNeurodiverseLoudNoiseReductionComments(venueAdvertFormBean.getNeurodiverseLoudNoiseReductionComments());
+		venueAdvertForm.setNeurodiverseNoiseReduction(venueAdvertFormBean.getNeurodiverseNoiseReduction());
+		venueAdvertForm.setNeurodiverseNoiseReductionComments(venueAdvertFormBean.getNeurodiverseNoiseReductionComments());
+		venueAdvertForm.setNeurodiverseQuieterAreas(venueAdvertFormBean.getNeurodiverseQuieterAreas());
+		venueAdvertForm.setNeurodiverseQuieterAreasComments(venueAdvertFormBean.getNeurodiverseQuieterAreasComments());
+		venueAdvertForm.setNeurodiverseQuieterTimeAds(venueAdvertFormBean.getNeurodiverseQuieterTimeAds());
+		venueAdvertForm.setNeurodiverseQuieterTimeAdsComments(venueAdvertFormBean.getNeurodiverseQuieterTimeAdsComments());
+		venueAdvertForm.setNeurodiverseSensoryBag(venueAdvertFormBean.getNeurodiverseSensoryBag());
+		venueAdvertForm.setNeurodiverseSensoryBagComments(venueAdvertFormBean.getNeurodiverseSensoryBagComments());
+		venueAdvertForm.setNeurodiverseSupportiveStaff(venueAdvertFormBean.getNeurodiverseSupportiveStaff());
+		venueAdvertForm.setNeurodiverseSupportiveStaffComments(venueAdvertFormBean.getNeurodiverseSupportiveStaffComments());
+		venueAdvertForm.setNeurodiverseTrainedStaff(venueAdvertFormBean.getNeurodiverseTrainedStaff());
+		venueAdvertForm.setNeurodiverseTrainedStaffComments(venueAdvertFormBean.getNeurodiverseTrainedStaffComments());
 		
 		return venueAdvertForm;
 	}
