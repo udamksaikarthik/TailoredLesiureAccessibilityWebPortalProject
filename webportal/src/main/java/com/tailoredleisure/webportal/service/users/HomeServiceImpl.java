@@ -16,4 +16,6 @@ public interface HomeServiceImpl {
 
 	VenueAdvertFormBean getSelectedVenueAdvertForm(Long id);
 
+	ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user);
+
 }

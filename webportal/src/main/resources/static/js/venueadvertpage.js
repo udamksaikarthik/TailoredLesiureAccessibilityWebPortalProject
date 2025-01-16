@@ -87,48 +87,35 @@ function validateFileSize(input) {
             }
         }
     }
-    
-    
-  // Function to show media in fullscreen mode
+  
 function showMediaFullscreen(element) {
-    const fullscreenContainer = document.getElementById('fullscreen-container');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    const fullscreenVideo = document.getElementById('fullscreen-video');
-    const fullscreenVideoSource = document.getElementById('fullscreen-video-source');
+    const modal = document.getElementById('fullscreen-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalVideo = document.getElementById('modal-video');
+    
+    // Clear previous content
+    modalImage.style.display = 'none';
+    modalVideo.style.display = 'none';
 
-    // Check if the clicked media is an image
     if (element.tagName === 'IMG') {
-        fullscreenImage.src = element.src;
-        fullscreenImage.style.display = 'block';
-        fullscreenVideo.style.display = 'none';
+        modalImage.src = element.src;
+        modalImage.style.display = 'block';
+    } else if (element.tagName === 'VIDEO') {
+        modalVideo.src = element.querySelector('source').src;
+        modalVideo.style.display = 'block';
     }
 
-    // Check if the clicked media is a video
-    if (element.tagName === 'VIDEO') {
-        fullscreenVideoSource.src = element.querySelector('source').src;
-        fullscreenVideo.load();
-        fullscreenVideo.style.display = 'block';
-        fullscreenImage.style.display = 'none';
-    }
-
-    fullscreenContainer.classList.remove('fullscreen-hidden');
+    modal.style.display = 'flex';
 }
 
-// Function to close the fullscreen view
-function closeFullscreen() {
-    const fullscreenContainer = document.getElementById('fullscreen-container');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    const fullscreenVideo = document.getElementById('fullscreen-video');
-
-    // Stop video playback
-    fullscreenVideo.pause();
-
-    // Hide fullscreen container
-    fullscreenContainer.classList.add('fullscreen-hidden');
-
-    // Clear image and video sources
-    fullscreenImage.src = '';
-    fullscreenVideo.querySelector('source').src = '';
+function closeMediaFullscreen() {
+    const modal = document.getElementById('fullscreen-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalVideo = document.getElementById('modal-video');
+    
+    modal.style.display = 'none';
+    modalImage.src = '';
+    modalVideo.src = '';
 }
 
 let showCommentsCounter = 1;

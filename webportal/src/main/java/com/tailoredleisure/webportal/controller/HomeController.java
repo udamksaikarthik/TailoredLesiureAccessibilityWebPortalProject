@@ -61,17 +61,6 @@ public class HomeController {
         System.out.println("Inside showVenueAdvertPage method");
 
 		ModelAndView mv = new ModelAndView();
-		// Get the logged-in user's email (username in this case)
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();  // Get the logged-in user's email
-
-        // Fetch the user entity from the database using the email
-        Users user = userRepository.findByEmail(email);
-
-        // Add the first name, last name, and role to the model
-        if (user != null) {
-            mv.addObject("firstName", user.getFirstName());
-        }
         
 		mv.addObject("venueForm", new VenueAdvertForm());
 		mv.setViewName("venueadvertpage.html");
@@ -133,4 +122,119 @@ public class HomeController {
 		mv.setViewName("selectedvenuepage.html");
 		return mv;
 	}
+	
+	@GetMapping("/business/showUserVenueAdvertsPage")
+	private ModelAndView showUserVenueAdvertsPage() {
+        System.out.println("Inside showUserVenueAdvertsPage method");
+
+		ModelAndView mv = new ModelAndView();
+
+
+        // Get the logged-in user's email (username in this case)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();  // Get the logged-in user's email
+
+        // Fetch the user entity from the database using the email
+        Users user = userRepository.findByEmail(email);
+        
+		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = homeServiceImpl.getAllAdvertsOfBusiness(user);
+		if(adverts.isEmpty() || adverts==null) {
+			mv.addObject("user_venue_advert_msg_prompt","No Exisiting Adverts!!! Please go back to Dashboard and use Venue Advertisement Feature to add advert.");
+		}
+		mv.addObject("adverts", adverts);
+		mv.setViewName("uservenueadvertspage.html");
+		return mv;
+	}
+	
+	@GetMapping("/users/editSelectedVenuePage")
+	public ModelAndView editSelectedVenuePage(@RequestParam Long id) {
+		ModelAndView mv = new ModelAndView();
+		VenueAdvertFormBean venueAdvertFormBean = homeServiceImpl.getSelectedVenueAdvertForm(id);
+		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
+		VenueAdvertForm venueAdvertForm = convertVenueAdvertFormBeanToVenueAdvertForm(venueAdvertFormBean);
+		mv.addObject("venueForm", venueAdvertForm);
+		mv.setViewName("venueadvertpage.html");
+		return mv;
+	}
+
+	private VenueAdvertForm convertVenueAdvertFormBeanToVenueAdvertForm(VenueAdvertFormBean venueAdvertFormBean) {
+		// TODO Auto-generated method stub
+		VenueAdvertForm venueAdvertForm = new VenueAdvertForm();
+		venueAdvertForm.setId(venueAdvertFormBean.getId());
+		venueAdvertForm.setVenueAuditFlg(venueAdvertFormBean.getVenueAuditFlg());
+		venueAdvertForm.setVenueAuditFlgTL(venueAdvertFormBean.getVenueAuditFlgTL());
+		venueAdvertForm.setVenueLocation(venueAdvertFormBean.getVenueLocation());
+		venueAdvertForm.setVenueName(venueAdvertFormBean.getVenueName());
+		venueAdvertForm.setVenuePostCode(venueAdvertFormBean.getVenuePostCode());
+		venueAdvertForm.setVenueType(venueAdvertFormBean.getVenueType());
+		
+
+		venueAdvertForm.setMobilityAccessibleDoors(venueAdvertFormBean.getMobilityAccessibleDoors());
+		venueAdvertForm.setMobilityAccessibleDoorsComments(venueAdvertFormBean.getMobilityAccessibleDoorsComments());
+		venueAdvertForm.setMobilityAccessibleRoute(venueAdvertFormBean.getMobilityAccessibleRoute());
+		venueAdvertForm.setMobilityAccessibleRouteComments(venueAdvertFormBean.getMobilityAccessibleRouteComments());
+		venueAdvertForm.setMobilityChangingPlace(venueAdvertFormBean.getMobilityChangingPlace());
+		venueAdvertForm.setMobilityChangingPlaceComments(venueAdvertFormBean.getMobilityChangingPlaceComments());
+		venueAdvertForm.setMobilityComments(venueAdvertFormBean.getMobilityComments());
+		venueAdvertForm.setMobilityDisabledCarParking(venueAdvertFormBean.getMobilityDisabledCarParking());
+		venueAdvertForm.setMobilityDisabledCarParkingComments(venueAdvertFormBean.getMobilityDisabledCarParkingComments());
+		venueAdvertForm.setMobilityDisabledToilets(venueAdvertFormBean.getMobilityDisabledToilets());
+		venueAdvertForm.setMobilityDisabledToiletsComments(venueAdvertFormBean.getMobilityDisabledToiletsComments());
+		venueAdvertForm.setMobilityEyeLevelSignage(venueAdvertFormBean.getMobilityEyeLevelSignage());
+		venueAdvertForm.setMobilityEyeLevelSignageComments(venueAdvertFormBean.getMobilityEyeLevelSignageComments());
+		venueAdvertForm.setMobilityHeadphonesAvailable(venueAdvertFormBean.getMobilityHeadphonesAvailable());
+		venueAdvertForm.setMobilityHeadphonesAvailableComments(venueAdvertFormBean.getMobilityHeadphonesAvailableComments());
+		venueAdvertForm.setMobilityLifts(venueAdvertFormBean.getMobilityLifts());
+		venueAdvertForm.setMobilityLiftsComments(venueAdvertFormBean.getMobilityLiftsComments());
+		venueAdvertForm.setMobilityLowerCounters(venueAdvertFormBean.getMobilityLowerCounters());
+		venueAdvertForm.setMobilityLowerCountersComments(venueAdvertFormBean.getMobilityLowerCountersComments());
+		venueAdvertForm.setMobilityRamps(venueAdvertFormBean.getMobilityRamps());
+		venueAdvertForm.setMobilityRampsComments(venueAdvertFormBean.getMobilityRampsComments());
+		venueAdvertForm.setMobilitySupportiveStaff(venueAdvertFormBean.getMobilitySupportiveStaff());
+		venueAdvertForm.setMobilitySupportiveStaffComments(venueAdvertFormBean.getMobilitySupportiveStaffComments());
+		venueAdvertForm.setMobilityTrainedStaff(venueAdvertFormBean.getMobilityTrainedStaff());
+		venueAdvertForm.setMobilityTrainedStaffComments(venueAdvertFormBean.getMobilityTrainedStaffComments());
+		venueAdvertForm.setMobilityUnrestrictedViewing(venueAdvertFormBean.getMobilityUnrestrictedViewing());
+		venueAdvertForm.setMobilityUnrestrictedViewingComments(venueAdvertFormBean.getMobilityUnrestrictedViewingComments());
+		venueAdvertForm.setMobilityWheelchairSeating(venueAdvertFormBean.getMobilityWheelchairSeating());
+		venueAdvertForm.setMobilityWheelchairSeatingComments(venueAdvertFormBean.getMobilityWheelchairSeatingComments());
+		venueAdvertForm.setMobilityWideDoorways(venueAdvertFormBean.getMobilityWideDoorways());
+		venueAdvertForm.setMobilityWideDoorwaysComments(venueAdvertFormBean.getMobilityWideDoorwaysComments());
+		
+		
+		venueAdvertForm.setBlindAdaptedLeaflets(venueAdvertFormBean.getBlindAdaptedLeaflets());
+		venueAdvertForm.setBlindAdaptedLeafletsComments(venueAdvertFormBean.getBlindAdaptedLeafletsComments());
+		venueAdvertForm.setBlindAdaptedSignage(venueAdvertFormBean.getBlindAdaptedSignage());
+		venueAdvertForm.setBlindAdaptedSignageComments(venueAdvertFormBean.getBlindAdaptedSignageComments());
+		venueAdvertForm.setBlindAdjustableLighting(venueAdvertFormBean.getBlindAdjustableLighting());
+		venueAdvertForm.setBlindAdjustableLightingComments(venueAdvertFormBean.getBlindAdjustableLightingComments());
+		venueAdvertForm.setBlindAudioDescriptions(venueAdvertFormBean.getBlindAudioDescriptions());
+		venueAdvertForm.setBlindAudioDescriptionsComments(venueAdvertFormBean.getBlindAudioDescriptionsComments());
+		venueAdvertForm.setBlindBrailleSignage(venueAdvertFormBean.getBlindBrailleSignage());
+		venueAdvertForm.setBlindBrailleSignageComments(venueAdvertFormBean.getBlindBrailleSignageComments());
+		venueAdvertForm.setBlindComments(venueAdvertFormBean.getBlindComments());
+		venueAdvertForm.setBlindFrontSeating(venueAdvertFormBean.getBlindFrontSeating());
+		venueAdvertForm.setBlindFrontSeatingComments(venueAdvertFormBean.getBlindFrontSeatingComments());
+		venueAdvertForm.setBlindHighContrastSignage(venueAdvertFormBean.getBlindHighContrastSignage());
+		venueAdvertForm.setBlindHighContrastSignageComments(venueAdvertFormBean.getBlindHighContrastSignageComments());
+		venueAdvertForm.setBlindLargeFontSignage(venueAdvertFormBean.getBlindLargeFontSignage());
+		venueAdvertForm.setBlindLargeFontSignageComments(venueAdvertFormBean.getBlindLargeFontSignageComments());
+		venueAdvertForm.setBlindLargeSubtitles(venueAdvertFormBean.getBlindLargeSubtitles());
+		venueAdvertForm.setBlindLargeSubtitlesComments(venueAdvertFormBean.getBlindLargeSubtitlesComments());
+		venueAdvertForm.setBlindNoTripHazards(venueAdvertFormBean.getBlindNoTripHazards());
+		venueAdvertForm.setBlindNoTripHazardsComments(venueAdvertFormBean.getBlindNoTripHazardsComments());
+		venueAdvertForm.setBlindSupportiveStaff(venueAdvertFormBean.getBlindSupportiveStaff());
+		venueAdvertForm.setBlindSupportiveStaffComments(venueAdvertFormBean.getBlindSupportiveStaffComments());
+		venueAdvertForm.setBlindTouchTours(venueAdvertFormBean.getBlindTouchTours());
+		venueAdvertForm.setBlindTouchToursComments(venueAdvertFormBean.getBlindTouchToursComments());
+		venueAdvertForm.setBlindTrainedStaff(venueAdvertFormBean.getBlindTrainedStaff());
+		venueAdvertForm.setBlindTrainedStaffComments(venueAdvertFormBean.getBlindTrainedStaffComments());
+		venueAdvertForm.setBlindVisibleWalkways(venueAdvertFormBean.getBlindVisibleWalkways());
+		venueAdvertForm.setBlindVisibleWalkwaysComments(venueAdvertFormBean.getBlindVisibleWalkwaysComments());
+		
+
+		
+		return venueAdvertForm;
+	}
+	
 }

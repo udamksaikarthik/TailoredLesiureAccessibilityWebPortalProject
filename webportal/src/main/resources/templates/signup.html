@@ -36,7 +36,7 @@
             </div>
 
             <div class="input-group">
-                <label for="email">Gmail</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" th:field="*{email}" placeholder="Enter your Gmail">
                 <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</p>
             </div>

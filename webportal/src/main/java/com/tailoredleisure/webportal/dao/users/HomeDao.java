@@ -435,4 +435,11 @@ public class HomeDao {
 		return venueAdvertBean;
 	}
 
+	public ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user) {
+		// TODO Auto-generated method stub
+		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = venueAdvertRepository.findAllAdvertsByUserId(user);
+		System.out.println("adverts: "+adverts.toString());
+		return adverts;
+	}
+
 }

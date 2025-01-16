@@ -150,5 +150,6 @@ li{
 
 input[type="radio"] {
 	margin-left: 10px;
+	margin-right: 10px;
   transform: scale(1.75); /* Adjust scale factor to make it larger */
 }

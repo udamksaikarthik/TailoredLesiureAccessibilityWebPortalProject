@@ -10,6 +10,7 @@ import java.util.List;
 
 public class VenueAdvertForm {
 
+	private Long id;
     // Section 1: Venue Information
     @NotBlank(message = "Venue Name is mandatory")
     private String venueName;
@@ -239,13 +240,23 @@ public class VenueAdvertForm {
     
     private String neurodiverseComments;
 
+    
 
     // Getters and Setters for all fields
+
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
     public String getVenueName() {
         return venueName;
     }
 
-    public void setVenueName(String venueName) {
+	public void setVenueName(String venueName) {
         this.venueName = venueName;
     }
 

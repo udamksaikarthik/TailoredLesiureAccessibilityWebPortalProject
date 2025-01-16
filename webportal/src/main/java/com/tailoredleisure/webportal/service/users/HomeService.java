@@ -37,4 +37,10 @@ public class HomeService implements HomeServiceImpl{
 		return homeDao.getSelectedVenueAdvertForm(id);
 	}
 
+	@Override
+	public ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user) {
+		// TODO Auto-generated method stub
+		return homeDao.getAllAdvertsOfBusiness(user);
+	}
+
 }
