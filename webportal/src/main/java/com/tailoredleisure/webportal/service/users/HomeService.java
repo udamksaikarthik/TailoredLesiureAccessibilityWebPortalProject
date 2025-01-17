@@ -49,4 +49,10 @@ public class HomeService implements HomeServiceImpl{
 		homeDao.deleteMediaFile(mediaId);
 	}
 
+	@Override
+	public Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
+		// TODO Auto-generated method stub
+		return homeDao.updateAdvertForm(venueAdvertForm, user);
+	}
+
 }

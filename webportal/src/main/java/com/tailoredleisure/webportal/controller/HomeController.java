@@ -170,7 +170,45 @@ public class HomeController {
 		VenueAdvertForm venueAdvertForm = convertVenueAdvertFormBeanToVenueAdvertForm(venueAdvertFormBean);
 		mv.addObject("adverts", venueAdvertFormBean);
 		mv.addObject("venueForm", venueAdvertForm);
-		mv.setViewName("venueadvertpage.html");
+		mv.setViewName("updatevenueadvertpage.html");
+		return mv;
+	}
+	
+	@PostMapping("/business/submitUpdatedVenueAdvertForm")
+	private ModelAndView submitUpdatedVenueAdvertForm(@Valid @ModelAttribute("venueForm") VenueAdvertForm venueAdvertForm,
+            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        System.out.println("Inside submitUpdatedVenueAdvertForm method");
+        ModelAndView mv = new ModelAndView();
+        if (bindingResult.hasErrors()) {
+        	System.out.println("bindingResult has Errors.");
+        	System.out.println("bindingResult.getErrorCount(): "+bindingResult.getErrorCount());
+        	System.out.println("bindingResult.getAllErrors(): "+bindingResult.getAllErrors());
+        	mv.addObject("images_warn_msg", "Please reselect the media files(images/videos) again in media section! If you have selected any before submitting the form.");
+        	mv.setViewName("venueadvertpage");
+            return mv;  // return to signup form if errors
+        }else {
+        	System.out.println("bindingResult has no Errors.");
+        }
+        
+        System.out.println("venueAdvertForm toString: "+venueAdvertForm.toString());
+        
+        // Get the logged-in user's email (username in this case)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();  // Get the logged-in user's email
+
+        // Fetch the user entity from the database using the email
+        Users user = userRepository.findByEmail(email);
+
+
+        // Process the valid form (e.g., save venue form to the database)
+        Boolean flag = homeServiceImpl.updateAdvertForm(venueAdvertForm, user);
+        if(flag) {
+        	redirectAttributes.addFlashAttribute("advert_form_success_msg", "Advert Updated successfully.");
+        }else {
+        	
+        }
+        mv.setViewName("redirect:/users/editSelectedVenuePage?id=" + venueAdvertForm.getId());
+
 		return mv;
 	}
 

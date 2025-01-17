@@ -20,4 +20,6 @@ public interface HomeServiceImpl {
 
 	void deleteMediaFile(Long mediaId);
 
+	Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user);
+
 }

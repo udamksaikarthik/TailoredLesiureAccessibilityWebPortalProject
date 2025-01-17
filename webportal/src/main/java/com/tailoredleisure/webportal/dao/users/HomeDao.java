@@ -68,6 +68,9 @@ public class HomeDao {
 			
 			
 			//Section-1
+			if(venueAdvertForm.getId()!=null) {
+				venueAdvertFormEntity.setId(venueAdvertForm.getId());
+			}
 			venueAdvertFormEntity.setVenueName(venueAdvertForm.getVenueName());
 			venueAdvertFormEntity.setVenueType(venueAdvertForm.getVenueType());
 			venueAdvertFormEntity.setVenueLocation(venueAdvertForm.getVenueLocation());
@@ -102,6 +105,14 @@ public class HomeDao {
 		                media.setVenueAdvertForm(venueAdvertFormEntity);
 		                mediaLists.add(media);
 		            	}
+
+	    				if(venueAdvertForm.getId()!=null) {
+	    					ArrayList<Media> existingMediaFiles = mediaRepository.findByVenueAdvertForm(venueAdvertFormEntity);
+	    					for(Media existingMedia :existingMediaFiles) {
+	    						System.out.println("existingMedia: "+existingMedia.toString());
+	    		                mediaLists.add(existingMedia);
+	    					}
+	    				}
 		            }
 	            	venueAdvertFormEntity.setMedia(mediaLists);
 				}
@@ -448,6 +459,28 @@ public class HomeDao {
 	public void deleteMediaFile(Long mediaId) {
 		// TODO Auto-generated method stub
 		mediaRepository.deleteById(mediaId);
+	}
+
+	public Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
+		// TODO Auto-generated method stub
+		Boolean flag = false;
+		com.tailoredleisure.webportal.entity.VenueAdvertForm venueAdvertFormEntity = convertBeanToEntity(venueAdvertForm, user);
+		
+		if(venueAdvertFormEntity!=null) {
+			System.out.println(venueAdvertFormEntity.toString());
+			try {
+				venueAdvertRepository.save(venueAdvertFormEntity);
+				flag = true;
+			}catch(Exception e){
+				System.out.println(e);
+				flag = false;
+			}
+		}else {
+			flag = false;
+		}
+		
+		
+		return flag;
 	}
 
 }
