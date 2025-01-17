@@ -18,4 +18,6 @@ public interface HomeServiceImpl {
 
 	ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user);
 
+	void deleteMediaFile(Long mediaId);
+
 }

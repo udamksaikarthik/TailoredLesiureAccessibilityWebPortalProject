@@ -64,7 +64,8 @@ public class HomeController {
         System.out.println("Inside showVenueAdvertPage method");
 
 		ModelAndView mv = new ModelAndView();
-        
+
+		mv.addObject("adverts", new VenueAdvertFormBean());
 		mv.addObject("venueForm", new VenueAdvertForm());
 		mv.setViewName("venueadvertpage.html");
 		return mv;
@@ -149,12 +150,25 @@ public class HomeController {
 		return mv;
 	}
 	
+
+	@GetMapping("/business/deleteSelectedMedia")
+	private ModelAndView deleteSelectedMedia(@RequestParam("id") Long advertId, @RequestParam("mediaId") Long mediaId) {
+        System.out.println("Inside deleteSelectedMedia method");
+        
+        homeServiceImpl.deleteMediaFile(mediaId);
+        
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/users/editSelectedVenuePage?id=" + advertId);
+		return mv;
+	}
+	
 	@GetMapping("/users/editSelectedVenuePage")
 	public ModelAndView editSelectedVenuePage(@RequestParam Long id) {
 		ModelAndView mv = new ModelAndView();
 		VenueAdvertFormBean venueAdvertFormBean = homeServiceImpl.getSelectedVenueAdvertForm(id);
 		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
 		VenueAdvertForm venueAdvertForm = convertVenueAdvertFormBeanToVenueAdvertForm(venueAdvertFormBean);
+		mv.addObject("adverts", venueAdvertFormBean);
 		mv.addObject("venueForm", venueAdvertForm);
 		mv.setViewName("venueadvertpage.html");
 		return mv;
@@ -277,7 +291,9 @@ public class HomeController {
 		venueAdvertForm.setNeurodiverseTrainedStaff(venueAdvertFormBean.getNeurodiverseTrainedStaff());
 		venueAdvertForm.setNeurodiverseTrainedStaffComments(venueAdvertFormBean.getNeurodiverseTrainedStaffComments());
 		
+		venueAdvertForm.setBusinessEmail(venueAdvertFormBean.getBusinessEmail());		
 		return venueAdvertForm;
 	}
+	
 	
 }

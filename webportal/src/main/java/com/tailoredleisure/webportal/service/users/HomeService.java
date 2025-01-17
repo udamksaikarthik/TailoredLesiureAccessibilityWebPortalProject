@@ -43,4 +43,10 @@ public class HomeService implements HomeServiceImpl{
 		return homeDao.getAllAdvertsOfBusiness(user);
 	}
 
+	@Override
+	public void deleteMediaFile(Long mediaId) {
+		// TODO Auto-generated method stub
+		homeDao.deleteMediaFile(mediaId);
+	}
+
 }

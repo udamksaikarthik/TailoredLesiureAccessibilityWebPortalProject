@@ -28,6 +28,9 @@ public class HomeDao {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private MediaRepository mediaRepository;
+
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
 		Boolean flag = false;
@@ -440,6 +443,11 @@ public class HomeDao {
 		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = venueAdvertRepository.findAllAdvertsByUserId(user);
 		System.out.println("adverts: "+adverts.toString());
 		return adverts;
+	}
+
+	public void deleteMediaFile(Long mediaId) {
+		// TODO Auto-generated method stub
+		mediaRepository.deleteById(mediaId);
 	}
 
 }
