@@ -22,4 +22,8 @@ public interface HomeServiceImpl {
 
 	Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user);
 
+	void deleteAdvert(Long advertId);
+
+	int getExistingMediaCount(Long id);
+
 }

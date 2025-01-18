@@ -12,7 +12,7 @@
 <body>
 	
 	<div th:replace="fragments.html :: header_back_btn"></div>
-	<div th:replace="fragments.html :: header_mobile"></div>
+	<div th:replace="fragments.html :: header_mobile_later_pages"></div>
     <h1 class="advert_title_class_h1"> Venue Accessibility Checklist Advertisement Form</h1>
     <p class="error-message" th:text="${images_warn_msg}"></p>
     <form class="advert_checklist_form" th:action="@{/business/submitVenueAdvertForm}" th:object="${venueForm}" method="post" enctype="multipart/form-data">

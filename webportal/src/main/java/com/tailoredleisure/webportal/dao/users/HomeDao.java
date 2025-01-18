@@ -483,4 +483,33 @@ public class HomeDao {
 		return flag;
 	}
 
+	public void deleteAdvert(Long advertId) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advertId);
+		
+		if(venueAdvertFormEntity.isPresent()) {
+			com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity = venueAdvertFormEntity.get();
+			for(Media media: existingVenueAdvertFormEntity.getMedia()) {
+				mediaRepository.deleteById(media.getId());
+			}
+			venueAdvertRepository.deleteById(advertId);
+		}
+	}
+
+	public int getExistingMediaCount(Long id) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(id);
+		int mediaSize = 0;
+		if(venueAdvertFormEntity.isPresent()) {
+			com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity = venueAdvertFormEntity.get();
+			if(existingVenueAdvertFormEntity.getMedia()!=null) {
+				mediaSize = existingVenueAdvertFormEntity.getMedia().size();
+			}else {
+				
+			}
+		}
+		
+		return mediaSize;
+	}
+
 }

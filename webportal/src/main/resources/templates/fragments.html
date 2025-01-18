@@ -51,7 +51,11 @@
 	</div>
 	
 	<div class="mobile-left-alignment-header-container common-header-container" th:fragment="header_mobile">
-			<h1>Welcome, <span th:text="${firstName}"></span></h1>
+			<h1 sec:authorize="isAuthenticated()">Welcome, <span th:text="${firstName}"></span></h1>
+			<h1 sec:authorize="isAnonymous()">Welcome, <span>Guest</span></h1>
+	</div>
+	<div class="mobile-left-alignment-header-container common-header-container" th:fragment="header_mobile_later_pages">
+				<a th:href="@{/}" class="back_btn_class">Back to Dashboard</a>
 	</div>
 </body>
 </html>

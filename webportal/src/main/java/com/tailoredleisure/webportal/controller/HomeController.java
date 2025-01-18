@@ -8,8 +8,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -190,6 +192,23 @@ public class HomeController {
         	System.out.println("bindingResult has no Errors.");
         }
         
+        int existingMediaCount = homeServiceImpl.getExistingMediaCount(venueAdvertForm.getId());
+        
+        int totalMediaCount = 0;
+        
+        if(venueAdvertForm.getMediaFiles()!=null) {
+            totalMediaCount = existingMediaCount + venueAdvertForm.getMediaFiles().size();
+        }else {
+        	totalMediaCount = existingMediaCount;
+        }
+        if(totalMediaCount > 5) {
+        	System.out.println("Media File Size Exceeded");
+        	redirectAttributes.addFlashAttribute("advert_form_media_error_msg", "Advert Update Failed: You cannot add more than 5 media files to this advert. Please remove an existing media file before adding a new one.");
+            mv.setViewName("redirect:/users/editSelectedVenuePage?id=" + venueAdvertForm.getId());
+
+    		return mv;
+        }
+        
         System.out.println("venueAdvertForm toString: "+venueAdvertForm.toString());
         
         // Get the logged-in user's email (username in this case)
@@ -209,6 +228,15 @@ public class HomeController {
         }
         mv.setViewName("redirect:/users/editSelectedVenuePage?id=" + venueAdvertForm.getId());
 
+		return mv;
+	}
+	
+	@DeleteMapping("/business/deleteAdvert/{id}")
+	private ModelAndView deleteAdvert(@PathVariable("id") Long advertId) {
+		System.out.println("Inside deleteAdvert Method");
+		ModelAndView mv = new ModelAndView();
+		homeServiceImpl.deleteAdvert(advertId);
+		mv.setViewName("redirect:/business/showUserVenueAdvertsPage");
 		return mv;
 	}
 

@@ -220,3 +220,24 @@
 .media-preview:hover, .media-preview-video:hover {
     transform: scale(1.05);
 }
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+	.checklists_main_container{
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+	}
+	.common_checklist_info_container{
+		width: 95%;
+	}
+	
+	.advert-media{
+		flex-direction: column;
+		gap: 1em;
+	}
+	.media-container{
+		width: 95%;
+	}
+}

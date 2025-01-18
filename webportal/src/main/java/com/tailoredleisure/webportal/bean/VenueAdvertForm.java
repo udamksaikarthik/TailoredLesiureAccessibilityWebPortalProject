@@ -32,6 +32,7 @@ public class VenueAdvertForm {
 
     private Boolean venueAuditFlgTL = false;
 
+
     // Section 2: Upload Venue Images/Videos
     @Size(max = 5, message = "You can upload a maximum of 5 media files")
     private List<MultipartFile> mediaFiles;
@@ -292,6 +293,7 @@ public class VenueAdvertForm {
 	public void setVenueAuditFlg(Boolean venueAuditFlg) {
 		this.venueAuditFlg = venueAuditFlg;
 	}
+	
 
 	public List<MultipartFile> getMediaFiles() {
         return mediaFiles;

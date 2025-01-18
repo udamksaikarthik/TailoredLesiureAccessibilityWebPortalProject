@@ -55,4 +55,16 @@ public class HomeService implements HomeServiceImpl{
 		return homeDao.updateAdvertForm(venueAdvertForm, user);
 	}
 
+	@Override
+	public void deleteAdvert(Long advertId) {
+		// TODO Auto-generated method stub
+		homeDao.deleteAdvert(advertId);
+	}
+
+	@Override
+	public int getExistingMediaCount(Long id) {
+		// TODO Auto-generated method stub
+		return homeDao.getExistingMediaCount(id);
+	}
+
 }

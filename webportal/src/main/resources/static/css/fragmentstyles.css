@@ -8,6 +8,7 @@
     font-size: 1.1rem;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .back_btn_class:hover{
@@ -25,6 +26,7 @@
     cursor: pointer;
     font-size: 1.1rem;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 .form_btn_logout:hover{
     background-color: #fd0000;
@@ -39,7 +41,22 @@
     cursor: pointer;
     font-size: 1.1rem;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 .form_btn_login:hover{
     background-color: #0056b3;
 } 
+.delete_advert_btn_class{
+	margin: 1em 0;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+	.right-alignment-header-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	}	
+}
