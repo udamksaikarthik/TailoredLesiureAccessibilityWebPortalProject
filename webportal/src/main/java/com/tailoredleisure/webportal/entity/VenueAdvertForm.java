@@ -1,6 +1,7 @@
 package com.tailoredleisure.webportal.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +12,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -46,6 +50,23 @@ public class VenueAdvertForm {
     private Boolean venueAuditFlgTL = false;
     
     private Boolean TLVerifiedVenueAdvertFlg = false;
+    
+
+    @Column(name = "created_date", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Column(name = "updated_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedDate;
+
+    @Column(name = "tl_verified_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TLVerifiedDate;
+
+    @Column(name = "tl_audited_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TLAuditedDate;
 
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)
     @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -1134,6 +1155,39 @@ public class VenueAdvertForm {
 
 	public void setNeurodiverseTrainedStaffComments(String neurodiverseTrainedStaffComments) {
 		this.neurodiverseTrainedStaffComments = neurodiverseTrainedStaffComments;
+	}
+	
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Date getTLVerifiedDate() {
+		return TLVerifiedDate;
+	}
+
+	public void setTLVerifiedDate(Date tLVerifiedDate) {
+		TLVerifiedDate = tLVerifiedDate;
+	}
+
+	public Date getTLAuditedDate() {
+		return TLAuditedDate;
+	}
+
+	public void setTLAuditedDate(Date tLAuditedDate) {
+		TLAuditedDate = tLAuditedDate;
 	}
 
 	@Override

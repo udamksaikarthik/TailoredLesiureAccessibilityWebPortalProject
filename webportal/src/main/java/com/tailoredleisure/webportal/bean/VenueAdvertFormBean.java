@@ -1,5 +1,6 @@
 package com.tailoredleisure.webportal.bean;
 
+import java.util.Date;
 import java.util.List;
 
 public class VenueAdvertFormBean {
@@ -14,6 +15,15 @@ public class VenueAdvertFormBean {
     private Boolean venueAuditFlgTL;
     private Boolean TLVerifiedVenueAdvertFlg;
     private String businessEmail;
+    
+
+    private Date createdDate;
+
+    private Date updatedDate;
+
+    private Date TLVerifiedDate;
+
+    private Date TLAuditedDate;
 
     // Related Entities
     private List<MediaBean> media;
@@ -786,6 +796,32 @@ public class VenueAdvertFormBean {
 	}
 	public void setNeurodiverseTrainedStaffComments(String neurodiverseTrainedStaffComments) {
 		this.neurodiverseTrainedStaffComments = neurodiverseTrainedStaffComments;
+	}
+	
+	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+	public Date getTLVerifiedDate() {
+		return TLVerifiedDate;
+	}
+	public void setTLVerifiedDate(Date tLVerifiedDate) {
+		TLVerifiedDate = tLVerifiedDate;
+	}
+	public Date getTLAuditedDate() {
+		return TLAuditedDate;
+	}
+	public void setTLAuditedDate(Date tLAuditedDate) {
+		TLAuditedDate = tLAuditedDate;
 	}
 	@Override
 	public String toString() {

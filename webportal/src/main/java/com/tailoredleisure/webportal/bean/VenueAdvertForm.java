@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.Date;
 import java.util.List;
 
 public class VenueAdvertForm {
@@ -31,6 +32,14 @@ public class VenueAdvertForm {
     private Boolean venueAuditFlg;
 
     private Boolean venueAuditFlgTL = false;
+    
+    private Date createdDate;
+
+    private Date updatedDate;
+
+    private Date TLVerifiedDate;
+
+    private Date TLAuditedDate;
 
 
     // Section 2: Upload Venue Images/Videos
@@ -1102,6 +1111,39 @@ public class VenueAdvertForm {
 	public void setNeurodiverseTrainedStaffComments(String neurodiverseTrainedStaffComments) {
 		this.neurodiverseTrainedStaffComments = neurodiverseTrainedStaffComments;
 	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Date getTLVerifiedDate() {
+		return TLVerifiedDate;
+	}
+
+	public void setTLVerifiedDate(Date tLVerifiedDate) {
+		TLVerifiedDate = tLVerifiedDate;
+	}
+
+	public Date getTLAuditedDate() {
+		return TLAuditedDate;
+	}
+
+	public void setTLAuditedDate(Date tLAuditedDate) {
+		TLAuditedDate = tLAuditedDate;
+	}
+	
 	
     
 }

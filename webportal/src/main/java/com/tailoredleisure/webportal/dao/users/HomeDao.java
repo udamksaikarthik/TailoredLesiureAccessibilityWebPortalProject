@@ -3,6 +3,7 @@ package com.tailoredleisure.webportal.dao.users;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +78,17 @@ public class HomeDao {
 			venueAdvertFormEntity.setVenuePostCode(venueAdvertForm.getVenuePostCode());
 			venueAdvertFormEntity.setVenueAuditFlg(venueAdvertForm.getVenueAuditFlg());
 			venueAdvertFormEntity.setBusinessEmail(venueAdvertForm.getBusinessEmail());
+			venueAdvertFormEntity.setCreatedDate(new Date());
+			
+			if(venueAdvertForm.getUpdatedDate()!=null) {
+				venueAdvertFormEntity.setUpdatedDate(venueAdvertForm.getUpdatedDate());
+			}
+			if(venueAdvertForm.getTLVerifiedDate()!=null) {
+				venueAdvertFormEntity.setTLVerifiedDate(venueAdvertForm.getTLVerifiedDate());
+			}
+			if(venueAdvertForm.getTLAuditedDate()!=null) {
+				venueAdvertFormEntity.setTLAuditedDate(venueAdvertForm.getTLAuditedDate());
+			}
 			
 			
 			//Section-2
@@ -280,6 +292,11 @@ public class HomeDao {
 		venueAdvertFormBean.setTLVerifiedVenueAdvertFlg(venueAdvertFormEntity.getTLVerifiedVenueAdvertFlg());
 		venueAdvertFormBean.setBusinessEmail(venueAdvertFormEntity.getBusinessEmail());
 		
+
+		venueAdvertFormBean.setCreatedDate(venueAdvertFormEntity.getCreatedDate());
+		venueAdvertFormBean.setUpdatedDate(venueAdvertFormEntity.getUpdatedDate());
+		venueAdvertFormBean.setTLVerifiedDate(venueAdvertFormEntity.getTLVerifiedDate());
+		venueAdvertFormBean.setTLAuditedDate(venueAdvertFormEntity.getTLAuditedDate());
 		
 		
 		
@@ -443,6 +460,13 @@ public class HomeDao {
 			com.tailoredleisure.webportal.entity.VenueAdvertForm existingAdvertEntity = venueAdvertFormEntity.get();
 			existingAdvertEntity.setTLVerifiedVenueAdvertFlg(tlVerifyStatus);
 			existingAdvertEntity.setVenueAuditFlgTL(tlVenueAuditStatus);
+			existingAdvertEntity.setUpdatedDate(new Date());
+			if(existingAdvertEntity.getTLVerifiedVenueAdvertFlg()) {
+				existingAdvertEntity.setTLVerifiedDate(new Date());
+			}
+			if(existingAdvertEntity.getVenueAuditFlgTL()) {
+				existingAdvertEntity.setTLAuditedDate(new Date());
+			}
 			venueAdvertRepository.save(existingAdvertEntity);
 			venueAdvertBean = convertEntityIntoBean(existingAdvertEntity);
 		}
@@ -469,6 +493,9 @@ public class HomeDao {
 		if(venueAdvertFormEntity!=null) {
 			System.out.println(venueAdvertFormEntity.toString());
 			try {
+				venueAdvertFormEntity.setUpdatedDate(new Date());
+				System.out.println("Inside updateAdvertForm Method from homeDao Class");
+				System.out.println("venueAdvertFormEntity updatedDate: "+venueAdvertFormEntity.getUpdatedDate());
 				venueAdvertRepository.save(venueAdvertFormEntity);
 				flag = true;
 			}catch(Exception e){
