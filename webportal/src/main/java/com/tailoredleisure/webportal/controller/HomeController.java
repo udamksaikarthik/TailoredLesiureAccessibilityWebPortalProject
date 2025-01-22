@@ -115,7 +115,7 @@ public class HomeController {
 		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = homeServiceImpl.getAllAdverts(true);
 		mv.addObject("adverts", adverts);
 		mv.addObject("adverts_title", "Verified Adverts");
-		mv.setViewName("verifyvenuespage.html");
+		mv.setViewName("displayvenuespage.html");
 		return mv;
 	}
 	

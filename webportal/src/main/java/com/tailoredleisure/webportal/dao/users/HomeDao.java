@@ -460,12 +460,16 @@ public class HomeDao {
 			com.tailoredleisure.webportal.entity.VenueAdvertForm existingAdvertEntity = venueAdvertFormEntity.get();
 			existingAdvertEntity.setTLVerifiedVenueAdvertFlg(tlVerifyStatus);
 			existingAdvertEntity.setVenueAuditFlgTL(tlVenueAuditStatus);
-			existingAdvertEntity.setUpdatedDate(new Date());
+//			existingAdvertEntity.setUpdatedDate(new Date());
 			if(existingAdvertEntity.getTLVerifiedVenueAdvertFlg()) {
 				existingAdvertEntity.setTLVerifiedDate(new Date());
+			}else {
+				existingAdvertEntity.setTLVerifiedDate(null);
 			}
 			if(existingAdvertEntity.getVenueAuditFlgTL()) {
 				existingAdvertEntity.setTLAuditedDate(new Date());
+			}else {
+				existingAdvertEntity.setTLAuditedDate(null);
 			}
 			venueAdvertRepository.save(existingAdvertEntity);
 			venueAdvertBean = convertEntityIntoBean(existingAdvertEntity);
