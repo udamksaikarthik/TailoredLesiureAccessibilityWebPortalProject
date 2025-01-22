@@ -18,11 +18,6 @@
     	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
 	</div> -->
 	
-	<div sec:authorize="hasRole('ADMIN')" class="verified_btns_container_class">
-		<a th:href="@{/admin/showVerifyVenuesPage(type='unverified')}">Unverfied Adverts</a>
-		<a th:href="@{/admin/showVerifyVenuesPage(type='verified')}">Verfied Adverts</a>
-	</div>
-	<h1 sec:authorize="hasRole('ADMIN')" class="verify_venues_title_class" th:text="${adverts_title}"></h1>
 	<div class="venues_list_container">
 		<div class="venues_cards_common_container" th:each="advert : ${adverts}">
 			<h1>Venue Name: </h1> <h1 th:text="${advert.venueName}"></h1> <br>
@@ -33,7 +28,7 @@
 			<h1 th:if="${advert.venueAuditFlgTL}"><span class="green-class">&check;</span> Audited</h1><br th:if="${advert.venueAuditFlgTL}">
 			<h1 th:unless="${advert.TLVerifiedVenueAdvertFlg}"><span class="red-class">&cross;</span> Not Verified</h1><br th:unless="${advert.TLVerifiedVenueAdvertFlg}">
 			<h1 th:unless="${advert.venueAuditFlgTL}"><span class="red-class">&cross;</span> Not Audited</h1><br th:unless="${advert.venueAuditFlgTL}">
-			<a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/showSelectedVenueAdminPage(id=${advert.Id})}"></a>
+			<a sec:authorize="hasAnyRole('BUSINESS_MEMBER','USER','ADMIN')" th:href="@{/users/showSelectedVenuePage(id=${advert.Id})}"></a>
 		</div>
 	</div>
 </body>

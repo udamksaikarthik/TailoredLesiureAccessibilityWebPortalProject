@@ -52,6 +52,16 @@ public class AdminController {
 		return mv;
 	}
 	
+	@GetMapping("/admin/showSelectedVenueAdminPage")
+	public ModelAndView showSelectedVenueAdminPage(@RequestParam Long id) {
+		ModelAndView mv = new ModelAndView();
+		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.getSelectedVenueAdvertForm(id);
+		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
+		mv.addObject("advert", venueAdvertFormBean);
+		mv.setViewName("selectedvenuepage.html");
+		return mv;
+	}
+	
 	@GetMapping("/admin/showSelectedVenuePage")
 	public ModelAndView showSelectedVenuePage(@RequestParam Long id) {
 		ModelAndView mv = new ModelAndView();

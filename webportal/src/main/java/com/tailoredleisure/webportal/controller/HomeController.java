@@ -109,13 +109,13 @@ public class HomeController {
 		return mv;
 	}
 	
-	@GetMapping("/users/showVerifyVenuesPage")
+	@GetMapping("/users/showVenuesPage")
 	public ModelAndView showVerifyVenuesPage() {
 		ModelAndView mv = new ModelAndView();
 		ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> adverts = homeServiceImpl.getAllAdverts(true);
 		mv.addObject("adverts", adverts);
 		mv.addObject("adverts_title", "Verified Adverts");
-		mv.setViewName("displayvenuespage.html");
+		mv.setViewName("displayallusersvenuespage.html");
 		return mv;
 	}
 	
@@ -125,7 +125,7 @@ public class HomeController {
 		VenueAdvertFormBean venueAdvertFormBean = homeServiceImpl.getSelectedVenueAdvertForm(id);
 		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
 		mv.addObject("advert", venueAdvertFormBean);
-		mv.setViewName("selectedvenuepage.html");
+		mv.setViewName("selectedallusersvenuepage.html");
 		return mv;
 	}
 	
