@@ -55,7 +55,7 @@ body {
 
 .input-group label {
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1.25em;
 }
 
 .input-group input,
@@ -65,7 +65,7 @@ body {
     margin-top: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.25em;
 }
 
 .error {

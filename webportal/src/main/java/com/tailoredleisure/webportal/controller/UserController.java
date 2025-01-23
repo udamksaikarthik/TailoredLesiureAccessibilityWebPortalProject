@@ -1,5 +1,7 @@
 package com.tailoredleisure.webportal.controller;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -7,8 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
 import com.tailoredleisure.webportal.service.users.UserServiceImpl;
 
 import jakarta.validation.Valid;
@@ -57,11 +60,16 @@ public class UserController {
 	
 	@PostMapping("/signup")
     public String processSignup(@Valid @ModelAttribute("signupForm") Users users,
-                                BindingResult bindingResult) {
+                                BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Inside processSignup method");
      // Check for validation errors
         if (bindingResult.hasErrors()) {
             return "signup";  // Return signup page with errors
+        }
+        
+        if(!Pattern.matches(".*\\d.*", users.getPassword())) {
+        	bindingResult.rejectValue("password", "error.signupForm", "Password must contain atleast one number in it!");
+            return "signup";  // Return signup page with error
         }
 
         // If passwords don't match, add custom error
@@ -79,8 +87,11 @@ public class UserController {
 
         // Process the registration
         userServiceImpl.registerUser(users);
-
+        
+        redirectAttributes.addFlashAttribute("success_msg_login", "User created successfully!");
+        
         // Redirect to login after successful signup
         return "redirect:/login";
     }
+	
 }

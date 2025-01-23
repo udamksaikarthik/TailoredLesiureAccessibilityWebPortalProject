@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Venues Page</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/fragmentstyles.css}">
+    <link rel="stylesheet" th:href="@{/css/homepageStyles.css}">
+    <link rel="stylesheet" th:href="@{/css/verifyVenuesStyles.css}">
+</head>
+<body>
+	<div th:replace="fragments.html :: header_back_btn"></div>
+	<!-- <div sec:authorize="isAnonymous()" th:replace="fragments.html :: header_mobile"></div> -->
+	<div sec:authorize="isAuthenticated()" th:replace="fragments.html :: header_mobile_later_pages"></div>
+	
+	<!-- <div sec:authorize="isAnonymous()">
+    	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
+	</div> -->
+	
+	<div class="venues_list_container">
+		<div class="venues_cards_common_container" th:each="advert : ${adverts}">
+			<h1>Venue Name: </h1> <h1 th:text="${advert.venueName}"></h1> <br>
+			<h1>Venue Type: </h1> <h1 th:text="${advert.venueType}"></h1> <br>
+			<h1>Location: </h1> <h1 th:text="${advert.venueLocation}"></h1> <br>
+			<h1>Post Code: </h1> <h1 th:text="${advert.venuePostCode}"></h1> <br>
+			<h1 th:if="${advert.TLVerifiedVenueAdvertFlg}"><span class="green-class">&check;</span> Verified</h1><br th:if="${advert.TLVerifiedVenueAdvertFlg}">
+			<h1 th:if="${advert.venueAuditFlgTL}"><span class="green-class">&check;</span> Audited</h1><br th:if="${advert.venueAuditFlgTL}">
+			<h1 th:unless="${advert.TLVerifiedVenueAdvertFlg}"><span class="red-class">&cross;</span> Not Verified</h1><br th:unless="${advert.TLVerifiedVenueAdvertFlg}">
+			<h1 th:unless="${advert.venueAuditFlgTL}"><span class="red-class">&cross;</span> Not Audited</h1><br th:unless="${advert.venueAuditFlgTL}">
+			<a sec:authorize="hasRole('ADMIN')" th:href="@{/users/editSelectedVenuePage(id=${advert.Id})}"></a>
+		</div>
+	</div>
+</body>
+</html>

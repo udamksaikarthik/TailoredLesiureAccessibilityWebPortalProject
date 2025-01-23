@@ -16,9 +16,11 @@
 			<h4>Accessibility for Everyone</h4>
 		</div>
 	</div>
+	
 
     <div class="main-container">
         <div class="login-container">
+			<h2 class="form-success-message" th:if="${success_msg_login != null and success_msg_login != ''}" th:text="${success_msg_login}"></h2>
             <h1 class="login-title">Login</h1>
 
             <!-- Login Form - Update action to point to the correct Spring Security login processing URL -->
@@ -29,7 +31,7 @@
 
                 <!-- Username (Gmail/Email) -->
                 <div class="input-group">
-                    <label for="email">Gmail</label>
+                    <label for="email">Email</label>
                     <!-- Name attribute should be "username" for Spring Security compatibility -->
                     <input type="email" id="email" name="username" placeholder="Enter your Gmail" required>
                 </div>
@@ -39,6 +41,10 @@
                     <label for="password">Password</label>
                     <!-- Name attribute should be "password" for Spring Security compatibility -->
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <!-- Eye Icon for toggling visibility -->
+				    <span id="togglePassword" style="position: absolute; height: 100%; right: 10px; top: 55%; transform: translateY(0%); cursor: pointer;">
+				        👁️
+				    </span>
                 </div>
                 
                 <!-- Display error message if login fails -->
@@ -56,5 +62,6 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
 </body>
 </html>

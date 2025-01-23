@@ -1,7 +1,7 @@
 package com.tailoredleisure.webportal.service.users;
 
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
 
 
 

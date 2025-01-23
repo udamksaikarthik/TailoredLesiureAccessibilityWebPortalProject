@@ -1,0 +1,146 @@
+
+body{
+    background-color: #f4f4f4;
+}
+.header-container{
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1em 0;
+	padding: 0.5em 0;
+	border-bottom: 1px solid black;
+}
+
+.common-header-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	gap: 10px;
+}
+
+.header-container img{
+	width: 100px;
+	height: 100px;
+}
+
+.header-inner-text-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	text-align: center;
+	flex-direction: column;
+}
+
+.mobile-left-alignment-header-container{
+	display: none;
+}
+
+.form_btn_logout{
+    width: 100%;
+    padding: 10px;
+    background-color: #FF4C4C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 20px 0;
+     font-size: 1rem;
+     text-align: left;
+ }
+
+ table thead tr {
+     background-color: #333;
+     color: #fff;
+ }
+
+ table th, table td {
+     padding: 12px 15px;
+     border: 1px solid #ddd;
+ }
+
+ table tbody tr:nth-child(even) {
+     background-color: #f3f3f3;
+ }
+
+ table tbody tr:hover {
+     background-color: #f1f1f1;
+ }
+
+ .button-container {
+     margin: 20px 0;
+     display: flex;
+     justify-content: flex-end;
+     gap: 10px;
+ }
+
+ .button-container button {
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     font-size: 1rem;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
+
+ .button-container .add-user-btn {
+     background-color: #4CAF50;
+     color: white;
+ }
+
+ .button-container .add-user-btn:hover {
+     background-color: #45a049;
+ }
+
+ .button-container .delete-user-btn {
+     background-color: #FF4C4C;
+     color: white;
+ }
+
+ .button-container .delete-user-btn:hover {
+     background-color: #ff3333;
+ }
+ 
+ .content-container h2{
+ 	text-align: center;
+ }
+        
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    
+    .left-alignment-header-container{
+    	display: none;
+    }
+    
+    .header-container{
+		font-size: 0.75em;
+	}
+	
+	.center-alignment-header-container{
+    	width: 75vw;
+    }
+    
+    .right-alignment-header-container{
+    	width: 25vw;
+    }
+	.mobile-left-alignment-header-container{
+		display: flex;
+		font-size: 0.75em;
+	}
+	.common-header-container img{
+		width: 75px;
+		height: 75px;
+	}
+	.content-container{
+		width: 100vw;
+	}
+}

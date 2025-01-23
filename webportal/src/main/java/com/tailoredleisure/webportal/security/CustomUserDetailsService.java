@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         
         // If user is not found, throw an exception
         if (user == null) {
+        	System.out.println("User not found with email: " + username);
             throw new UsernameNotFoundException("User not found with email: " + username);
         }
 

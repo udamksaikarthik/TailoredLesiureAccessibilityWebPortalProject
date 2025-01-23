@@ -1,12 +1,15 @@
 package com.tailoredleisure.webportal.dao.users;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.tailoredleisure.webportal.model.Users;
+import com.tailoredleisure.webportal.bean.Users;
+import com.tailoredleisure.webportal.entity.VenueAdvertForm;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Repository
 public class UserDao {
@@ -26,6 +29,28 @@ public class UserDao {
 		userRepository.save(userEntity);
 	}
 	
+
+	public Boolean checkIfGmailAlreadyExists(Users users) {
+		Boolean flag = false;
+		String user_gmail = users.getEmail().trim();
+		com.tailoredleisure.webportal.entity.Users user = userRepository.findByEmail(user_gmail);
+		if(user!=null) {
+			System.out.println("Username already exists");
+			flag = true;
+		}else {
+			System.out.println("New Username");
+			flag = false;
+		}
+		return flag;
+	}
+
+	public ArrayList<Users> getAllUsers() {
+		ArrayList<com.tailoredleisure.webportal.entity.Users> users = userRepository.findAllByOrderByCreatedAtAsc();
+		ArrayList<Users> usersModel = convertToUserModel(users);
+		return usersModel;
+	}
+	
+
 	private com.tailoredleisure.webportal.entity.Users convertToUserEntity(Users users) {
         com.tailoredleisure.webportal.entity.Users userEntity = new com.tailoredleisure.webportal.entity.Users();
 
@@ -43,18 +68,27 @@ public class UserDao {
         return userEntity;
     }
 
-	public Boolean checkIfGmailAlreadyExists(Users users) {
-		Boolean flag = false;
-		String user_gmail = users.getEmail().trim();
-		com.tailoredleisure.webportal.entity.Users user = userRepository.findByEmail(user_gmail);
-		if(user!=null) {
-			System.out.println("Username already exists");
-			flag = true;
-		}else {
-			System.out.println("New Username");
-			flag = false;
+	private ArrayList<Users> convertToUserModel(ArrayList<com.tailoredleisure.webportal.entity.Users> users) {
+		ArrayList<Users> userModels = new ArrayList<>();
+		
+		for (com.tailoredleisure.webportal.entity.Users user : users) {
+			
+			Users userModel = new Users();
+	        userModel.setFirstName(user.getFirstName());
+	        userModel.setLastName(user.getLastName());
+	        userModel.setEmail(user.getEmail());
+
+	        // Encrypt the password before saving
+	        userModel.setPassword(passwordEncoder.encode(user.getPassword()));
+
+	        userModel.setRole(user.getRole());
+	        userModel.setPhoneNumber(user.getPhoneNumber());
+	        userModel.setCreatedAt(user.getCreatedAt());
+			userModels.add(userModel);
 		}
-		return flag;
-	}
+
+        return userModels;
+    }
+
 
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="header-container" th:fragment="header">
+		<div class="left-alignment-header-container common-header-container">
+			<h1 sec:authorize="isAuthenticated()">Welcome, <span th:text="${firstName}"></span></h1>
+			<h1 sec:authorize="isAnonymous()">Welcome, <span>Guest</span></h1>
+		</div>
+		<div class="center-alignment-header-container common-header-container">
+			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
+			<div class="header-inner-text-container">
+				<h1>Tailored Leisure</h1>
+				<h4>Accessibility for Everyone</h4>
+			</div>
+		</div>
+		<div class="right-alignment-header-container common-header-container">
+			<form sec:authorize="isAuthenticated()" action="/logout" method="post">
+			    <button type="submit" class="form_btn_logout">Logout</button>
+			</form>
+			<form sec:authorize="isAnonymous()" action="/login" method="post">
+			    <button type="submit" class="form_btn_login">Login</button>
+			</form>
+			<form sec:authorize="isAnonymous()" action="/signup" method="get">
+			    <button type="submit" class="form_btn_login">Signup</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="header-container" th:fragment="header_back_btn">
+		<div class="left-alignment-header-container common-header-container">
+			<a th:href="@{/}" class="back_btn_class">Back to Dashboard</a>
+		</div>
+		<div class="center-alignment-header-container common-header-container">
+			<img th:src="@{/images/tailored_leisure_logo.png}" alt="#">
+			<div class="header-inner-text-container">
+				<h1>Tailored Leisure</h1>
+				<h4>Accessibility for Everyone</h4>
+			</div>
+		</div>
+		<div class="right-alignment-header-container common-header-container">
+			<form sec:authorize="isAuthenticated()" action="/logout" method="post">
+			    <button type="submit" class="form_btn_logout">Logout</button>
+			</form>
+			<form sec:authorize="isAnonymous()" action="/login" method="post">
+			    <button type="submit" class="form_btn_login">Login</button>
+			</form>
+			<form sec:authorize="isAnonymous()" action="/signup" method="get">
+			    <button type="submit" class="form_btn_login">Signup</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="mobile-left-alignment-header-container common-header-container" th:fragment="header_mobile">
+			<h1 sec:authorize="isAuthenticated()">Welcome, <span th:text="${firstName}"></span></h1>
+			<h1 sec:authorize="isAnonymous()">Welcome, <span>Guest</span></h1>
+	</div>
+	<div class="mobile-left-alignment-header-container common-header-container" th:fragment="header_mobile_later_pages">
+				<a th:href="@{/}" class="back_btn_class">Back to Dashboard</a>
+	</div>
+</body>
+</html>
