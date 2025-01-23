@@ -37,4 +37,34 @@ public class HomeService implements HomeServiceImpl{
 		return homeDao.getSelectedVenueAdvertForm(id);
 	}
 
+	@Override
+	public ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user) {
+		// TODO Auto-generated method stub
+		return homeDao.getAllAdvertsOfBusiness(user);
+	}
+
+	@Override
+	public void deleteMediaFile(Long mediaId) {
+		// TODO Auto-generated method stub
+		homeDao.deleteMediaFile(mediaId);
+	}
+
+	@Override
+	public Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
+		// TODO Auto-generated method stub
+		return homeDao.updateAdvertForm(venueAdvertForm, user);
+	}
+
+	@Override
+	public void deleteAdvert(Long advertId) {
+		// TODO Auto-generated method stub
+		homeDao.deleteAdvert(advertId);
+	}
+
+	@Override
+	public int getExistingMediaCount(Long id) {
+		// TODO Auto-generated method stub
+		return homeDao.getExistingMediaCount(id);
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.tailoredleisure.webportal.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +12,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -46,6 +50,23 @@ public class VenueAdvertForm {
     private Boolean venueAuditFlgTL = false;
     
     private Boolean TLVerifiedVenueAdvertFlg = false;
+    
+
+    @Column(name = "created_date", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Column(name = "updated_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedDate;
+
+    @Column(name = "tl_verified_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TLVerifiedDate;
+
+    @Column(name = "tl_audited_date", updatable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TLAuditedDate;
 
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)
     @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -101,6 +122,22 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean mobilityTrainedStaff;
 
+    private String mobilityDisabledCarParkingComments;
+    private String mobilityHeadphonesAvailableComments;
+    private String mobilityAccessibleRouteComments;
+    private String mobilityWideDoorwaysComments;
+    private String mobilityWheelchairSeatingComments;
+    private String mobilityDisabledToiletsComments;
+    private String mobilityChangingPlaceComments;
+    private String mobilityLowerCountersComments;
+    private String mobilityLiftsComments;
+    private String mobilityRampsComments;
+    private String mobilityUnrestrictedViewingComments;
+    private String mobilityAccessibleDoorsComments;
+    private String mobilityEyeLevelSignageComments;
+    private String mobilitySupportiveStaffComments;
+    private String mobilityTrainedStaffComments;
+    
     private String mobilityComments;
 
     // Section 4: Blind Visually Impaired Access Checklist
@@ -146,6 +183,21 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean blindTrainedStaff;
 
+    private String blindHighContrastSignageComments;
+    private String blindLargeFontSignageComments;
+    private String blindBrailleSignageComments;
+    private String blindVisibleWalkwaysComments;
+    private String blindTouchToursComments;
+    private String blindLargeSubtitlesComments;
+    private String blindNoTripHazardsComments;
+    private String blindAdjustableLightingComments;
+    private String blindAudioDescriptionsComments;
+    private String blindAdaptedLeafletsComments;
+    private String blindAdaptedSignageComments;
+    private String blindFrontSeatingComments;
+    private String blindSupportiveStaffComments;
+    private String blindTrainedStaffComments;
+    
     private String blindComments;
 
     // Section 5: Deaf/Hard of Hearing Access Checklist
@@ -173,6 +225,15 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean deafTrainedStaff;
 
+    private String deafHearingLoopsComments;
+    private String deafAssistiveTechnologyComments;
+    private String deafSignLanguageComments;
+    private String deafAdequateSignageComments;
+    private String deafSubtitlesComments;
+    private String deafFrontSeatingComments;
+    private String deafSupportiveStaffComments;
+    private String deafTrainedStaffComments;
+    
     private String deafComments;
 
     // Section 6: Neurodiverse Access Checklist
@@ -206,6 +267,17 @@ public class VenueAdvertForm {
     @NotNull(message = "This field is mandatory")
     private Boolean neurodiverseTrainedStaff;
 
+    private String neurodiverseNoiseReductionComments;
+    private String neurodiverseAdjustableLightingComments;
+    private String neurodiverseQuieterAreasComments;
+    private String neurodiverseSensoryBagComments;
+    private String neurodiverseLoudNoiseReductionComments;
+    private String neurodiverseQuieterTimeAdsComments;
+    private String neurodiverseFlashingSignageComments;
+    private String neurodiverseAdaptedLeafletsComments;
+    private String neurodiverseSupportiveStaffComments;
+    private String neurodiverseTrainedStaffComments;
+    
     private String neurodiverseComments;
 
 
@@ -705,6 +777,417 @@ public class VenueAdvertForm {
 
 	public void setBusinessEmail(String businessEmail) {
 		this.businessEmail = businessEmail;
+	}
+	
+	
+
+	public String getMobilityDisabledCarParkingComments() {
+		return mobilityDisabledCarParkingComments;
+	}
+
+	public void setMobilityDisabledCarParkingComments(String mobilityDisabledCarParkingComments) {
+		this.mobilityDisabledCarParkingComments = mobilityDisabledCarParkingComments;
+	}
+
+	public String getMobilityHeadphonesAvailableComments() {
+		return mobilityHeadphonesAvailableComments;
+	}
+
+	public void setMobilityHeadphonesAvailableComments(String mobilityHeadphonesAvailableComments) {
+		this.mobilityHeadphonesAvailableComments = mobilityHeadphonesAvailableComments;
+	}
+
+	public String getMobilityAccessibleRouteComments() {
+		return mobilityAccessibleRouteComments;
+	}
+
+	public void setMobilityAccessibleRouteComments(String mobilityAccessibleRouteComments) {
+		this.mobilityAccessibleRouteComments = mobilityAccessibleRouteComments;
+	}
+
+	public String getMobilityWideDoorwaysComments() {
+		return mobilityWideDoorwaysComments;
+	}
+
+	public void setMobilityWideDoorwaysComments(String mobilityWideDoorwaysComments) {
+		this.mobilityWideDoorwaysComments = mobilityWideDoorwaysComments;
+	}
+
+	public String getMobilityWheelchairSeatingComments() {
+		return mobilityWheelchairSeatingComments;
+	}
+
+	public void setMobilityWheelchairSeatingComments(String mobilityWheelchairSeatingComments) {
+		this.mobilityWheelchairSeatingComments = mobilityWheelchairSeatingComments;
+	}
+
+	public String getMobilityDisabledToiletsComments() {
+		return mobilityDisabledToiletsComments;
+	}
+
+	public void setMobilityDisabledToiletsComments(String mobilityDisabledToiletsComments) {
+		this.mobilityDisabledToiletsComments = mobilityDisabledToiletsComments;
+	}
+
+	public String getMobilityChangingPlaceComments() {
+		return mobilityChangingPlaceComments;
+	}
+
+	public void setMobilityChangingPlaceComments(String mobilityChangingPlaceComments) {
+		this.mobilityChangingPlaceComments = mobilityChangingPlaceComments;
+	}
+
+	public String getMobilityLowerCountersComments() {
+		return mobilityLowerCountersComments;
+	}
+
+	public void setMobilityLowerCountersComments(String mobilityLowerCountersComments) {
+		this.mobilityLowerCountersComments = mobilityLowerCountersComments;
+	}
+
+	public String getMobilityLiftsComments() {
+		return mobilityLiftsComments;
+	}
+
+	public void setMobilityLiftsComments(String mobilityLiftsComments) {
+		this.mobilityLiftsComments = mobilityLiftsComments;
+	}
+
+	public String getMobilityRampsComments() {
+		return mobilityRampsComments;
+	}
+
+	public void setMobilityRampsComments(String mobilityRampsComments) {
+		this.mobilityRampsComments = mobilityRampsComments;
+	}
+
+	public String getMobilityUnrestrictedViewingComments() {
+		return mobilityUnrestrictedViewingComments;
+	}
+
+	public void setMobilityUnrestrictedViewingComments(String mobilityUnrestrictedViewingComments) {
+		this.mobilityUnrestrictedViewingComments = mobilityUnrestrictedViewingComments;
+	}
+
+	public String getMobilityAccessibleDoorsComments() {
+		return mobilityAccessibleDoorsComments;
+	}
+
+	public void setMobilityAccessibleDoorsComments(String mobilityAccessibleDoorsComments) {
+		this.mobilityAccessibleDoorsComments = mobilityAccessibleDoorsComments;
+	}
+
+	public String getMobilityEyeLevelSignageComments() {
+		return mobilityEyeLevelSignageComments;
+	}
+
+	public void setMobilityEyeLevelSignageComments(String mobilityEyeLevelSignageComments) {
+		this.mobilityEyeLevelSignageComments = mobilityEyeLevelSignageComments;
+	}
+
+	public String getMobilitySupportiveStaffComments() {
+		return mobilitySupportiveStaffComments;
+	}
+
+	public void setMobilitySupportiveStaffComments(String mobilitySupportiveStaffComments) {
+		this.mobilitySupportiveStaffComments = mobilitySupportiveStaffComments;
+	}
+
+	public String getMobilityTrainedStaffComments() {
+		return mobilityTrainedStaffComments;
+	}
+
+	public void setMobilityTrainedStaffComments(String mobilityTrainedStaffComments) {
+		this.mobilityTrainedStaffComments = mobilityTrainedStaffComments;
+	}
+
+	public String getBlindHighContrastSignageComments() {
+		return blindHighContrastSignageComments;
+	}
+
+	public void setBlindHighContrastSignageComments(String blindHighContrastSignageComments) {
+		this.blindHighContrastSignageComments = blindHighContrastSignageComments;
+	}
+
+	public String getBlindLargeFontSignageComments() {
+		return blindLargeFontSignageComments;
+	}
+
+	public void setBlindLargeFontSignageComments(String blindLargeFontSignageComments) {
+		this.blindLargeFontSignageComments = blindLargeFontSignageComments;
+	}
+
+	public String getBlindBrailleSignageComments() {
+		return blindBrailleSignageComments;
+	}
+
+	public void setBlindBrailleSignageComments(String blindBrailleSignageComments) {
+		this.blindBrailleSignageComments = blindBrailleSignageComments;
+	}
+
+	public String getBlindVisibleWalkwaysComments() {
+		return blindVisibleWalkwaysComments;
+	}
+
+	public void setBlindVisibleWalkwaysComments(String blindVisibleWalkwaysComments) {
+		this.blindVisibleWalkwaysComments = blindVisibleWalkwaysComments;
+	}
+
+	public String getBlindTouchToursComments() {
+		return blindTouchToursComments;
+	}
+
+	public void setBlindTouchToursComments(String blindTouchToursComments) {
+		this.blindTouchToursComments = blindTouchToursComments;
+	}
+
+	public String getBlindLargeSubtitlesComments() {
+		return blindLargeSubtitlesComments;
+	}
+
+	public void setBlindLargeSubtitlesComments(String blindLargeSubtitlesComments) {
+		this.blindLargeSubtitlesComments = blindLargeSubtitlesComments;
+	}
+
+	public String getBlindNoTripHazardsComments() {
+		return blindNoTripHazardsComments;
+	}
+
+	public void setBlindNoTripHazardsComments(String blindNoTripHazardsComments) {
+		this.blindNoTripHazardsComments = blindNoTripHazardsComments;
+	}
+
+	public String getBlindAdjustableLightingComments() {
+		return blindAdjustableLightingComments;
+	}
+
+	public void setBlindAdjustableLightingComments(String blindAdjustableLightingComments) {
+		this.blindAdjustableLightingComments = blindAdjustableLightingComments;
+	}
+
+	public String getBlindAudioDescriptionsComments() {
+		return blindAudioDescriptionsComments;
+	}
+
+	public void setBlindAudioDescriptionsComments(String blindAudioDescriptionsComments) {
+		this.blindAudioDescriptionsComments = blindAudioDescriptionsComments;
+	}
+
+	public String getBlindAdaptedLeafletsComments() {
+		return blindAdaptedLeafletsComments;
+	}
+
+	public void setBlindAdaptedLeafletsComments(String blindAdaptedLeafletsComments) {
+		this.blindAdaptedLeafletsComments = blindAdaptedLeafletsComments;
+	}
+
+	public String getBlindAdaptedSignageComments() {
+		return blindAdaptedSignageComments;
+	}
+
+	public void setBlindAdaptedSignageComments(String blindAdaptedSignageComments) {
+		this.blindAdaptedSignageComments = blindAdaptedSignageComments;
+	}
+
+	public String getBlindFrontSeatingComments() {
+		return blindFrontSeatingComments;
+	}
+
+	public void setBlindFrontSeatingComments(String blindFrontSeatingComments) {
+		this.blindFrontSeatingComments = blindFrontSeatingComments;
+	}
+
+	public String getBlindSupportiveStaffComments() {
+		return blindSupportiveStaffComments;
+	}
+
+	public void setBlindSupportiveStaffComments(String blindSupportiveStaffComments) {
+		this.blindSupportiveStaffComments = blindSupportiveStaffComments;
+	}
+
+	public String getBlindTrainedStaffComments() {
+		return blindTrainedStaffComments;
+	}
+
+	public void setBlindTrainedStaffComments(String blindTrainedStaffComments) {
+		this.blindTrainedStaffComments = blindTrainedStaffComments;
+	}
+
+	public String getDeafHearingLoopsComments() {
+		return deafHearingLoopsComments;
+	}
+
+	public void setDeafHearingLoopsComments(String deafHearingLoopsComments) {
+		this.deafHearingLoopsComments = deafHearingLoopsComments;
+	}
+
+	public String getDeafAssistiveTechnologyComments() {
+		return deafAssistiveTechnologyComments;
+	}
+
+	public void setDeafAssistiveTechnologyComments(String deafAssistiveTechnologyComments) {
+		this.deafAssistiveTechnologyComments = deafAssistiveTechnologyComments;
+	}
+
+	public String getDeafSignLanguageComments() {
+		return deafSignLanguageComments;
+	}
+
+	public void setDeafSignLanguageComments(String deafSignLanguageComments) {
+		this.deafSignLanguageComments = deafSignLanguageComments;
+	}
+
+	public String getDeafAdequateSignageComments() {
+		return deafAdequateSignageComments;
+	}
+
+	public void setDeafAdequateSignageComments(String deafAdequateSignageComments) {
+		this.deafAdequateSignageComments = deafAdequateSignageComments;
+	}
+
+	public String getDeafSubtitlesComments() {
+		return deafSubtitlesComments;
+	}
+
+	public void setDeafSubtitlesComments(String deafSubtitlesComments) {
+		this.deafSubtitlesComments = deafSubtitlesComments;
+	}
+
+	public String getDeafFrontSeatingComments() {
+		return deafFrontSeatingComments;
+	}
+
+	public void setDeafFrontSeatingComments(String deafFrontSeatingComments) {
+		this.deafFrontSeatingComments = deafFrontSeatingComments;
+	}
+
+	public String getDeafSupportiveStaffComments() {
+		return deafSupportiveStaffComments;
+	}
+
+	public void setDeafSupportiveStaffComments(String deafSupportiveStaffComments) {
+		this.deafSupportiveStaffComments = deafSupportiveStaffComments;
+	}
+
+	public String getDeafTrainedStaffComments() {
+		return deafTrainedStaffComments;
+	}
+
+	public void setDeafTrainedStaffComments(String deafTrainedStaffComments) {
+		this.deafTrainedStaffComments = deafTrainedStaffComments;
+	}
+
+	public String getNeurodiverseNoiseReductionComments() {
+		return neurodiverseNoiseReductionComments;
+	}
+
+	public void setNeurodiverseNoiseReductionComments(String neurodiverseNoiseReductionComments) {
+		this.neurodiverseNoiseReductionComments = neurodiverseNoiseReductionComments;
+	}
+
+	public String getNeurodiverseAdjustableLightingComments() {
+		return neurodiverseAdjustableLightingComments;
+	}
+
+	public void setNeurodiverseAdjustableLightingComments(String neurodiverseAdjustableLightingComments) {
+		this.neurodiverseAdjustableLightingComments = neurodiverseAdjustableLightingComments;
+	}
+
+	public String getNeurodiverseQuieterAreasComments() {
+		return neurodiverseQuieterAreasComments;
+	}
+
+	public void setNeurodiverseQuieterAreasComments(String neurodiverseQuieterAreasComments) {
+		this.neurodiverseQuieterAreasComments = neurodiverseQuieterAreasComments;
+	}
+
+	public String getNeurodiverseSensoryBagComments() {
+		return neurodiverseSensoryBagComments;
+	}
+
+	public void setNeurodiverseSensoryBagComments(String neurodiverseSensoryBagComments) {
+		this.neurodiverseSensoryBagComments = neurodiverseSensoryBagComments;
+	}
+
+	public String getNeurodiverseLoudNoiseReductionComments() {
+		return neurodiverseLoudNoiseReductionComments;
+	}
+
+	public void setNeurodiverseLoudNoiseReductionComments(String neurodiverseLoudNoiseReductionComments) {
+		this.neurodiverseLoudNoiseReductionComments = neurodiverseLoudNoiseReductionComments;
+	}
+
+	public String getNeurodiverseQuieterTimeAdsComments() {
+		return neurodiverseQuieterTimeAdsComments;
+	}
+
+	public void setNeurodiverseQuieterTimeAdsComments(String neurodiverseQuieterTimeAdsComments) {
+		this.neurodiverseQuieterTimeAdsComments = neurodiverseQuieterTimeAdsComments;
+	}
+
+	public String getNeurodiverseFlashingSignageComments() {
+		return neurodiverseFlashingSignageComments;
+	}
+
+	public void setNeurodiverseFlashingSignageComments(String neurodiverseFlashingSignageComments) {
+		this.neurodiverseFlashingSignageComments = neurodiverseFlashingSignageComments;
+	}
+
+	public String getNeurodiverseAdaptedLeafletsComments() {
+		return neurodiverseAdaptedLeafletsComments;
+	}
+
+	public void setNeurodiverseAdaptedLeafletsComments(String neurodiverseAdaptedLeafletsComments) {
+		this.neurodiverseAdaptedLeafletsComments = neurodiverseAdaptedLeafletsComments;
+	}
+
+	public String getNeurodiverseSupportiveStaffComments() {
+		return neurodiverseSupportiveStaffComments;
+	}
+
+	public void setNeurodiverseSupportiveStaffComments(String neurodiverseSupportiveStaffComments) {
+		this.neurodiverseSupportiveStaffComments = neurodiverseSupportiveStaffComments;
+	}
+
+	public String getNeurodiverseTrainedStaffComments() {
+		return neurodiverseTrainedStaffComments;
+	}
+
+	public void setNeurodiverseTrainedStaffComments(String neurodiverseTrainedStaffComments) {
+		this.neurodiverseTrainedStaffComments = neurodiverseTrainedStaffComments;
+	}
+	
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Date getTLVerifiedDate() {
+		return TLVerifiedDate;
+	}
+
+	public void setTLVerifiedDate(Date tLVerifiedDate) {
+		TLVerifiedDate = tLVerifiedDate;
+	}
+
+	public Date getTLAuditedDate() {
+		return TLAuditedDate;
+	}
+
+	public void setTLAuditedDate(Date tLAuditedDate) {
+		TLAuditedDate = tLAuditedDate;
 	}
 
 	@Override

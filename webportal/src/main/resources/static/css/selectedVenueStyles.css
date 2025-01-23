@@ -141,3 +141,117 @@
 .form-button:hover {
     background-color: #45a049;
 }
+
+.show_comments_class_btn_container_div{
+	width: 100%;
+	padding: 1em 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.show_comments_class_btn{
+	font-size: 1.25em;
+	border: none;
+	padding: 0.5em;
+	font-size: 1.25em;
+	background-color: #febf28;
+	color: black;
+	border-radius: 5px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.show_comments_class_btn:hover{
+	background-color: #d49b1f;
+}
+.additional_comments_container_div{
+	display: none;
+}
+.additional_comments_container_div.show{
+	display: block;
+}
+
+
+/* Modal for full-screen media */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.header-left img{
+	border: 1px solid black;
+}
+.post-media {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+.media-preview, .media-preview-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.media-preview:hover, .media-preview-video:hover {
+    transform: scale(1.05);
+}
+
+.main_selected_allusers_venue_container{
+	margin: 1em 0;
+}
+
+.buttons_container{
+	display: flex;
+	align-items:center;
+	justify-content: space-around;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+	.checklists_main_container{
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+	}
+	.common_checklist_info_container{
+		width: 95%;
+	}
+	
+	.advert-media{
+		flex-direction: column;
+		gap: 1em;
+	}
+	.media-container{
+		width: 95%;
+	}
+}

@@ -16,4 +16,14 @@ public interface HomeServiceImpl {
 
 	VenueAdvertFormBean getSelectedVenueAdvertForm(Long id);
 
+	ArrayList<com.tailoredleisure.webportal.entity.VenueAdvertForm> getAllAdvertsOfBusiness(Users user);
+
+	void deleteMediaFile(Long mediaId);
+
+	Boolean updateAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user);
+
+	void deleteAdvert(Long advertId);
+
+	int getExistingMediaCount(Long id);
+
 }

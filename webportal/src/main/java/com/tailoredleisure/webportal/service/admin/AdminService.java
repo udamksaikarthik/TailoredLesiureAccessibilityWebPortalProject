@@ -45,4 +45,10 @@ public class AdminService implements AdminServiceImpl{
 		return homeDao.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus);
 	}
 
+	@Override
+	public ArrayList<VenueAdvertForm> getAllAdvertsOfBusiness(com.tailoredleisure.webportal.entity.Users user) {
+		// TODO Auto-generated method stub
+		return homeDao.getAllAdvertsOfBusiness(user);
+	}
+
 }

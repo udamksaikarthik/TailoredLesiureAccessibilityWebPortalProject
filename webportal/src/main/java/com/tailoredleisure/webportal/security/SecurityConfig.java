@@ -19,7 +19,7 @@ public class SecurityConfig {
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/signup", "/login").permitAll()  // Public paths
                 .requestMatchers("/admin/**").hasRole("ADMIN")  // Only admins can access /admin/**
                 .requestMatchers("/business/**").hasAnyRole("BUSINESS_MEMBER", "ADMIN")  // Only business members can access /business/**
-                .requestMatchers("/user/**").hasRole("USER")  // Only users can access /user/**
+                .requestMatchers("/user/**").hasAnyRole("USER","BUSINESS_MEMBER","ADMIN")  // Only users can access /user/**
                 .anyRequest().authenticated()  // All other requests require authentication
             )
             .formLogin(form -> form
@@ -30,7 +30,7 @@ public class SecurityConfig {
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")  // Redirect to login page after logout
+                .logoutSuccessUrl("/login")  // Redirect to login page after logout
                 .permitAll()
             )
             .csrf(csrf -> csrf

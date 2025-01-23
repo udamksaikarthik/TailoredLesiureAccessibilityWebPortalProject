@@ -18,7 +18,7 @@
     	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
 	</div> -->
 	
-	<div class="">
+	<div class="main_selected_allusers_venue_container">
 		<div class="venue_info_container">
 			<h1>Venue Information</h1><br>
 			<div>
@@ -403,40 +403,10 @@
 		    </div>
 		</div>
 		
-		<h1 sec:authorize="hasRole('ADMIN')" style="text-align: center; margin: 1em 0;">Venue Status</h1>			
-		<div sec:authorize="hasRole('ADMIN')" class="status-section">
-	        <form th:action="@{/admin/processVenueVerification}" method="post" class="status-form">
-	        	<!-- Hidden input for ID -->
-    			<input type="hidden" name="id" th:field="*{advert.id}" />
-    			
-	            <div class="form-group">
-	                <label class="form-label">TL Verify Status</label>
-	                <input class="form-radio" th:field="*{advert.TLVerifiedVenueAdvertFlg}" type="radio" value="true"> ✔ Verified
-	                <input class="form-radio" th:field="*{advert.TLVerifiedVenueAdvertFlg}" type="radio" value="false"> ✘ Not Verified
-	            </div>
-	
-	            <div class="form-group">
-	                <label class="form-label">TL Audit Status (Venue chosen option)</label>
-	                <input class="form-input readonly" type="text" name="venue_audit_status" readonly th:value="${advert.venueAuditFlg}">
-	            </div>
-	
-	            <div class="form-group">
-	                <label class="form-label">Did Tailored Leisure Team audit this Venue?</label>
-	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" value="true"> ✔ Audited
-	                <input class="form-radio" th:field="*{advert.venueAuditFlgTL}" type="radio" value="false"> ✘ Not Audited
-	            </div>
-	
-	            <div class="form-group">
-	                <label class="form-label">Business Email</label>
-	                <input class="form-input readonly" type="email" name="business_email" readonly th:value="${advert.businessEmail}">
-	            </div>
-	
-	            <div class="button-group">
-	                <button type="submit" class="form-button">Update</button>
-	            </div>
-	        </form>
-	    </div>
-		
+		<div class="buttons_container">
+			<button class="show_comments_class_btn">Comment</button>
+			<button class="show_comments_class_btn">View Comment</button>
+		</div>
 				
 	</div>
 	

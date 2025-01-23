@@ -53,3 +53,12 @@
 .red-class{
 	color: red;
 }
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+	.venues_list_container{
+		flex-direction: column;
+	}	
+	.venues_cards_common_container{
+		width: 95%;
+	}
+}
