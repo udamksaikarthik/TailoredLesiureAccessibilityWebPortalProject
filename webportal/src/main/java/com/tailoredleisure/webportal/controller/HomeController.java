@@ -2,6 +2,7 @@ package com.tailoredleisure.webportal.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
@@ -125,6 +128,7 @@ public class HomeController {
 		VenueAdvertFormBean venueAdvertFormBean = homeServiceImpl.getSelectedVenueAdvertForm(id);
 		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
 		mv.addObject("advert", venueAdvertFormBean);
+		mv.addObject("commentForm", new CommentForm());
 		mv.setViewName("selectedallusersvenuepage.html");
 		return mv;
 	}
@@ -237,6 +241,32 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		homeServiceImpl.deleteAdvert(advertId);
 		mv.setViewName("redirect:/business/showUserVenueAdvertsPage");
+		return mv;
+	}
+	
+	@PostMapping("/users/advertAddComment")
+	private ModelAndView advertAddComment(@RequestParam("advertId") Long advertId,@Valid  @ModelAttribute("commentForm") CommentForm commentForm,
+            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+		System.out.println("Inside advertAddComment Method");
+		ModelAndView mv = new ModelAndView();
+		// Check for validation errors
+        if (bindingResult.hasErrors()) {
+    		redirectAttributes.addFlashAttribute("error_msg", "Comment has not been added successfully.");
+        	mv.setViewName("redirect:/users/showSelectedVenuePage?id=" + advertId);
+            return mv;  // Return signup page with errors
+        }
+        
+
+		// Get the logged-in user's email (username in this case)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();  // Get the logged-in user's email
+
+        // Fetch the user entity from the database using the email
+        Users user = userRepository.findByEmail(email);
+        
+		homeServiceImpl.advertAddComment(advertId, commentForm, user);
+		redirectAttributes.addFlashAttribute("success_msg", "Comment has been added successfully.");
+		mv.setViewName("redirect:/users/showSelectedVenuePage?id=" + advertId);
 		return mv;
 	}
 

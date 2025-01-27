@@ -2,6 +2,7 @@ package com.tailoredleisure.webportal.service.users;
 
 import java.util.ArrayList;
 
+import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.entity.Users;
@@ -25,5 +26,7 @@ public interface HomeServiceImpl {
 	void deleteAdvert(Long advertId);
 
 	int getExistingMediaCount(Long id);
+
+	void advertAddComment(Long advertId, @Valid CommentForm commentForm, Users user);
 
 }

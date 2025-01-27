@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.HomeDao;
@@ -65,6 +66,13 @@ public class HomeService implements HomeServiceImpl{
 	public int getExistingMediaCount(Long id) {
 		// TODO Auto-generated method stub
 		return homeDao.getExistingMediaCount(id);
+	}
+
+	@Override
+	public void advertAddComment(Long advertId, CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		homeDao.advertAddComment(advertId, commentForm, user);
+		
 	}
 
 }

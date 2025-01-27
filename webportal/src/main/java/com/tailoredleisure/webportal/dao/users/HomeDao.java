@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
+import com.tailoredleisure.webportal.entity.CommentForm;
 import com.tailoredleisure.webportal.entity.Media;
 import com.tailoredleisure.webportal.entity.Users;
 
@@ -280,6 +281,8 @@ public class HomeDao {
 		venueAdvertFormBean.setUser(convertEntityToBean(venueAdvertFormEntity.getUser()));
 		
 		venueAdvertFormBean.setMedia(convertEntityToBean(venueAdvertFormEntity.getMedia()));
+
+		venueAdvertFormBean.setCommentForm(convertEntityToBeanCommentForm(venueAdvertFormEntity.getCommentForm()));
 		
 		//Section-1
 		venueAdvertFormBean.setId(venueAdvertFormEntity.getId());
@@ -418,6 +421,21 @@ public class HomeDao {
 		return venueAdvertFormBean;
 	}
 
+	private List<com.tailoredleisure.webportal.bean.CommentForm> convertEntityToBeanCommentForm(
+			List<CommentForm> commentForm) {
+		List<com.tailoredleisure.webportal.bean.CommentForm> commentsBean = new ArrayList<>();
+		if(commentForm!=null) {
+			for (CommentForm c : commentForm) {
+				com.tailoredleisure.webportal.bean.CommentForm commentFormBean = new com.tailoredleisure.webportal.bean.CommentForm();
+				commentFormBean.setCommentText(c.getCommentText());
+				commentFormBean.setCreatedDate(c.getCreatedDate());
+				commentFormBean.setUser(convertEntityToBean(c.getUser()));
+				commentsBean.add(commentFormBean);
+			}
+		}
+		return commentsBean;
+	}
+
 	private List<MediaBean> convertEntityToBean(List<Media> media) {
 		// TODO Auto-generated method stub
 		List<MediaBean> mediaBean = new ArrayList<>();
@@ -541,6 +559,33 @@ public class HomeDao {
 		}
 		
 		return mediaSize;
+	}
+
+	public void advertAddComment(Long advertId, com.tailoredleisure.webportal.bean.CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advertId);
+		
+		if(venueAdvertFormEntity.isPresent()) {
+			com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity = venueAdvertFormEntity.get();
+			List<CommentForm> commentsList = new ArrayList<>();
+			if(existingVenueAdvertFormEntity.getCommentForm()!= null || !existingVenueAdvertFormEntity.getCommentForm().isEmpty()) {
+				commentsList = existingVenueAdvertFormEntity.getCommentForm();
+			}
+			commentsList.add(convertBeanToEntityCommentForm(existingVenueAdvertFormEntity, commentForm, user));
+			existingVenueAdvertFormEntity.setCommentForm(commentsList);
+			
+			venueAdvertRepository.save(existingVenueAdvertFormEntity);
+		}
+	}
+
+	private CommentForm convertBeanToEntityCommentForm(com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity, com.tailoredleisure.webportal.bean.CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		CommentForm commentFormEntity = new CommentForm();
+		commentFormEntity.setCommentText(commentForm.getCommentText());
+		commentFormEntity.setCreatedDate(new Date());
+		commentFormEntity.setVenueAdvertForm(existingVenueAdvertFormEntity);
+		commentFormEntity.setUser(user);
+		return commentFormEntity;
 	}
 
 }

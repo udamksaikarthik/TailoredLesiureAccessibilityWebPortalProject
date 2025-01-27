@@ -17,19 +17,29 @@
 	<!-- <div sec:authorize="isAnonymous()">
     	<p style="color: red; font-size: 1.25em;">Please login or signup to post your venue adverts or comment on your experience with venues you have visited!</p>
 	</div> -->
+	<h2 class="form-success-message" th:if="${success_msg != null and success_msg != ''}" th:text="${success_msg}"></h2>
+	<h2 class="form-error-message" th:if="${error_msg != null and error_msg != ''}" th:text="${error_msg}"></h2>
 	
 	<div class="main_selected_allusers_venue_container">
 		<div class="venue_info_container">
 			<h1>Venue Information</h1><br>
-			<div>
-				<h3>Venue Name: <span th:text="${advert.venueName}"></span></h3>
-				<h3>Venue Type: <span th:text="${advert.venueType}"></span></h3>
-				<h3>Location: <span th:text="${advert.venueLocation}"></span></h3>
-				<h3>Post Code: <span th:text="${advert.venuePostCode}"></span></h3>
-				<h3>Created Date: <span th:text="${advert.createdDate}"></span></h3>
-				<h3>Updated Date: <span th:text="${advert.updatedDate}"></span></h3>
-				<h3>TL Verified Date: <span th:text="${advert.TLVerifiedDate}"></span></h3>
-				<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
+			<div class="venue_info_main_container">
+				<div class="common_child_venue_info_main_container">
+					<h3>Venue Name: <span th:text="${advert.venueName}"></span></h3>
+					<h3>Venue Type: <span th:text="${advert.venueType}"></span></h3>
+					<h3>Location: <span th:text="${advert.venueLocation}"></span></h3>
+					<h3>Post Code: <span th:text="${advert.venuePostCode}"></span></h3>
+					<h3>Created Date: <span th:text="${advert.createdDate}"></span></h3>
+					<h3>Updated Date: <span th:text="${advert.updatedDate}"></span></h3>
+					<h3>TL Verified Date: <span th:text="${advert.TLVerifiedDate}"></span></h3>
+					<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
+				</div>
+				<div class="common_child_venue_info_main_container">
+					<h3>Rating: <span th:text="${advert.venueName}"></span></h3>
+					<h3>Rating: <span th:text="${advert.venueType}"></span></h3>
+					<h3>Rating: <span th:text="${advert.venueLocation}"></span></h3>
+					<h3>Rating: <span th:text="${advert.venuePostCode}"></span></h3>
+				</div>
 			</div>
 		</div>
 		<div class="checklists_main_container">
@@ -403,12 +413,43 @@
 		    </div>
 		</div>
 		
-		<div class="buttons_container">
-			<button class="show_comments_class_btn">Comment</button>
-			<button class="show_comments_class_btn">View Comment</button>
+		
+		 <!-- Form starts here -->
+		 <form
+		      class="comment_form_class" 
+		      th:action="@{/users/advertAddComment(advertId=${advert.id})}" 
+		      th:object="${commentForm}" 
+		      method="post">
+		      <h1 class="comment_section_title">Comment Section</h1>
+            <p style="color: red; margin-bottom: 1em;"> Share your experience with this venue using comment section provided below: </p>
+            <div class="comment-box">
+                <textarea style="margin-bottom: 1em;" id="comment-textarea-${advert.id}" th:field="*{commentText}"placeholder="Write your comment here..." rows="4"></textarea>
+                
+                <p class="error" th:if="${#fields.hasErrors('commentText')}" th:errors="*{commentText}">Error</p>
+			</div>
+                <div class="comment-actions" style="margin-bottom: 1em;" >
+		            <!-- Submit Button -->
+		            <button class="createPostBtn" type="submit">Add Comment</button>
+                </div>
+        </form>
+        
+        
+		<!-- Comments Section -->
+		<div class="comments-container" th:id="'comments-container-' + ${advert.Id}">
+		    <h3>Comments</h3>
+		    <hr>
+		    <div th:if="${advert.commentForm != null && !advert.commentForm.isEmpty()}">
+		        <div class="comment" th:each="comment : ${advert.commentForm}">
+		            <p>
+		                <strong th:text="${comment.user.firstName}"></strong>: 
+		                <span th:text="${comment.commentText}"></span>
+		            </p>
+		            <hr>
+		        </div>
+		    </div>
+		    <p th:if="${advert.commentForm == null || advert.commentForm.isEmpty()}">No comments</p>
 		</div>
-				
-	</div>
+			
 	
 	<!-- Full-Screen Media Modal -->
 	<div id="fullscreen-modal" class="modal" onclick="closeMediaFullscreen()">

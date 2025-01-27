@@ -27,6 +27,7 @@ public class VenueAdvertFormBean {
 
     // Related Entities
     private List<MediaBean> media;
+    private List<CommentForm> commentForm;
     private Users user;
 
     // Mobility Checklist
@@ -822,6 +823,15 @@ public class VenueAdvertFormBean {
 	}
 	public void setTLAuditedDate(Date tLAuditedDate) {
 		TLAuditedDate = tLAuditedDate;
+	}
+	
+	
+	
+	public List<CommentForm> getCommentForm() {
+		return commentForm;
+	}
+	public void setCommentForm(List<CommentForm> commentForm) {
+		this.commentForm = commentForm;
 	}
 	@Override
 	public String toString() {
