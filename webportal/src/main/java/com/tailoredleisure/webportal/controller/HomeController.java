@@ -245,15 +245,24 @@ public class HomeController {
 	}
 	
 	@PostMapping("/users/advertAddComment")
-	private ModelAndView advertAddComment(@RequestParam("advertId") Long advertId,@Valid  @ModelAttribute("commentForm") CommentForm commentForm,
+	private ModelAndView advertAddComment(@RequestParam("advertId") Long advertId,@RequestParam("rating") int rating,@Valid  @ModelAttribute("commentForm") CommentForm commentForm,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		System.out.println("Inside advertAddComment Method");
 		ModelAndView mv = new ModelAndView();
+		
+		System.out.println("rating: "+rating);
+		
+		if(rating == 0) {
+    		redirectAttributes.addFlashAttribute("error_msg", "Comment has not been added successfully.");
+        	mv.setViewName("redirect:/users/showSelectedVenuePage?id=" + advertId);
+            return mv;  
+		}
+		
 		// Check for validation errors
         if (bindingResult.hasErrors()) {
     		redirectAttributes.addFlashAttribute("error_msg", "Comment has not been added successfully.");
         	mv.setViewName("redirect:/users/showSelectedVenuePage?id=" + advertId);
-            return mv;  // Return signup page with errors
+            return mv;  
         }
         
 
@@ -263,6 +272,8 @@ public class HomeController {
 
         // Fetch the user entity from the database using the email
         Users user = userRepository.findByEmail(email);
+        
+        commentForm.setRating(rating);
         
 		homeServiceImpl.advertAddComment(advertId, commentForm, user);
 		redirectAttributes.addFlashAttribute("success_msg", "Comment has been added successfully.");

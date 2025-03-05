@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,8 +26,11 @@ public class CommentForm {
     private Long id; // Primary key for VenueAdvertForm
 	
     // Section 1: Venue Information
-    @NotBlank(message = "Comment is mandatory")
     private String commentText;
+    
+
+    @Column(name = "rating")
+    private int rating;
     
 
     @Column(name = "created_date", updatable = false)
@@ -89,14 +91,26 @@ public class CommentForm {
 	}
 
 
-	public Users getUser() {
+	public int getRating() {
+		return rating;
+	}
+
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+
+	public Users getUserComment() {
 		return userComment;
 	}
 
 
-	public void setUser(Users userComment) {
+	public void setUserComment(Users userComment) {
 		this.userComment = userComment;
 	}
+	
+	
     
     
 }

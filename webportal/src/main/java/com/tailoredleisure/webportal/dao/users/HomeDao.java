@@ -428,8 +428,9 @@ public class HomeDao {
 			for (CommentForm c : commentForm) {
 				com.tailoredleisure.webportal.bean.CommentForm commentFormBean = new com.tailoredleisure.webportal.bean.CommentForm();
 				commentFormBean.setCommentText(c.getCommentText());
+				commentFormBean.setRating(c.getRating());
 				commentFormBean.setCreatedDate(c.getCreatedDate());
-				commentFormBean.setUser(convertEntityToBean(c.getUser()));
+				commentFormBean.setUser(convertEntityToBean(c.getUserComment()));
 				commentsBean.add(commentFormBean);
 			}
 		}
@@ -582,9 +583,10 @@ public class HomeDao {
 		// TODO Auto-generated method stub
 		CommentForm commentFormEntity = new CommentForm();
 		commentFormEntity.setCommentText(commentForm.getCommentText());
+		commentFormEntity.setRating(commentForm.getRating());
 		commentFormEntity.setCreatedDate(new Date());
 		commentFormEntity.setVenueAdvertForm(existingVenueAdvertFormEntity);
-		commentFormEntity.setUser(user);
+		commentFormEntity.setUserComment(user);
 		return commentFormEntity;
 	}
 
