@@ -51,4 +51,10 @@ public class AdminService implements AdminServiceImpl{
 		return homeDao.getAllAdvertsOfBusiness(user);
 	}
 
+	@Override
+	public void updateCommentStatus(boolean b, Long commentId) {
+		// TODO Auto-generated method stub
+		homeDao.updateCommentStatus(b, commentId);
+	}
+
 }

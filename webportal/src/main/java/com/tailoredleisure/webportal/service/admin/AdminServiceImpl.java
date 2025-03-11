@@ -18,5 +18,7 @@ public interface AdminServiceImpl {
 
 	ArrayList<VenueAdvertForm> getAllAdvertsOfBusiness(com.tailoredleisure.webportal.entity.Users user);
 
+	void updateCommentStatus(boolean b, Long commentId);
+
 
 }

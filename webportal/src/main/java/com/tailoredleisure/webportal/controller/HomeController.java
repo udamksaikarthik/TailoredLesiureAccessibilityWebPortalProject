@@ -180,6 +180,13 @@ public class HomeController {
 		return mv;
 	}
 	
+	@GetMapping("/terms-and-conditions")
+	public ModelAndView showTermsAndConditionsPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("termsandconditionsPage.html");
+		return mv;
+	}
+	
 	@PostMapping("/business/submitUpdatedVenueAdvertForm")
 	private ModelAndView submitUpdatedVenueAdvertForm(@Valid @ModelAttribute("venueForm") VenueAdvertForm venueAdvertForm,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {

@@ -451,6 +451,7 @@
 		    <hr>
 		    <div th:if="${advert.commentForm != null && !advert.commentForm.isEmpty()}">
 		        <div class="comment" th:each="comment : ${advert.commentForm}">
+		        	<div th:if="${comment.tlVerifiedFlag == true}" class="comment_inner_main_container">
 		        	<div class="comment_content_container">
 			            <p>
 			                <strong th:text="${comment.user.firstName}"></strong>: 
@@ -485,7 +486,8 @@
 			            </p>
 		            </div>
 		            <div class="date_container">
-		            	<p th:text="${comment.getFormattedCreatedDate()}"></p>
+		            	<p th:text="${comment.createdDate}"></p>
+		            </div>
 		            </div>
 		        </div>
 		    </div>

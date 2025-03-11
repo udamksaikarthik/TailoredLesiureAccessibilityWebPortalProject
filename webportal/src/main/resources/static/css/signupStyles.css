@@ -102,6 +102,75 @@ body {
     text-decoration: underline;
 }
 
+/* Styles for the Terms and Conditions checkbox */
+.input-group input[type="checkbox"] {
+    width: auto; /* Reset width for checkbox */
+    margin-right: 10px; /* Add spacing between checkbox and label */
+    transform: scale(1.5); /* Increase checkbox size */
+    cursor: pointer; /* Change cursor to pointer */
+    display: inline-block; /* Ensure checkbox stays inline */
+}
+
+.input-group label[for="terms"] {
+    font-size: 1em; /* Match font size with other labels */
+    font-weight: normal; /* Make label text normal (not bold) */
+    cursor: pointer; /* Change cursor to pointer */
+    display: inline-block; /* Ensure label stays inline */
+    vertical-align: middle; /* Align checkbox and label vertically */
+}
+
+.input-group label[for="terms"] a {
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin-left: 5px; /* Add spacing between text and link */
+}
+
+.input-group label[for="terms"] a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.terms-container {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #34495e;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
 @media (max-width: 768px) {
     .signup-container {
         padding: 1.5rem;

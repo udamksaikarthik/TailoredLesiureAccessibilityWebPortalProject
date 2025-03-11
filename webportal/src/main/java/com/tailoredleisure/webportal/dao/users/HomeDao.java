@@ -1,6 +1,7 @@
 package com.tailoredleisure.webportal.dao.users;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
@@ -32,6 +33,10 @@ public class HomeDao {
 
 	@Autowired
 	private MediaRepository mediaRepository;
+	
+
+	@Autowired
+	private CommentFormRepository commentFormRepository;
 
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
@@ -427,9 +432,11 @@ public class HomeDao {
 		if(commentForm!=null) {
 			for (CommentForm c : commentForm) {
 				com.tailoredleisure.webportal.bean.CommentForm commentFormBean = new com.tailoredleisure.webportal.bean.CommentForm();
+				commentFormBean.setId(c.getId());
 				commentFormBean.setCommentText(c.getCommentText());
 				commentFormBean.setRating(c.getRating());
 				commentFormBean.setCreatedDate(c.getCreatedDate());
+				commentFormBean.setTlVerifiedFlag(c.getTlVerifiedFlg());
 				commentFormBean.setUser(convertEntityToBean(c.getUserComment()));
 				commentsBean.add(commentFormBean);
 			}
@@ -584,10 +591,22 @@ public class HomeDao {
 		CommentForm commentFormEntity = new CommentForm();
 		commentFormEntity.setCommentText(commentForm.getCommentText());
 		commentFormEntity.setRating(commentForm.getRating());
-		commentFormEntity.setCreatedDate(new Date());
+		commentFormEntity.setCreatedDate(LocalDateTime.now());
 		commentFormEntity.setVenueAdvertForm(existingVenueAdvertFormEntity);
 		commentFormEntity.setUserComment(user);
 		return commentFormEntity;
+	}
+
+	public void updateCommentStatus(boolean b, Long commentId) {
+		// TODO Auto-generated method stub
+		Optional<CommentForm> commentOptionalEntity = commentFormRepository.findById(commentId);
+		
+		if(commentOptionalEntity.isPresent()) {
+			CommentForm commentEntity = commentOptionalEntity.get();
+			commentEntity.setTlVerifiedFlg(b);
+			commentFormRepository.save(commentEntity);
+		}
+		
 	}
 
 }

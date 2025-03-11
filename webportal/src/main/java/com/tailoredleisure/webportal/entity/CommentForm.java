@@ -1,5 +1,6 @@
 package com.tailoredleisure.webportal.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -35,7 +36,7 @@ public class CommentForm {
 
     @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private LocalDateTime createdDate;
     
     
     // Many-to-One Relationship with VenueAdvertForm
@@ -49,6 +50,8 @@ public class CommentForm {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference // Backward reference
     private Users userComment; // Associated VenueAdvertForm
+    
+    private Boolean tlVerifiedFlg = false;
 
 
 	public Long getId() {
@@ -71,12 +74,12 @@ public class CommentForm {
 	}
 
 
-	public Date getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -109,8 +112,16 @@ public class CommentForm {
 	public void setUserComment(Users userComment) {
 		this.userComment = userComment;
 	}
+
+
+	public Boolean getTlVerifiedFlg() {
+		return tlVerifiedFlg;
+	}
+
+
+	public void setTlVerifiedFlg(Boolean tlVerifiedFlg) {
+		this.tlVerifiedFlg = tlVerifiedFlg;
+	}
 	
-	
-    
     
 }

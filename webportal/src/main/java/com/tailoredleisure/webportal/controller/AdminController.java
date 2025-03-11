@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tailoredleisure.webportal.bean.Users;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
@@ -106,6 +107,34 @@ public class AdminController {
 		}
 		mv.addObject("adverts", adverts);
 		mv.setViewName("adminverifyvenuespage.html");
+		return mv;
+	}
+	
+	@GetMapping("/admin/verifyComment")
+	public ModelAndView verifyComment(@RequestParam("advertId") Long advertId,
+            @RequestParam("commentId") Long commentId,
+            RedirectAttributes redirectAttributes) {
+		System.out.println("Inside showUserVenueAdvertsPage method");
+
+		ModelAndView mv = new ModelAndView();
+
+		adminServiceImpl.updateCommentStatus(true, commentId);
+		redirectAttributes.addFlashAttribute("comment_verified_msg", "Comment successfully verified.");
+		mv.setViewName("redirect:/admin/showSelectedVenueAdminPage?id="+advertId);
+		return mv;
+	}
+	
+	@GetMapping("/admin/unverifyComment")
+	public ModelAndView unverifyComment(@RequestParam("advertId") Long advertId,
+            @RequestParam("commentId") Long commentId,
+            RedirectAttributes redirectAttributes) {
+		System.out.println("Inside showUserVenueAdvertsPage method");
+
+		ModelAndView mv = new ModelAndView();
+
+		adminServiceImpl.updateCommentStatus(false, commentId);
+		redirectAttributes.addFlashAttribute("comment_verified_msg", "Comment successfully verified.");
+		mv.setViewName("redirect:/admin/showSelectedVenueAdminPage?id="+advertId);
 		return mv;
 	}
 	

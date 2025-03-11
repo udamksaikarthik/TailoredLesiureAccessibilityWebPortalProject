@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +16,9 @@ public class CommentForm {
     /**
      * The text of the comment.
      */
+	
+	private Long id;
+	
     private String commentText;
     
 
@@ -26,10 +28,15 @@ public class CommentForm {
     private Users user;
     
 
-    private Date createdDate;
+    private LocalDateTime createdDate;
+    
+    private Boolean tlVerifiedFlag;
 
     // Getters and Setters
 
+    
+    
+    
     /**
      * Gets the comment text.
      * 
@@ -39,7 +46,15 @@ public class CommentForm {
         return commentText;
     }
 
-    /**
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
      * Sets the comment text.
      * 
      * @param commentText the text to set
@@ -51,11 +66,11 @@ public class CommentForm {
     
 
 
-    public Date getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -75,18 +90,20 @@ public class CommentForm {
 		this.rating = rating;
 	}
 	
+	
+	
+	public Boolean getTlVerifiedFlag() {
+		return tlVerifiedFlag;
+	}
+
+	public void setTlVerifiedFlag(Boolean tlVerifiedFlag) {
+		this.tlVerifiedFlag = tlVerifiedFlag;
+	}
+
 	// Getter for the formatted date
     public String getFormattedCreatedDate() {
-    	if (createdDate != null) {
-            // Convert java.util.Date to LocalDateTime
-            Instant instant = createdDate.toInstant();
-            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-
-            // Format the LocalDateTime
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm:ss a");
-            return localDateTime.format(formatter);
-        }
-        return null; // or return a default value like "No date available"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm:ss a");
+        return createdDate != null ? createdDate.format(formatter) : null;
     }
 
 	@Override
