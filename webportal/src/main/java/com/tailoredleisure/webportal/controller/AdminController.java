@@ -76,14 +76,18 @@ public class AdminController {
 	@PostMapping("/admin/processVenueVerification")
 	public ModelAndView processVenueVerification(@RequestParam("id") Long advert_id,
 			@RequestParam("TLVerifiedVenueAdvertFlg") Boolean tlVerifyStatus,
-			@RequestParam("venueAuditFlgTL") Boolean tlVenueAuditStatus) {
+			@RequestParam("venueAuditFlgTL") Boolean tlVenueAuditStatus,
+			@RequestParam("venue_tl_rating") int venueTlRating,
+			@RequestParam("tl_comment_text") String tlCommentText) {
 		System.out.println("Inside processVenueVerification method");
 		System.out.println("advert_id: "+advert_id);
+		System.out.println("venueTlRating: "+venueTlRating);
+		System.out.println("tlCommentText: "+tlCommentText);
 		ModelAndView mv = new ModelAndView();
-		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus);
+		VenueAdvertFormBean venueAdvertFormBean = adminServiceImpl.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus, venueTlRating, tlCommentText);
 		System.out.println("venueAdvertFormBean toString[]= "+venueAdvertFormBean.toString());
 		mv.addObject("advert", venueAdvertFormBean);
-		mv.setViewName("selectedvenuepage.html");
+		mv.setViewName("redirect:/admin/showSelectedVenueAdminPage?id="+advert_id);
 		return mv;
 	}
 	

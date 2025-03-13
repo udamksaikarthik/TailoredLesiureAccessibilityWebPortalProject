@@ -289,6 +289,10 @@ public class HomeDao {
 
 		venueAdvertFormBean.setCommentForm(convertEntityToBeanCommentForm(venueAdvertFormEntity.getCommentForm()));
 		
+		venueAdvertFormBean.setTlCommentText(venueAdvertFormEntity.getTlCommentText());
+		
+		venueAdvertFormBean.setTlRating(venueAdvertFormEntity.getTlRating());
+		
 		//Section-1
 		venueAdvertFormBean.setId(venueAdvertFormEntity.getId());
 		venueAdvertFormBean.setVenueName(venueAdvertFormEntity.getVenueName());
@@ -476,7 +480,7 @@ public class HomeDao {
 		return userBean;
 	}
 
-	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus) {
+	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus, int tlRating, String tlCommentText) {
 		// TODO Auto-generated method stub
 		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advert_id);
 		
@@ -486,7 +490,9 @@ public class HomeDao {
 			com.tailoredleisure.webportal.entity.VenueAdvertForm existingAdvertEntity = venueAdvertFormEntity.get();
 			existingAdvertEntity.setTLVerifiedVenueAdvertFlg(tlVerifyStatus);
 			existingAdvertEntity.setVenueAuditFlgTL(tlVenueAuditStatus);
-//			existingAdvertEntity.setUpdatedDate(new Date());
+			existingAdvertEntity.setTlRating(tlRating);
+			existingAdvertEntity.setTlCommentText(tlCommentText);
+			existingAdvertEntity.setUpdatedDate(new Date());
 			if(existingAdvertEntity.getTLVerifiedVenueAdvertFlg()) {
 				existingAdvertEntity.setTLVerifiedDate(new Date());
 			}else {

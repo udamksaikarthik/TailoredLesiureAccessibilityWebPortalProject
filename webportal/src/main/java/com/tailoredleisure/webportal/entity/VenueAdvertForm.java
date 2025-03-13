@@ -53,6 +53,10 @@ public class VenueAdvertForm {
     
     private Boolean TLVerifiedVenueAdvertFlg = false;
     
+    private int tlRating = 0;
+    
+    private String tlCommentText = "";
+    
 
     @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -1204,6 +1208,22 @@ public class VenueAdvertForm {
 
 	public void setCommentForm(List<CommentForm> commentForm) {
 		this.commentForm = commentForm;
+	}
+
+	public int getTlRating() {
+		return tlRating;
+	}
+
+	public void setTlRating(int tlRating) {
+		this.tlRating = tlRating;
+	}
+
+	public String getTlCommentText() {
+		return tlCommentText;
+	}
+
+	public void setTlCommentText(String tlCommentText) {
+		this.tlCommentText = tlCommentText;
 	}
 
 	@Override

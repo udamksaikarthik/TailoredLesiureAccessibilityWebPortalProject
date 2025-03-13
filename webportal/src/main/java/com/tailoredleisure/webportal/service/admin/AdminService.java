@@ -40,9 +40,9 @@ public class AdminService implements AdminServiceImpl{
 	}
 
 	@Override
-	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus) {
+	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus, int tlRating, String tlCommentText) {
 		// TODO Auto-generated method stub
-		return homeDao.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus);
+		return homeDao.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus, tlRating, tlCommentText);
 	}
 
 	@Override

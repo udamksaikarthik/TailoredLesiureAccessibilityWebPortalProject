@@ -33,10 +33,33 @@
 					<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
 				</div>
 				<div class="common_child_venue_info_main_container">
-					<h3>Rating: <span th:text="${advert.venueName}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venueType}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venueLocation}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venuePostCode}"></span></h3>
+					<h3>TL Rating: </h3>
+					<div th:if="${advert.tlRating == 1}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 2}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 3}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 4}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 5}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+					<h3>TL Review Comment: <span th:text="${advert.tlCommentText}"></span></h3>
 				</div>
 			</div>
 		</div>
@@ -438,6 +461,28 @@
 	                <label class="form-label">Business Email</label>
 	                <input class="form-input readonly" type="email" name="business_email" readonly th:value="${advert.businessEmail}">
 	            </div>
+	            
+	            <div class="form-group">
+	                <label class="form-label">TL Rating</label>
+	                <input class="form-input readonly" type="text" readonly th:value="${advert.tlRating}">
+	            </div>
+	            
+	            <p style="color: red; margin-bottom: 1em;"> Share your experience with this venue using butterfly rating and comment section provided below: </p>
+            
+	             <div class="butterfly-rating" id="butterfly-rating">
+		            <img id="butterfly_logo_id_1" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(1)">
+		            <img id="butterfly_logo_id_2" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(2)">
+		            <img id="butterfly_logo_id_3" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(3)">
+		            <img id="butterfly_logo_id_4" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(4)">
+		            <img id="butterfly_logo_id_5" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(5)">
+		        </div>
+		        
+		        <input type="hidden" id="selected_rating" name="venue_tl_rating" th:value="${advert.tlRating}">
+	        
+	            <div class="comment-box">
+	                <textarea style="margin-bottom: 1em;" id="comment-textarea-${advert.id}" name="tl_comment_text" placeholder="Write your comment here..." rows="4"></textarea>
+	                
+				</div>
 	
 	            <div class="button-group">
 	                <button type="submit" class="form-button">Update</button>
