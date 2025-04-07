@@ -9,6 +9,7 @@ import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.HomeDao;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
@@ -18,6 +19,25 @@ public class HomeService implements HomeServiceImpl{
 	
 	@Autowired
 	private HomeDao homeDao;
+	
+
+	@Override
+	public String generateResetToken(String email) {
+		// TODO Auto-generated method stub
+		return homeDao.generateResetToken(email);
+	}
+
+	@Override
+	public PasswordResetToken findByToken(String token) {
+		// TODO Auto-generated method stub
+		return homeDao.findByToken(token);
+	}
+
+	@Override
+	public void delete(PasswordResetToken resetToken) {
+		// TODO Auto-generated method stub
+		homeDao.delete(resetToken);
+	}
 
 	@Override
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {

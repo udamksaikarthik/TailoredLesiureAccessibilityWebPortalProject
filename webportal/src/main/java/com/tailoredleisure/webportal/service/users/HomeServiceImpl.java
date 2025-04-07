@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
@@ -28,5 +29,11 @@ public interface HomeServiceImpl {
 	int getExistingMediaCount(Long id);
 
 	void advertAddComment(Long advertId, @Valid CommentForm commentForm, Users user);
+
+	String generateResetToken(String email);
+	
+	PasswordResetToken findByToken(String token);
+
+	void delete(PasswordResetToken resetToken);
 
 }

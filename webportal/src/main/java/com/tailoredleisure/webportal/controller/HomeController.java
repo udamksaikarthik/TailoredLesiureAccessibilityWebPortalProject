@@ -1,5 +1,6 @@
 package com.tailoredleisure.webportal.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -7,6 +8,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +27,10 @@ import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.UserRepository;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 import com.tailoredleisure.webportal.service.admin.AdminServiceImpl;
+import com.tailoredleisure.webportal.service.users.EmailService;
 import com.tailoredleisure.webportal.service.users.HomeServiceImpl;
 
 import jakarta.validation.Valid;
@@ -42,6 +46,74 @@ public class HomeController {
 	private HomeServiceImpl homeServiceImpl;
 	
 
+	@Autowired
+	private EmailService emailService;
+	
+
+	@PostMapping("/forgot-password")
+    public ModelAndView forgotPassword(@RequestParam String email, RedirectAttributes redirectAttributes) {
+		System.out.println("Inside forgotPassword method");
+		ModelAndView mv = new ModelAndView();
+        try {
+            String token = homeServiceImpl.generateResetToken(email);
+            emailService.sendPasswordResetEmail(email, token);
+            System.out.println("After sendPasswordResetEmail method!");
+            String msg = "Password reset email sent successfully.";
+            redirectAttributes.addFlashAttribute("passwordResetMailMsgSuccess", msg);
+            System.out.println("msg:"+ msg);
+            mv.setViewName("redirect:/login");
+            return mv;
+        } catch (Exception e) {
+        	String msg = "Email not associated in our database. Please create an account!";
+            redirectAttributes.addFlashAttribute("passwordResetMailMsgError", msg);
+            System.out.println("msg:"+ msg);
+            mv.setViewName("redirect:/login");
+            return mv;
+        }
+    }
+	
+	@PostMapping("/reset-password")
+	public ModelAndView resetPassword(@RequestParam("token") String token, @RequestParam("newPassword") String newPassword,
+			RedirectAttributes redirectAttributes) {
+		System.out.println("Inside Reset Password");
+	    PasswordResetToken resetToken = homeServiceImpl.findByToken(token);
+	    System.out.println("resetToken: "+resetToken);
+	    ModelAndView mv = new ModelAndView();
+
+	    if (resetToken != null && resetToken.getExpiryDate().isAfter(LocalDateTime.now())) {
+	        Users user = resetToken.getUser();
+	        user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+	        userRepository.save(user);
+	        homeServiceImpl.delete(resetToken); // Invalidate the token
+	        String msg = "Password has been resetted successfully!";
+	        System.out.println("msg: "+msg);
+	        redirectAttributes.addFlashAttribute("passwordResetMsgSuccess",msg);
+	        mv.setViewName("redirect:/login");
+	        return mv;
+	    } else {
+	        String msg = "Password hasn't been resetted! Try Again please!";
+	        System.out.println("msg: "+msg);
+	        redirectAttributes.addFlashAttribute("passwordResetMsgError",msg);
+	        mv.setViewName("redirect:/login");
+	        return mv;
+	    }
+	}
+	
+	@GetMapping("/showForgotPasswordPage")
+	public ModelAndView showForgotPasswordPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("forgotpasswordpage.html");
+		return mv;
+	}
+	
+	@GetMapping("/reset-password")
+	public ModelAndView showResetPasswordPage(@RequestParam("token") String token) {
+		System.out.println("Inside showResetPasswordPage");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("token", token);
+		mv.setViewName("resetpasswordpage.html");
+		return mv;
+	}
 
 	@GetMapping("/")
 	private ModelAndView showHomePage() {

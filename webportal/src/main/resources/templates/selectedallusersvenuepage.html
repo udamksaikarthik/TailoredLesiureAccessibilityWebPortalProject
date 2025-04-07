@@ -35,10 +35,33 @@
 					<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
 				</div>
 				<div class="common_child_venue_info_main_container">
-					<h3>Rating: <span th:text="${advert.venueName}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venueType}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venueLocation}"></span></h3>
-					<h3>Rating: <span th:text="${advert.venuePostCode}"></span></h3>
+					<h3>TL Rating: </h3>
+					<div th:if="${advert.tlRating == 1}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 2}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 3}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 4}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 5}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+					<h3>TL Review Comment: <span th:text="${advert.tlCommentText}"></span></h3>
 				</div>
 			</div>
 		</div>

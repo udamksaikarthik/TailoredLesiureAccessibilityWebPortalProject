@@ -7,9 +7,10 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +19,7 @@ import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.entity.CommentForm;
 import com.tailoredleisure.webportal.entity.Media;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
@@ -37,6 +39,9 @@ public class HomeDao {
 
 	@Autowired
 	private CommentFormRepository commentFormRepository;
+	
+	@Autowired
+	private PasswordResetTokenRepository passwordResetTokenRepository;
 
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
@@ -613,6 +618,36 @@ public class HomeDao {
 			commentFormRepository.save(commentEntity);
 		}
 		
+	}
+
+	public String generateResetToken(String email) {
+		Optional<com.tailoredleisure.webportal.entity.Users> userOptional = Optional.of(userRepository.findByEmail(email));
+        if (userOptional.isPresent()) {
+        	com.tailoredleisure.webportal.entity.Users user = userOptional.get();
+            String token = UUID.randomUUID().toString();
+
+            PasswordResetToken resetToken = new PasswordResetToken();
+            resetToken.setToken(token);
+            resetToken.setUser(user);
+            resetToken.setExpiryDate(LocalDateTime.now().plusHours(1)); // 1-hour expiration
+
+            passwordResetTokenRepository.save(resetToken);
+            return token;
+        } else {
+            throw new UsernameNotFoundException("No user found with email: " + email);
+        }
+	}
+
+	public PasswordResetToken findByToken(String token) {
+
+		System.out.println("Inside PasswordResetToken");
+		
+		return passwordResetTokenRepository.findByToken(token);
+	}
+
+	public void delete(PasswordResetToken resetToken) {
+		// TODO Auto-generated method stub
+		passwordResetTokenRepository.delete(resetToken);
 	}
 
 }
