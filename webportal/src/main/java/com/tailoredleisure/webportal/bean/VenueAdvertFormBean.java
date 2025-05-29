@@ -27,6 +27,9 @@ public class VenueAdvertFormBean {
 
     // Related Entities
     private List<MediaBean> media;
+    private List<CommentForm> commentForm;
+    private int tlRating = 0;
+    private String tlCommentText = "";
     private Users user;
 
     // Mobility Checklist
@@ -822,6 +825,29 @@ public class VenueAdvertFormBean {
 	}
 	public void setTLAuditedDate(Date tLAuditedDate) {
 		TLAuditedDate = tLAuditedDate;
+	}
+	
+	
+	
+	public List<CommentForm> getCommentForm() {
+		return commentForm;
+	}
+	public void setCommentForm(List<CommentForm> commentForm) {
+		this.commentForm = commentForm;
+	}
+	
+	public String getTlCommentText() {
+		return tlCommentText;
+	}
+	public void setTlCommentText(String tlCommentText) {
+		this.tlCommentText = tlCommentText;
+	}
+	
+	public int getTlRating() {
+		return tlRating;
+	}
+	public void setTlRating(int tlRating) {
+		this.tlRating = tlRating;
 	}
 	@Override
 	public String toString() {

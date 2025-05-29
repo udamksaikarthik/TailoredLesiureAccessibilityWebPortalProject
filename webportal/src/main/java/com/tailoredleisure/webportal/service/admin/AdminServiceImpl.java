@@ -14,9 +14,11 @@ public interface AdminServiceImpl {
 
 	VenueAdvertFormBean getSelectedVenueAdvertForm(Long id);
 
-	VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus);
+	VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus, int venueTlRating, String tlCommentText);
 
 	ArrayList<VenueAdvertForm> getAllAdvertsOfBusiness(com.tailoredleisure.webportal.entity.Users user);
+
+	void updateCommentStatus(boolean b, Long commentId);
 
 
 }

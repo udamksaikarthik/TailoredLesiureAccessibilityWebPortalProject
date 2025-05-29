@@ -1,21 +1,25 @@
 package com.tailoredleisure.webportal.dao.users;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tailoredleisure.webportal.bean.MediaBean;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
+import com.tailoredleisure.webportal.entity.CommentForm;
 import com.tailoredleisure.webportal.entity.Media;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
@@ -31,6 +35,13 @@ public class HomeDao {
 
 	@Autowired
 	private MediaRepository mediaRepository;
+	
+
+	@Autowired
+	private CommentFormRepository commentFormRepository;
+	
+	@Autowired
+	private PasswordResetTokenRepository passwordResetTokenRepository;
 
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
 		// TODO Auto-generated method stub
@@ -280,6 +291,12 @@ public class HomeDao {
 		venueAdvertFormBean.setUser(convertEntityToBean(venueAdvertFormEntity.getUser()));
 		
 		venueAdvertFormBean.setMedia(convertEntityToBean(venueAdvertFormEntity.getMedia()));
+
+		venueAdvertFormBean.setCommentForm(convertEntityToBeanCommentForm(venueAdvertFormEntity.getCommentForm()));
+		
+		venueAdvertFormBean.setTlCommentText(venueAdvertFormEntity.getTlCommentText());
+		
+		venueAdvertFormBean.setTlRating(venueAdvertFormEntity.getTlRating());
 		
 		//Section-1
 		venueAdvertFormBean.setId(venueAdvertFormEntity.getId());
@@ -418,6 +435,24 @@ public class HomeDao {
 		return venueAdvertFormBean;
 	}
 
+	private List<com.tailoredleisure.webportal.bean.CommentForm> convertEntityToBeanCommentForm(
+			List<CommentForm> commentForm) {
+		List<com.tailoredleisure.webportal.bean.CommentForm> commentsBean = new ArrayList<>();
+		if(commentForm!=null) {
+			for (CommentForm c : commentForm) {
+				com.tailoredleisure.webportal.bean.CommentForm commentFormBean = new com.tailoredleisure.webportal.bean.CommentForm();
+				commentFormBean.setId(c.getId());
+				commentFormBean.setCommentText(c.getCommentText());
+				commentFormBean.setRating(c.getRating());
+				commentFormBean.setCreatedDate(c.getCreatedDate());
+				commentFormBean.setTlVerifiedFlag(c.getTlVerifiedFlg());
+				commentFormBean.setUser(convertEntityToBean(c.getUserComment()));
+				commentsBean.add(commentFormBean);
+			}
+		}
+		return commentsBean;
+	}
+
 	private List<MediaBean> convertEntityToBean(List<Media> media) {
 		// TODO Auto-generated method stub
 		List<MediaBean> mediaBean = new ArrayList<>();
@@ -450,7 +485,7 @@ public class HomeDao {
 		return userBean;
 	}
 
-	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus) {
+	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus, int tlRating, String tlCommentText) {
 		// TODO Auto-generated method stub
 		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advert_id);
 		
@@ -460,7 +495,9 @@ public class HomeDao {
 			com.tailoredleisure.webportal.entity.VenueAdvertForm existingAdvertEntity = venueAdvertFormEntity.get();
 			existingAdvertEntity.setTLVerifiedVenueAdvertFlg(tlVerifyStatus);
 			existingAdvertEntity.setVenueAuditFlgTL(tlVenueAuditStatus);
-//			existingAdvertEntity.setUpdatedDate(new Date());
+			existingAdvertEntity.setTlRating(tlRating);
+			existingAdvertEntity.setTlCommentText(tlCommentText);
+			existingAdvertEntity.setUpdatedDate(new Date());
 			if(existingAdvertEntity.getTLVerifiedVenueAdvertFlg()) {
 				existingAdvertEntity.setTLVerifiedDate(new Date());
 			}else {
@@ -541,6 +578,76 @@ public class HomeDao {
 		}
 		
 		return mediaSize;
+	}
+
+	public void advertAddComment(Long advertId, com.tailoredleisure.webportal.bean.CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		Optional<com.tailoredleisure.webportal.entity.VenueAdvertForm> venueAdvertFormEntity = venueAdvertRepository.findById(advertId);
+		
+		if(venueAdvertFormEntity.isPresent()) {
+			com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity = venueAdvertFormEntity.get();
+			List<CommentForm> commentsList = new ArrayList<>();
+			if(existingVenueAdvertFormEntity.getCommentForm()!= null || !existingVenueAdvertFormEntity.getCommentForm().isEmpty()) {
+				commentsList = existingVenueAdvertFormEntity.getCommentForm();
+			}
+			commentsList.add(convertBeanToEntityCommentForm(existingVenueAdvertFormEntity, commentForm, user));
+			existingVenueAdvertFormEntity.setCommentForm(commentsList);
+			
+			venueAdvertRepository.save(existingVenueAdvertFormEntity);
+		}
+	}
+
+	private CommentForm convertBeanToEntityCommentForm(com.tailoredleisure.webportal.entity.VenueAdvertForm existingVenueAdvertFormEntity, com.tailoredleisure.webportal.bean.CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		CommentForm commentFormEntity = new CommentForm();
+		commentFormEntity.setCommentText(commentForm.getCommentText());
+		commentFormEntity.setRating(commentForm.getRating());
+		commentFormEntity.setCreatedDate(LocalDateTime.now());
+		commentFormEntity.setVenueAdvertForm(existingVenueAdvertFormEntity);
+		commentFormEntity.setUserComment(user);
+		return commentFormEntity;
+	}
+
+	public void updateCommentStatus(boolean b, Long commentId) {
+		// TODO Auto-generated method stub
+		Optional<CommentForm> commentOptionalEntity = commentFormRepository.findById(commentId);
+		
+		if(commentOptionalEntity.isPresent()) {
+			CommentForm commentEntity = commentOptionalEntity.get();
+			commentEntity.setTlVerifiedFlg(b);
+			commentFormRepository.save(commentEntity);
+		}
+		
+	}
+
+	public String generateResetToken(String email) {
+		Optional<com.tailoredleisure.webportal.entity.Users> userOptional = Optional.of(userRepository.findByEmail(email));
+        if (userOptional.isPresent()) {
+        	com.tailoredleisure.webportal.entity.Users user = userOptional.get();
+            String token = UUID.randomUUID().toString();
+
+            PasswordResetToken resetToken = new PasswordResetToken();
+            resetToken.setToken(token);
+            resetToken.setUser(user);
+            resetToken.setExpiryDate(LocalDateTime.now().plusHours(1)); // 1-hour expiration
+
+            passwordResetTokenRepository.save(resetToken);
+            return token;
+        } else {
+            throw new UsernameNotFoundException("No user found with email: " + email);
+        }
+	}
+
+	public PasswordResetToken findByToken(String token) {
+
+		System.out.println("Inside PasswordResetToken");
+		
+		return passwordResetTokenRepository.findByToken(token);
+	}
+
+	public void delete(PasswordResetToken resetToken) {
+		// TODO Auto-generated method stub
+		passwordResetTokenRepository.delete(resetToken);
 	}
 
 }

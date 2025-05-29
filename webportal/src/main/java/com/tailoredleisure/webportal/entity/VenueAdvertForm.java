@@ -20,6 +20,8 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "venue_advert_form")
 public class VenueAdvertForm {
@@ -51,6 +53,10 @@ public class VenueAdvertForm {
     
     private Boolean TLVerifiedVenueAdvertFlg = false;
     
+    private int tlRating = 0;
+    
+    private String tlCommentText = "";
+    
 
     @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -71,9 +77,14 @@ public class VenueAdvertForm {
     // Section 2: Upload Venue Images/Videos (One-to-Many Relationship)
     @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Media> media; // Media files associated with the venue
+    
+
+    @OneToMany(mappedBy = "venueAdvertForm", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentForm> commentForm; // Media files associated with the venue
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference // Backward reference
     private Users user;
 
     // Section 3: Mobility Access Checklist
@@ -1188,6 +1199,31 @@ public class VenueAdvertForm {
 
 	public void setTLAuditedDate(Date tLAuditedDate) {
 		TLAuditedDate = tLAuditedDate;
+	}
+	
+
+	public List<CommentForm> getCommentForm() {
+		return commentForm;
+	}
+
+	public void setCommentForm(List<CommentForm> commentForm) {
+		this.commentForm = commentForm;
+	}
+
+	public int getTlRating() {
+		return tlRating;
+	}
+
+	public void setTlRating(int tlRating) {
+		this.tlRating = tlRating;
+	}
+
+	public String getTlCommentText() {
+		return tlCommentText;
+	}
+
+	public void setTlCommentText(String tlCommentText) {
+		this.tlCommentText = tlCommentText;
 	}
 
 	@Override

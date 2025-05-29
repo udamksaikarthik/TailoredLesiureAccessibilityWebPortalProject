@@ -142,3 +142,59 @@ function showComments(){
 	}
 	
 }
+
+const butterfly_logo_id_1 = document.getElementById("butterfly_logo_id_1")
+const butterfly_logo_id_2 = document.getElementById("butterfly_logo_id_2")
+const butterfly_logo_id_3 = document.getElementById("butterfly_logo_id_3")
+const butterfly_logo_id_4 = document.getElementById("butterfly_logo_id_4")
+const butterfly_logo_id_5 = document.getElementById("butterfly_logo_id_5")
+let selected_rating = document.getElementById("selected_rating");
+function butterfly_fill(rating){
+	console.log("Inside butterfly_fill function")
+	console.log("Rating: "+rating)
+	console.log("Initial selected rating: "+selected_rating.value)
+	
+	if(rating === 1 ){
+		butterfly_logo_id_1.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_2.src = "/images/butterfly.png"
+		butterfly_logo_id_3.src = "/images/butterfly.png"
+		butterfly_logo_id_4.src = "/images/butterfly.png"
+		butterfly_logo_id_5.src = "/images/butterfly.png"
+	}
+	
+	if(rating === 2 ){
+		butterfly_logo_id_1.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_2.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_3.src = "/images/butterfly.png"
+		butterfly_logo_id_4.src = "/images/butterfly.png"
+		butterfly_logo_id_5.src = "/images/butterfly.png"
+	}
+	
+	if(rating === 3 ){
+		butterfly_logo_id_1.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_2.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_3.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_4.src = "/images/butterfly.png"
+		butterfly_logo_id_5.src = "/images/butterfly.png"
+	}
+	
+	if(rating === 4 ){
+		butterfly_logo_id_1.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_2.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_3.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_4.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_5.src = "/images/butterfly.png"
+	}
+	
+	if(rating === 5 ){
+		butterfly_logo_id_1.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_2.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_3.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_4.src = "/images/butterfly_fill.png"
+		butterfly_logo_id_5.src = "/images/butterfly_fill.png"
+	}
+	
+	selected_rating.value = rating;
+	console.log("Final selected rating: "+selected_rating.value)
+	
+}

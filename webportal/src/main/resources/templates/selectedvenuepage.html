@@ -21,15 +21,46 @@
 	<div class="">
 		<div class="venue_info_container">
 			<h1>Venue Information</h1><br>
-			<div>
-				<h3>Venue Name: <span th:text="${advert.venueName}"></span></h3>
-				<h3>Venue Type: <span th:text="${advert.venueType}"></span></h3>
-				<h3>Location: <span th:text="${advert.venueLocation}"></span></h3>
-				<h3>Post Code: <span th:text="${advert.venuePostCode}"></span></h3>
-				<h3>Created Date: <span th:text="${advert.createdDate}"></span></h3>
-				<h3>Updated Date: <span th:text="${advert.updatedDate}"></span></h3>
-				<h3>TL Verified Date: <span th:text="${advert.TLVerifiedDate}"></span></h3>
-				<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
+			<div class="venue_info_main_container">
+				<div class="common_child_venue_info_main_container">
+					<h3>Venue Name: <span th:text="${advert.venueName}"></span></h3>
+					<h3>Venue Type: <span th:text="${advert.venueType}"></span></h3>
+					<h3>Location: <span th:text="${advert.venueLocation}"></span></h3>
+					<h3>Post Code: <span th:text="${advert.venuePostCode}"></span></h3>
+					<h3>Created Date: <span th:text="${advert.createdDate}"></span></h3>
+					<h3>Updated Date: <span th:text="${advert.updatedDate}"></span></h3>
+					<h3>TL Verified Date: <span th:text="${advert.TLVerifiedDate}"></span></h3>
+					<h3>TL Audited Date: <span th:text="${advert.TLAuditedDate}"></span></h3>
+				</div>
+				<div class="common_child_venue_info_main_container">
+					<h3>TL Rating: </h3>
+					<div th:if="${advert.tlRating == 1}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 2}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 3}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 4}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${advert.tlRating == 5}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+					<h3>TL Review Comment: <span th:text="${advert.tlCommentText}"></span></h3>
+				</div>
 			</div>
 		</div>
 		<div class="checklists_main_container">
@@ -430,12 +461,94 @@
 	                <label class="form-label">Business Email</label>
 	                <input class="form-input readonly" type="email" name="business_email" readonly th:value="${advert.businessEmail}">
 	            </div>
+	            
+	            <div class="form-group">
+	                <label class="form-label">TL Rating</label>
+	                <input class="form-input readonly" type="text" readonly th:value="${advert.tlRating}">
+	            </div>
+	            
+	            <p style="color: red; margin-bottom: 1em;"> Share your experience with this venue using butterfly rating and comment section provided below: </p>
+            
+	             <div class="butterfly-rating" id="butterfly-rating">
+		            <img id="butterfly_logo_id_1" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(1)">
+		            <img id="butterfly_logo_id_2" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(2)">
+		            <img id="butterfly_logo_id_3" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(3)">
+		            <img id="butterfly_logo_id_4" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(4)">
+		            <img id="butterfly_logo_id_5" class="butterfly_logo" alt="" th:src="@{/images/butterfly.png}" onclick="butterfly_fill(5)">
+		        </div>
+		        
+		        <input type="hidden" id="selected_rating" name="venue_tl_rating" th:value="${advert.tlRating}">
+	        
+	            <div class="comment-box">
+	                <textarea style="margin-bottom: 1em;" id="comment-textarea-${advert.id}" name="tl_comment_text" placeholder="Write your comment here..." rows="4"></textarea>
+	                
+				</div>
 	
 	            <div class="button-group">
 	                <button type="submit" class="form-button">Update</button>
 	            </div>
 	        </form>
 	    </div>
+	    
+	    
+		<!-- Comments Section -->
+		<div class="comments-container" th:id="'comments-container-' + ${advert.Id}">
+		    <h3>Comments</h3>
+		    <hr>
+		    <div th:if="${advert.commentForm != null && !advert.commentForm.isEmpty()}">
+		        <div class="comment" th:each="comment : ${advert.commentForm}">
+		        	<div class="comment_inner_main_container">
+		        	<div class="comment_content_container">
+			            <p>
+			                <strong th:text="${comment.user.firstName}"></strong>: 
+			            </p>
+			            <div th:if="${comment.rating == 1}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${comment.rating == 2}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${comment.rating == 3}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${comment.rating == 4}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <div th:if="${comment.rating == 5}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+		            		<img class="butterfly_logo" alt="" th:src="@{/images/butterfly_fill.png}">
+			            </div>
+			            <p style="text-align: left;">
+			                <span th:text="${comment.commentText}"></span> <br>
+			                <span th:if="${!comment.tlVerifiedFlag}"><strong>Status:</strong> Unverified</span>
+			                <span th:if="${comment.tlVerifiedFlag}"><strong>Status:</strong> Verified</span>
+			            </p>
+		            </div>
+		            <div class="date_container">
+		            	<p th:text="${comment.getFormattedCreatedDate()}"></p>
+		            	<a class="cmt_verification_btn" th:if="${!comment.tlVerifiedFlag}" 
+						   th:href="@{/admin/verifyComment(advertId=${advert.id}, commentId=${comment.id})}">Verify</a>
+						
+						<a class="cmt_verification_btn" th:if="${comment.tlVerifiedFlag}" 
+						   th:href="@{/admin/unverifyComment(advertId=${advert.id}, commentId=${comment.id})}">Unverify</a>
+		            	
+	            
+		            </div>
+		            </div>
+		        </div>
+		    </div>
+		    <p th:if="${advert.commentForm == null || advert.commentForm.isEmpty()}">No comments</p>
+		</div>
+			
 		
 				
 	</div>

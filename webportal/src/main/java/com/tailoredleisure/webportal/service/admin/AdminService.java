@@ -40,15 +40,21 @@ public class AdminService implements AdminServiceImpl{
 	}
 
 	@Override
-	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus) {
+	public VenueAdvertFormBean updateVenueAdvert(Long advert_id, Boolean tlVerifyStatus, Boolean tlVenueAuditStatus, int tlRating, String tlCommentText) {
 		// TODO Auto-generated method stub
-		return homeDao.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus);
+		return homeDao.updateVenueAdvert(advert_id, tlVerifyStatus, tlVenueAuditStatus, tlRating, tlCommentText);
 	}
 
 	@Override
 	public ArrayList<VenueAdvertForm> getAllAdvertsOfBusiness(com.tailoredleisure.webportal.entity.Users user) {
 		// TODO Auto-generated method stub
 		return homeDao.getAllAdvertsOfBusiness(user);
+	}
+
+	@Override
+	public void updateCommentStatus(boolean b, Long commentId) {
+		// TODO Auto-generated method stub
+		homeDao.updateCommentStatus(b, commentId);
 	}
 
 }

@@ -234,6 +234,100 @@
 	margin: 1em 0;
 }
 
+.comment_form_class{
+	margin: 1em 0;
+}
+
+.comment_form_class{
+	width: 100%;
+	padding: 1em;
+}
+.comment-box textarea{
+	width: 100%;
+	padding: 1em;
+}
+.createPostBtn{
+	width: 100%;
+	padding: 10px;
+	background-color: #2ecc71;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.createPostBtn:hover{
+	background-color: #27ae60;
+}
+
+.comment_section_title{
+	text-align: center;
+	padding: 1em 0;
+}
+
+.venue_info_main_container{
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.common_child_venue_info_main_container{
+	width: 45%;
+}
+
+
+.comments-container {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment {
+    margin: 1em 0;
+}
+
+.butterfly-rating{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.butterfly_logo{
+	width: 50px;
+	height: 50px;
+}
+
+.comment_inner_main_container{
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	border-bottom: 1px solid gray;
+}
+.comment_content_container{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 10px;
+	padding: 1em 0;
+}
+
+.cmt_verification_btn{
+	padding: 1em;
+	font-weight: bold;
+	color: black;
+	background-color: #febf28;
+	text-decoration: none;
+	text-align: center;
+}
+.date_container{
+	display: flex;
+	flex-direction: column;
+}
 
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
@@ -253,5 +347,17 @@
 	}
 	.media-container{
 		width: 95%;
+	}
+	.venue_info_main_container{
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.common_child_venue_info_main_container{
+		width: 90%;
+	}
+	.butterfly_logo{
+		width: 40px;
+		height: 40px;
 	}
 }

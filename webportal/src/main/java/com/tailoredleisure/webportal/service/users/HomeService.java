@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tailoredleisure.webportal.bean.CommentForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertForm;
 import com.tailoredleisure.webportal.bean.VenueAdvertFormBean;
 import com.tailoredleisure.webportal.dao.users.HomeDao;
+import com.tailoredleisure.webportal.entity.PasswordResetToken;
 import com.tailoredleisure.webportal.entity.Users;
 
 import jakarta.validation.Valid;
@@ -17,6 +19,25 @@ public class HomeService implements HomeServiceImpl{
 	
 	@Autowired
 	private HomeDao homeDao;
+	
+
+	@Override
+	public String generateResetToken(String email) {
+		// TODO Auto-generated method stub
+		return homeDao.generateResetToken(email);
+	}
+
+	@Override
+	public PasswordResetToken findByToken(String token) {
+		// TODO Auto-generated method stub
+		return homeDao.findByToken(token);
+	}
+
+	@Override
+	public void delete(PasswordResetToken resetToken) {
+		// TODO Auto-generated method stub
+		homeDao.delete(resetToken);
+	}
 
 	@Override
 	public Boolean saveAdvertForm(@Valid VenueAdvertForm venueAdvertForm, Users user) {
@@ -65,6 +86,13 @@ public class HomeService implements HomeServiceImpl{
 	public int getExistingMediaCount(Long id) {
 		// TODO Auto-generated method stub
 		return homeDao.getExistingMediaCount(id);
+	}
+
+	@Override
+	public void advertAddComment(Long advertId, CommentForm commentForm, Users user) {
+		// TODO Auto-generated method stub
+		homeDao.advertAddComment(advertId, commentForm, user);
+		
 	}
 
 }
